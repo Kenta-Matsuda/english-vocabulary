@@ -146,27 +146,47 @@ export function Extras({ w, reveal, phrases = 3, examples = 1 }: { w: Word; reve
 
 // ---------------------------------------------------------------- question / entry (screen)
 
-export function HintBoxes({ w, settings }: { w: Word; settings: Settings }) {
+/**
+ * Letter boxes showing the answer length. When `typed` is given (online test), the boxes fill
+ * with what has been typed so far, so you can see how many letters you have entered.
+ */
+export function HintBoxes({ w, settings, typed }: { w: Word; settings: Settings; typed?: string }) {
   if (!settings.showLengthHint && !settings.showFirstLetterHint) return null;
   if (!settings.showLengthHint) return <span class="hint">starts with “{w.w[0]}”</span>;
+  const target = [...w.w];
+  const t = typed != null ? [...typed.trim()] : null;
+  const extra = t ? Math.max(0, t.length - target.length) : 0;
   return (
-    <span class="letters" aria-label={`${w.w.length} letters`}>
-      {[...w.w].map((ch, i) => (
-        <span key={i} class={"lb" + (ch === " " || ch === "-" ? " sep" : "")}>
-          {i === 0 && settings.showFirstLetterHint ? ch : ch === "-" ? "-" : ""}
+    <span class="letters-wrap">
+      <span class="letters" aria-label={`${target.length} letters`}>
+        {target.map((ch, i) => {
+          const tc = t?.[i];
+          const isSep = ch === " " || ch === "-";
+          const content = tc ?? (i === 0 && settings.showFirstLetterHint ? ch : ch === "-" ? "-" : "");
+          const cls = "lb" + (isSep && !tc ? " sep" : "") + (tc ? " filled" : t && i === t.length ? " cursor" : "") + (tc == null && i === 0 && settings.showFirstLetterHint ? " given" : "");
+          return <span key={i} class={cls}>{content}</span>;
+        })}
+        {extra > 0 &&
+          t!.slice(target.length).map((c, i) => (
+            <span key={"x" + i} class="lb over">{c}</span>
+          ))}
+      </span>
+      {t && (
+        <span class={"lcount" + (extra ? " over" : t.length === target.length ? " full" : "")}>
+          {t.length} / {target.length}
         </span>
-      ))}
+      )}
     </span>
   );
 }
 
-export function Question({ w, settings, n }: { w: Word; settings: Settings; n?: number }) {
+export function Question({ w, settings, n, typed }: { w: Word; settings: Settings; n?: number; typed?: string }) {
   const senses = w.senses.slice(0, settings.sensesPerQuestion);
   return (
     <article class="qcard">
       <header class="qcard-head">
         {n != null && <span class="qno">{n}</span>}
-        <HintBoxes w={w} settings={settings} />
+        <HintBoxes w={w} settings={settings} typed={typed} />
       </header>
       <SenseList senses={senses} />
       <Extras w={w} phrases={settings.showCollocations ? 3 : 0} examples={settings.showExamples ? 1 : 0} />

@@ -27,14 +27,29 @@ export function TestPage({ id }: { id: string }) {
   const answered = Object.values(answers).filter((v) => v.trim()).length;
   const cycle = state.cycles.find((c) => c.id === a.cycleId);
 
-  const save = (v: string) =>
+  const skipped = a.skipped ?? [];
+  const save = (v: string, skip = false) =>
     update((s) => {
       const t = s.attempts.find((x) => x.id === id)!;
-      t.answers = { ...(t.answers ?? {}), [t.order[i]]: v };
+      const wid = t.order[i];
+      t.answers = { ...(t.answers ?? {}), [wid]: skip ? "" : v };
+      const sk = new Set(t.skipped ?? []);
+      if (skip) sk.add(wid);
+      else if (v.trim()) sk.delete(wid);
+      t.skipped = t.order.filter((x) => sk.has(x));
     });
   const next = () => {
     save(val);
     if (i < total - 1) setI(i + 1);
+  };
+  const skip = () => {
+    save("", true);
+    setVal("");
+    if (i < total - 1) setI(i + 1);
+  };
+  const jumpTo = (n: number) => {
+    save(val);
+    setI(n);
   };
   const finish = () => {
     save(val);
@@ -55,9 +70,9 @@ export function TestPage({ id }: { id: string }) {
     <Page eyebrow={cycle ? cycle.name : "Quick test"} title="Online test" narrow>
       <div class="test-top">
         <div class="meter"><i style={{ width: `${(100 * (i + 1)) / total}%` }} /></div>
-        <span class="counter">{i + 1} / {total} · answered {answered}</span>
+        <span class="counter">{i + 1} / {total} · answered {answered}{skipped.length > 0 && ` · skipped ${skipped.length}`}</span>
       </div>
-      {w ? <Question w={w} settings={state.settings} n={i + 1} /> : <p>Missing word {a.order[i]}</p>}
+      {w ? <Question w={w} settings={state.settings} n={i + 1} typed={val} /> : <p>Missing word {a.order[i]}</p>}
       <form
         class="answer"
         onSubmit={(e) => {
@@ -75,15 +90,33 @@ export function TestPage({ id }: { id: string }) {
           placeholder="Your answer"
           aria-label="Your answer"
           onInput={(e) => setVal((e.target as HTMLInputElement).value)}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              e.preventDefault();
+              skip();
+            }
+          }}
         />
+        <button type="button" class="lg" onClick={skip} title="Skip this question (Esc)">Skip</button>
         {i < total - 1 ? (
           <button class="primary lg" type="submit">Next</button>
         ) : (
           <button class="primary lg" type="submit">Finish</button>
         )}
       </form>
+      {skipped.length > 0 && (
+        <div class="jump">
+          <span class="small muted">Skipped — go back:</span>
+          {skipped.map((wid) => {
+            const n = a.order.indexOf(wid);
+            return (
+              <button key={wid} type="button" class={n === i ? "primary" : ""} onClick={() => jumpTo(n)}>{n + 1}</button>
+            );
+          })}
+        </div>
+      )}
       <div class="kbd-note">
-        Press Enter for the next question. Blank answers count as wrong. Progress is saved automatically —{" "}
+        Enter: next · Esc: skip (counts as wrong unless you come back to it). Progress is saved automatically —{" "}
         <a href="javascript:void 0" onClick={finish}>finish and grade now</a>
       </div>
     </Page>
@@ -166,7 +199,11 @@ export function GradePage({ id }: { id: string }) {
                   <td class="word-cell">
                     <a href={`#/word/${encodeURIComponent(wid)}`}>{w?.w ?? wid}</a>
                   </td>
-                  {a.mode === "online" && <td class="typed">{a.answers?.[wid] || <span class="muted">—</span>}</td>}
+                  {a.mode === "online" && (
+                    <td class="typed">
+                      {a.answers?.[wid] || (a.skipped?.includes(wid) ? <span class="skipped">skipped</span> : <span class="muted">—</span>)}
+                    </td>
+                  )}
                 </tr>
                 {w && (!ok || showAll) && (a.results || a.mode === "online") && (
                   <tr class="detail">

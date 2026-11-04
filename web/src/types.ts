@@ -86,6 +86,8 @@ export interface Attempt {
   order: string[];
   /** typed answers (online mode) */
   answers?: Record<string, string>;
+  /** word ids skipped in the online test (graded as wrong) */
+  skipped?: string[];
   /** graded result per word id */
   results?: Record<string, boolean>;
   label?: string;
