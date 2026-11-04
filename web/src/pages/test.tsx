@@ -1,3 +1,4 @@
+import { Fragment } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { Entry, Page, Question } from "../components";
 import { isCorrect } from "../logic";
@@ -24,6 +25,7 @@ export function TestPage({ id }: { id: string }) {
   const w = wordById(a.order[i]);
   const total = a.order.length;
   const answered = Object.values(answers).filter((v) => v.trim()).length;
+  const cycle = state.cycles.find((c) => c.id === a.cycleId);
 
   const save = (v: string) =>
     update((s) => {
@@ -50,12 +52,10 @@ export function TestPage({ id }: { id: string }) {
   };
 
   return (
-    <Page title={a.label ?? "Online test"}>
-      <div class="progress">
-        <div class="bar" style={{ width: `${(100 * answered) / total}%` }} />
-        <span>
-          Question {i + 1} / {total} · answered {answered}
-        </span>
+    <Page eyebrow={cycle ? cycle.name : "Quick test"} title="Online test" narrow>
+      <div class="test-top">
+        <div class="meter"><i style={{ width: `${(100 * (i + 1)) / total}%` }} /></div>
+        <span class="counter">{i + 1} / {total} · answered {answered}</span>
       </div>
       {w ? <Question w={w} settings={state.settings} n={i + 1} /> : <p>Missing word {a.order[i]}</p>}
       <form
@@ -65,24 +65,27 @@ export function TestPage({ id }: { id: string }) {
           i < total - 1 ? next() : finish();
         }}
       >
+        <button type="button" class="ghost" disabled={i === 0} onClick={() => (save(val), setI(i - 1))} aria-label="Previous question">←</button>
         <input
           ref={input}
           value={val}
           autocomplete="off"
           autocapitalize="off"
           spellcheck={false}
-          placeholder="Type the word and press Enter"
+          placeholder="Your answer"
+          aria-label="Your answer"
           onInput={(e) => setVal((e.target as HTMLInputElement).value)}
         />
-        <button type="button" disabled={i === 0} onClick={() => (save(val), setI(i - 1))}>
-          ← Prev
-        </button>
-        {i < total - 1 ? <button class="primary" type="submit">Next →</button> : null}
-        <button type="button" class={i === total - 1 ? "primary" : ""} onClick={finish}>
-          Finish &amp; grade
-        </button>
+        {i < total - 1 ? (
+          <button class="primary lg" type="submit">Next</button>
+        ) : (
+          <button class="primary lg" type="submit">Finish</button>
+        )}
       </form>
-      <p class="muted small">Unanswered questions are graded as wrong. Progress is saved; you can leave and continue later.</p>
+      <div class="kbd-note">
+        Press Enter for the next question. Blank answers count as wrong. Progress is saved automatically —{" "}
+        <a href="javascript:void 0" onClick={finish}>finish and grade now</a>
+      </div>
     </Page>
   );
 }
@@ -100,7 +103,9 @@ export function GradePage({ id }: { id: string }) {
   const [showAll, setShowAll] = useState(false);
   if (!a) return <Page title="Not found">Test not found.</Page>;
   const correct = Object.values(draft).filter(Boolean).length;
+  const total = a.order.length;
   const dirty = JSON.stringify(draft) !== JSON.stringify(a.results ?? null);
+  const cycle = state.cycles.find((c) => c.id === a.cycleId);
 
   const save = () => {
     update((s) => {
@@ -112,47 +117,56 @@ export function GradePage({ id }: { id: string }) {
 
   return (
     <Page
-      title={(a.mode === "paper" ? "Paper test results" : "Test results") + (a.label ? ` — ${a.label}` : "")}
+      eyebrow={cycle ? cycle.name : (a.label ?? "Quick test")}
+      title={a.mode === "paper" ? "Paper test — results" : "Results"}
       actions={
         <>
-          {a.cycleId && <a class="btn" href={`#/cycle/${a.cycleId}`}>← Cycle</a>}
+          {a.cycleId && <a class="btn ghost" href={`#/cycle/${a.cycleId}`}>← Back to cycle</a>}
           <button class="primary" disabled={!dirty && !!a.results} onClick={save}>
-            {a.results ? "Save changes" : "Save results"}
+            {a.results ? (dirty ? "Save changes" : "Saved") : "Save results"}
           </button>
         </>
       }
     >
-      <p class="score">
-        {correct} / {a.order.length} correct ({Math.round((100 * correct) / a.order.length)}%)
-        {!a.results && <span class="warn"> — not saved yet</span>}
-      </p>
-      {a.mode === "paper" && !a.results && (
-        <p class="muted">All questions start as ○. Click the questions you got wrong to mark them ×, then save.</p>
-      )}
-      <label class="no-print">
-        <input type="checkbox" checked={showAll} onChange={() => setShowAll(!showAll)} /> show details for correct answers too
-      </label>
+      <div class="panel result-head">
+        <div class="big-score">
+          {correct}<small> / {total}</small>
+        </div>
+        <div>
+          <div><b>{Math.round((100 * correct) / total)}%</b> correct · {total - correct} to review</div>
+          <div class="small muted">
+            {a.mode === "paper" && !a.results
+              ? "Every question starts as ○. Tap the ones you missed to mark them ×, then save."
+              : "Tap a mark to correct the grading (e.g. an acceptable alternative answer)."}
+            {!a.results && <span class="warn"> Not saved yet.</span>}
+          </div>
+        </div>
+        <label class="small" style={{ marginLeft: "auto" }}>
+          <input type="checkbox" checked={showAll} onChange={() => setShowAll(!showAll)} />
+          Show entries for correct answers
+        </label>
+      </div>
       <table class="list grade">
         <thead>
-          <tr><th>#</th><th>○/×</th><th>Word</th>{a.mode === "online" && <th>Your answer</th>}</tr>
+          <tr><th>No.</th><th>Mark</th><th>Word</th>{a.mode === "online" && <th>Your answer</th>}</tr>
         </thead>
         <tbody>
           {a.order.map((wid, n) => {
             const w = wordById(wid);
             const ok = draft[wid];
             return (
-              <>
-                <tr key={wid} class={ok ? "ok" : "ng"}>
-                  <td>{n + 1}</td>
-                  <td>
-                    <button class={"mark " + (ok ? "ok" : "ng")} onClick={() => setDraft((d) => ({ ...d, [wid]: !d[wid] }))}>
+              <Fragment key={wid}>
+                <tr class={ok ? "ok" : "ng"}>
+                  <td class="num">{n + 1}</td>
+                  <td style={{ width: "64px" }}>
+                    <button class={"mark " + (ok ? "ok" : "ng")} aria-label={ok ? "correct" : "wrong"} onClick={() => setDraft((d) => ({ ...d, [wid]: !d[wid] }))}>
                       {ok ? "○" : "×"}
                     </button>
                   </td>
-                  <td>
+                  <td class="word-cell">
                     <a href={`#/word/${encodeURIComponent(wid)}`}>{w?.w ?? wid}</a>
                   </td>
-                  {a.mode === "online" && <td class="typed">{a.answers?.[wid] || <span class="muted">(blank)</span>}</td>}
+                  {a.mode === "online" && <td class="typed">{a.answers?.[wid] || <span class="muted">—</span>}</td>}
                 </tr>
                 {w && (!ok || showAll) && (a.results || a.mode === "online") && (
                   <tr class="detail">
@@ -162,7 +176,7 @@ export function GradePage({ id }: { id: string }) {
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             );
           })}
         </tbody>

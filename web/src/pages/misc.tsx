@@ -1,5 +1,5 @@
 import { useMemo, useState } from "preact/hooks";
-import { alertless, Entry, FilterEditor, Page, Tags } from "../components";
+import { alertless, Entry, FilterEditor, Page, Stat, Tags } from "../components";
 import { completedAttempts, cycleSummary, describeFilter, filterWords, fmtDate, wordStats } from "../logic";
 import { exportJson, importJson, loadDataset, update, useAppState, wordById, words } from "../store";
 import type { Settings, WordFilter } from "../types";
@@ -8,47 +8,66 @@ import { DEFAULT_FILTER } from "../types";
 export function HomePage() {
   const state = useAppState();
   const current = state.cycles.filter((c) => !c.archived).at(-1);
-  const recent = completedAttempts(state).slice(-5).reverse();
+  const recent = completedAttempts(state).slice(-6).reverse();
+  const stats = wordStats(state);
+  const mastered = [...stats.values()].filter((s) => s.lastResult).length;
+  const sum = current ? cycleSummary(state, current) : [];
   return (
-    <Page title="Vocabulary Trainer">
-      <p class="muted">Learn English words in English: guess the word from its definitions, synonyms, phrases and examples.</p>
+    <Page eyebrow="English in English" title="Good to see you.">
+      <p class="lead">Recall each word from its English definitions, synonyms, phrases and examples — no translations.</p>
+      <div class="stats" style={{ margin: "22px 0" }}>
+        <Stat label="Words studied" value={stats.size.toLocaleString()} />
+        <Stat label="Correct last time" value={mastered.toLocaleString()} />
+        <Stat label="Tests taken" value={completedAttempts(state).length} />
+        <Stat label="Cycles" value={state.cycles.length} />
+      </div>
       <div class="cards">
-        <div class="card">
-          <h2>Current cycle</h2>
+        <div class="card hero-card">
+          <div class="card-k">Current cycle</div>
           {current ? (
             <>
-              <p>
-                <a href={`#/cycle/${current.id}`}>{current.name}</a> — {current.wordIds.length} words
+              <h3>{current.name}</h3>
+              <p class="small muted grow">
+                {current.wordIds.length} words · {describeFilter(current.filter)}
+                <br />
+                Scores: {sum.map((s) => `${Math.round((100 * s.correct) / s.total)}%`).join(" → ") || "no tests yet"}
               </p>
-              <p class="small">
-                Tests: {cycleSummary(state, current).map((s) => `${s.correct}/${s.total}`).join(" → ") || "none yet"}
-              </p>
-              <a class="btn primary" href={`#/cycle/${current.id}`}>Open</a>
+              <div><a class="btn primary" href={`#/cycle/${current.id}`}>Open cycle</a></div>
             </>
           ) : (
-            <a class="btn primary" href="#/cycles/new">Create your first cycle</a>
+            <>
+              <h3>Start your first cycle</h3>
+              <p class="small muted grow">Pick a range (CEFR, Eiken, TOEIC, TOEFL) and a number of words.</p>
+              <div><a class="btn primary" href="#/cycles/new">Create a cycle</a></div>
+            </>
           )}
         </div>
         <div class="card">
-          <h2>Quick test</h2>
-          <p class="small">Random 10 / 100 / any number of words from a range.</p>
-          <a class="btn" href="#/quick">Start</a>
+          <div class="card-k">Practice</div>
+          <h3>Quick test</h3>
+          <p class="small muted grow">10, 100 or any number of random words from a range.</p>
+          <div><a class="btn" href="#/quick">Start a quick test</a></div>
         </div>
         <div class="card">
-          <h2>Recent results</h2>
+          <div class="card-k">Recent</div>
+          <h3>Latest results</h3>
           {recent.length ? (
-            <ul class="small">
-              {recent.map((a) => {
-                const r = Object.values(a.results!);
-                return (
-                  <li key={a.id}>
-                    <a href={`#/grade/${a.id}`}>{a.completedAt?.slice(0, 10)}</a> {a.mode} — {r.filter(Boolean).length}/{r.length}
-                  </li>
-                );
-              })}
-            </ul>
+            <table class="mini grow">
+              <tbody>
+                {recent.map((a) => {
+                  const r = Object.values(a.results!);
+                  return (
+                    <tr key={a.id}>
+                      <td><a href={`#/grade/${a.id}`}>{fmtDate(a.completedAt).slice(5, 10)}</a></td>
+                      <td class="muted">{a.mode === "paper" ? "Paper" : "Online"}</td>
+                      <td style={{ textAlign: "right" }}><b>{r.filter(Boolean).length}</b><span class="muted"> / {r.length}</span></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           ) : (
-            <p class="small muted">No results yet.</p>
+            <p class="small muted grow">No results yet.</p>
           )}
         </div>
       </div>
@@ -59,16 +78,18 @@ export function HomePage() {
 export function WordsPage() {
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState<WordFilter>(DEFAULT_FILTER);
-  const [limit, setLimit] = useState(50);
+  const [limit, setLimit] = useState(40);
   const list = useMemo(() => {
     const ql = q.trim().toLowerCase();
     return filterWords(words(), filter).filter((w) => !ql || w.id.startsWith(ql));
   }, [q, filter]);
   return (
-    <Page title="Words">
-      <input class="search" placeholder="Search (prefix)…" value={q} onInput={(e) => setQ((e.target as HTMLInputElement).value)} />
-      <FilterEditor value={filter} onChange={setFilter} />
-      <p class="muted">{list.length} words</p>
+    <Page eyebrow="Dictionary" title="Words">
+      <div class="panel" style={{ padding: "16px 20px", marginBottom: "18px", display: "grid", gap: "12px" }}>
+        <input class="search" placeholder="Search words…" value={q} onInput={(e) => setQ((e.target as HTMLInputElement).value)} />
+        <FilterEditor value={filter} onChange={setFilter} />
+      </div>
+      <p class="small muted">{list.length.toLocaleString()} words</p>
       {list.slice(0, limit).map((w) => (
         <Entry key={w.id} w={w} compact />
       ))}
@@ -83,7 +104,7 @@ export function WordPage({ id }: { id: string }) {
   if (!w) return <Page title="Not found">Word not found.</Page>;
   const st = wordStats(state).get(id);
   return (
-    <Page title={w.w}>
+    <Page eyebrow="Word" title={w.w} narrow>
       <Entry w={w} />
       <p class="small muted">
         Lists: {w.lists.join(", ")} · frequency (Zipf) {w.zipf}
@@ -102,7 +123,7 @@ export function HistoryPage() {
     .sort((a, b) => b[1].tested - b[1].correct - (a[1].tested - a[1].correct) || a[1].correct / a[1].tested - b[1].correct / b[1].tested)
     .slice(0, 50);
   return (
-    <Page title="History">
+    <Page eyebrow="Progress" title="History">
       <p>
         {atts.length} tests · {stats.size} different words tested · {[...stats.values()].filter((s) => s.lastResult).length} answered correctly last time
       </p>
@@ -176,7 +197,7 @@ export function SettingsPage() {
   };
 
   return (
-    <Page title="Settings">
+    <Page eyebrow="Preferences" title="Settings">
       <h2>Pronunciation (Gemini TTS, bring your own key)</h2>
       <div class="form">
         <label class="row">

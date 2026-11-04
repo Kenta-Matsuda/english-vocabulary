@@ -85,20 +85,27 @@ def regular_forms(w: str) -> set[str]:
 
 
 def stem_of(w: str) -> str | None:
-    return w[: max(4, len(w) - 3)] if len(w) >= 5 else None
+    # only for long words; short stems over-mask (detect -> "dete" would hit "determine")
+    return w[: max(6, len(w) - 3)] if len(w) >= 8 else None
 
 
 class Masker:
     """Marks occurrences of a headword (and its inflections) as [[...]]."""
 
-    def __init__(self, word: str, forms: set[str]):
+    def __init__(self, word: str, forms: set[str], related: set[str] = frozenset()):
         self.word = word
         self.forms = {f.lower() for f in forms if f}
         self.stem = stem_of(word)
+        # derivationally related words (decide -> decision) and their inflections
+        self.related = set()
+        for r in related:
+            if " " not in r:
+                self.related |= regular_forms(r)
+        self.related -= self.forms
         alts = sorted(self.forms, key=len, reverse=True)
         self.rx_forms = re.compile(r"(?<![A-Za-z])(" + "|".join(map(re.escape, alts)) + r")(?![A-Za-z])", re.I)
-        # used for definitions: also catch derivations sharing the stem (decide -> decision)
-        pat = "|".join(map(re.escape, alts))
+        # used for definitions: also catch derivations
+        pat = "|".join(map(re.escape, sorted(self.forms | self.related, key=len, reverse=True)))
         if self.stem:
             pat += "|" + re.escape(self.stem) + r"[A-Za-z]*"
         self.rx_loose = re.compile(r"(?<![A-Za-z])(" + pat + r")(?![A-Za-z])", re.I)
@@ -120,9 +127,53 @@ class Masker:
         for tok in re.split(r"[\s\-/']+", p):
             if not tok:
                 continue
-            if tok in self.forms or (self.stem and tok.startswith(self.stem)):
+            if tok in self.forms or tok in self.related or (self.stem and tok.startswith(self.stem)):
                 return True
         return False
+
+
+# ============================================================ spelling variants
+
+_VARIANT_RULES = [
+    (r"isation", "ization"), (r"([a-z]{3,})is(e|ed|es|ing)$", r"\1iz\2"), (r"ys(e|ed|es|ing)$", r"yz\1"),
+    (r"([^aeiou])our(s|ed|ing|able|ably|ite|ites|ful|hood|less)?$", r"\1or\2"),
+    (r"([^aeiou])tre(s)?$", r"\1ter\2"), (r"ogue(s)?$", r"og\1"),
+    (r"ph", "f"), (r"ae", "e"), (r"oe", "e"),
+    # travelled/traveled, skilful/skillful, fulfil/fulfill
+    (r"ll(ed|ing|er|ers|ous|ful|fully|ment)$", r"l\1"), (r"([aeiou])ll$", r"\1l"),
+]
+
+
+def spelling_key(w: str) -> str:
+    """Canonical key so that British/American variants compare equal (colour = color).
+
+    Only used to compare words that BOTH exist, so over-normalising is harmless."""
+    k = w.lower()
+    for pat, rep in _VARIANT_RULES:
+        k = re.sub(pat, rep, k)
+    return k
+
+
+def merge_spelling_variants(words: dict[str, dict]) -> int:
+    """Merge British-spelling headwords into the more frequent (usually US) spelling."""
+    groups: dict[str, list[str]] = defaultdict(list)
+    for k in words:
+        if len(k) >= 5:
+            groups[spelling_key(k)].append(k)
+    merged = 0
+    for ks in groups.values():
+        if len(ks) < 2:
+            continue
+        ks.sort(key=lambda k: zipf_frequency(k, "en"), reverse=True)
+        keep = words[ks[0]]
+        for k in ks[1:]:
+            other = words.pop(k)
+            keep["cefr"] += other["cefr"]
+            keep["eiken"] += other["eiken"]
+            keep["lists"] |= other["lists"]
+            keep["pos"] += [p for p in other["pos"] if p not in keep["pos"]]
+            merged += 1
+    return merged
 
 
 # ============================================================ collect
@@ -184,6 +235,7 @@ def collect(wn: WordNet) -> dict[str, dict]:
             e = add(w)
             if e is not None:
                 e["lists"].add(name)
+    merge_spelling_variants(words)
     return words
 
 
@@ -250,6 +302,17 @@ def pick_ipa(entries: list[dict], key: str, ipadict: dict[str, str]) -> dict:
 
 # ============================================================ per-word build
 
+def dedupe_variants(answer: str, syns: list[str]) -> list[str]:
+    seen = {spelling_key(answer)}
+    out = []
+    for x in syns:
+        k = spelling_key(x)
+        if k not in seen:
+            seen.add(k)
+            out.append(x)
+    return out
+
+
 def zipf(w: str) -> float:
     return zipf_frequency(w, "en")
 
@@ -271,7 +334,7 @@ def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl
                 continue
             if re.fullmatch(r"[A-Za-z][A-Za-z'\-]*", f["form"]):
                 forms.add(f["form"].lower())
-    masker = Masker(key, forms)
+    masker = Masker(key, forms, wn.derivations(key))
 
     senses = []
     examples: list[str] = []
@@ -318,7 +381,7 @@ def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl
                 score = (wn.tagcount.get((ll, g.offset), 0) + (0 if g is ss else -1000), zipf(l))
                 if ll not in syn_pool or syn_pool[ll] < score:
                     syn_pool[ll] = score
-        syns = sorted(syn_pool, key=lambda l: syn_pool[l], reverse=True)[:MAX_SYNONYMS]
+        syns = dedupe_variants(key, sorted(syn_pool, key=lambda l: syn_pool[l], reverse=True))[:MAX_SYNONYMS]
         tag = POS_MAP[ss.pos]
         senses.append({"p": tag, "d": masker.mark_loose(ss.definition), "s": syns})
         if tag not in pos_seen:
@@ -349,7 +412,7 @@ def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl
                 continue
             syns = [x for x in dict.fromkeys(s["synonyms"] + d["synonyms"])
                     if not masker.leaks(x) and zipf(x) >= 2.5]
-            syns = sorted(syns, key=zipf, reverse=True)[:MAX_SYNONYMS]
+            syns = dedupe_variants(key, sorted(syns, key=zipf, reverse=True))[:MAX_SYNONYMS]
             tag = POS_MAP.get(d["pos"], d["pos"])
             senses.append({"p": tag, "d": masker.mark_loose(gloss), "s": syns, "src": "wkt"})
             if tag not in pos_seen:

@@ -6,6 +6,11 @@ import { PrintListPage, PrintTestPage } from "./pages/print";
 import { GradePage, TestPage } from "./pages/test";
 import { useRoute } from "./router";
 import { initStore, loadDataset } from "./store";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/source-serif-4";
+import "@fontsource-variable/source-serif-4/wght-italic.css";
+import "@fontsource/charis-sil/400-italic.css";
+import "@fontsource/charis-sil/400.css";
 import "./style.css";
 
 function App() {
@@ -48,13 +53,21 @@ function App() {
   const active = "#/" + (a ?? "");
   return (
     <>
-      <nav class="top no-print">
-        {nav.map(([h, l]) => (
-          <a key={h} href={h} class={active === h || (h === "#/cycles" && a === "cycle") ? "on" : ""}>
-            {l}
+      <header class="topbar no-print">
+        <div class="topbar-in">
+          <a class="brand" href="#/">
+            <span class="brand-mark">Lexi<em>.</em></span>
+            <span class="brand-sub">English in English</span>
           </a>
-        ))}
-      </nav>
+          <nav class="nav">
+            {nav.map(([h, l]) => (
+              <a key={h} href={h} class={active === h || (h === "#/cycles" && a === "cycle") || (h === "#/words" && a === "word") ? "on" : ""}>
+                {l}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
       <main>{page}</main>
     </>
   );

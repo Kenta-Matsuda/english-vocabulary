@@ -1,9 +1,11 @@
 import type { ComponentChildren } from "preact";
 import { useState } from "preact/hooks";
-import { hintFor, segments } from "./logic";
+import { segments } from "./logic";
 import { speak } from "./tts";
-import type { Settings, Word, WordFilter } from "./types";
+import type { Sense, Settings, Word, WordFilter } from "./types";
 import { CEFR_LEVELS, EIKEN_GRADES, EIKEN_LABEL } from "./types";
+
+// ---------------------------------------------------------------- text helpers
 
 export function Masked({ text, reveal }: { text: string; reveal?: boolean }) {
   return (
@@ -11,11 +13,9 @@ export function Masked({ text, reveal }: { text: string; reveal?: boolean }) {
       {segments(text).map((s, i) =>
         s.hit ? (
           reveal ? (
-            <mark key={i}>{s.text}</mark>
+            <strong key={i} class="hw">{s.text}</strong>
           ) : (
-            <span key={i} class="blank">
-              ______
-            </span>
+            <span key={i} class="gap" aria-label="blank" />
           )
         ) : (
           <span key={i}>{s.text}</span>
@@ -25,143 +25,178 @@ export function Masked({ text, reveal }: { text: string; reveal?: boolean }) {
   );
 }
 
-export function SpeakButton({ text, label = "▶" }: { text: string; label?: string }) {
+const POS_SHORT: Record<string, string> = { n: "n.", v: "v.", adj: "adj.", adv: "adv.", prep: "prep.", conj: "conj.", pron: "pron.", det: "det.", intj: "interj.", num: "num.", part: "part." };
+export const posLabel = (p: string) => POS_SHORT[p] ?? p;
+
+export function Pos({ p }: { p: string }) {
+  return <span class="pos">{posLabel(p)}</span>;
+}
+
+export function SpeakButton({ text, small }: { text: string; small?: boolean }) {
   const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState("");
   return (
     <button
-      class="speak no-print"
-      title={err || "Play pronunciation"}
+      class={"speak no-print" + (small ? " sm" : "")}
+      title="Play pronunciation"
+      aria-label="Play pronunciation"
       disabled={busy}
       onClick={async () => {
         setBusy(true);
-        setErr("");
         try {
           await speak(text);
         } catch (e) {
-          setErr(String((e as Error).message ?? e));
-          alertless(String((e as Error).message ?? e));
+          toast(String((e as Error).message ?? e));
         } finally {
           setBusy(false);
         }
       }}
     >
-      {busy ? "…" : label}
+      <svg viewBox="0 0 24 24" width={small ? 12 : 14} height={small ? 12 : 14} aria-hidden="true">
+        {busy ? <circle cx="12" cy="12" r="4" fill="currentColor" /> : <path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z" fill="currentColor" />}
+      </svg>
     </button>
   );
 }
 
-/** Show an error without blocking dialogs. */
-export function alertless(msg: string) {
+/** Non-blocking notification (no browser dialogs). */
+export function toast(msg: string) {
   const el = document.createElement("div");
   el.className = "toast";
   el.textContent = msg;
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 6000);
 }
+export const alertless = toast;
 
 export function Tags({ w }: { w: Word }) {
   return (
     <span class="tags">
-      {w.cefr && <span class="tag cefr">{w.cefr}</span>}
-      {w.eiken && <span class="tag eiken">{EIKEN_LABEL[w.eiken]}</span>}
-      {w.toeic && <span class="tag toeic">TOEIC</span>}
-      {w.toefl && <span class="tag toefl">TOEFL</span>}
+      {w.cefr && <span class="tag">{w.cefr}</span>}
+      {w.eiken && <span class="tag">{EIKEN_LABEL[w.eiken]}</span>}
+      {w.toeic && <span class="tag">TOEIC</span>}
+      {w.toefl && <span class="tag">TOEFL</span>}
     </span>
   );
 }
 
-export function Ipa({ w }: { w: Word }) {
+export function Ipa({ w, one }: { w: Word; one?: boolean }) {
+  const us = w.ipa.us;
+  const uk = w.ipa.uk;
+  if (!us && !uk) return null;
+  if (one || !uk || uk === us) return <span class="ipa">{us ?? uk}</span>;
   return (
     <span class="ipa">
-      {w.ipa.us && <span>US {w.ipa.us}</span>}
-      {w.ipa.uk && <span> UK {w.ipa.uk}</span>}
+      {us && <><span class="ipa-l">US</span>{us}</>}
+      {uk && <><span class="ipa-l">UK</span>{uk}</>}
     </span>
   );
 }
 
-/** The question side: definitions + synonyms + collocations + example, headword hidden. */
-export function Question({ w, settings, n }: { w: Word; settings: Settings; n?: number }) {
-  const senses = w.senses.slice(0, settings.sensesPerQuestion);
-  const hint = hintFor(w, settings);
+function SenseList({ senses, reveal }: { senses: Sense[]; reveal?: boolean }) {
   return (
-    <div class="question">
-      <div class="q-head">
-        {n != null && <span class="q-num">{n}.</span>}
-        <span class="q-pos">({[...new Set(senses.map((s) => s.p))].join(", ")})</span>
-        {hint && <span class="q-hint">{hint}</span>}
-      </div>
-      <ol class="senses">
-        {senses.map((s, i) => (
-          <li key={i}>
-            <Masked text={s.d} />
-            {s.s.length > 0 && <span class="syn"> — syn: {s.s.join(", ")}</span>}
-          </li>
-        ))}
-      </ol>
-      {settings.showCollocations && w.col.length > 0 && (
-        <div class="col">
-          <b>Phrases:</b>{" "}
-          {w.col.slice(0, 3).map((c, i) => (
-            <span key={i}>
-              {i > 0 && " / "}
-              <Masked text={c} />
-            </span>
-          ))}
+    <ol class="defs">
+      {senses.map((s, i) => (
+        <li key={i}>
+          <span class="def-n">{i + 1}</span>
+          <div>
+            <Pos p={s.p} /> <span class="def"><Masked text={s.d} reveal={reveal} /></span>
+            {s.s.length > 0 && (
+              <div class="syn">
+                <span class="mk">≈</span>
+                {s.s.join(", ")}
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+export function Extras({ w, reveal, phrases = 3, examples = 1 }: { w: Word; reveal?: boolean; phrases?: number; examples?: number }) {
+  const cols = w.col.slice(0, phrases);
+  const exs = w.ex.slice(0, examples);
+  if (!cols.length && !exs.length) return null;
+  return (
+    <div class="extras">
+      {cols.length > 0 && (
+        <div class="xrow">
+          <span class="xlabel">Phrase</span>
+          <span>
+            {cols.map((c, i) => (
+              <span key={i} class="phrase">
+                <Masked text={c} reveal={reveal} />
+              </span>
+            ))}
+          </span>
         </div>
       )}
-      {settings.showExamples && w.ex.length > 0 && (
-        <div class="ex">
-          <b>e.g.</b> <Masked text={w.ex[0]} />
+      {exs.map((e, i) => (
+        <div class="xrow" key={i}>
+          <span class="xlabel">Ex.</span>
+          <span class="example">
+            <Masked text={e} reveal={reveal} />
+            {reveal && <SpeakButton text={e.replace(/\[\[|\]\]/g, "")} small />}
+          </span>
         </div>
-      )}
+      ))}
     </div>
   );
 }
 
-/** Full entry (word list / answer key / word page). */
+// ---------------------------------------------------------------- question / entry (screen)
+
+export function HintBoxes({ w, settings }: { w: Word; settings: Settings }) {
+  if (!settings.showLengthHint && !settings.showFirstLetterHint) return null;
+  if (!settings.showLengthHint) return <span class="hint">starts with “{w.w[0]}”</span>;
+  return (
+    <span class="letters" aria-label={`${w.w.length} letters`}>
+      {[...w.w].map((ch, i) => (
+        <span key={i} class={"lb" + (ch === " " || ch === "-" ? " sep" : "")}>
+          {i === 0 && settings.showFirstLetterHint ? ch : ch === "-" ? "-" : ""}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+export function Question({ w, settings, n }: { w: Word; settings: Settings; n?: number }) {
+  const senses = w.senses.slice(0, settings.sensesPerQuestion);
+  return (
+    <article class="qcard">
+      <header class="qcard-head">
+        {n != null && <span class="qno">{n}</span>}
+        <HintBoxes w={w} settings={settings} />
+      </header>
+      <SenseList senses={senses} />
+      <Extras w={w} phrases={settings.showCollocations ? 3 : 0} examples={settings.showExamples ? 1 : 0} />
+    </article>
+  );
+}
+
 export function Entry({ w, compact, n }: { w: Word; compact?: boolean; n?: number }) {
   return (
-    <div class={"entry" + (compact ? " compact" : "")}>
-      <div class="e-head">
-        {n != null && <span class="q-num">{n}.</span>}
-        <a class="e-word" href={`#/word/${encodeURIComponent(w.id)}`}>
-          {w.w}
-        </a>
+    <article class={"entry" + (compact ? " compact" : "")}>
+      <header class="entry-head">
+        {n != null && <span class="qno sm">{n}</span>}
+        <a class="headword" href={`#/word/${encodeURIComponent(w.id)}`}>{w.w}</a>
         <SpeakButton text={w.w} />
         <Ipa w={w} />
-        <span class="q-pos">{w.pos.join(", ")}</span>
         <Tags w={w} />
-      </div>
-      <ol class="senses">
-        {w.senses.map((s, i) => (
-          <li key={i}>
-            <span class="q-pos">{s.p}</span> <Masked text={s.d} reveal />
-            {s.s.length > 0 && <span class="syn"> — syn: {s.s.join(", ")}</span>}
-          </li>
-        ))}
-      </ol>
-      {w.col.length > 0 && (
-        <div class="col">
-          <b>Phrases:</b>{" "}
-          {w.col.map((c, i) => (
-            <span key={i}>
-              {i > 0 && " / "}
-              <Masked text={c} reveal />
-            </span>
-          ))}
-        </div>
-      )}
-      {w.ex.length > 0 && (
-        <ul class="ex">
-          {(compact ? w.ex.slice(0, 2) : w.ex).map((e, i) => (
-            <li key={i}>
-              <Masked text={e} reveal /> <SpeakButton text={e.replace(/\[\[|\]\]/g, "")} label="🔊" />
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      </header>
+      <SenseList senses={w.senses} reveal />
+      <Extras w={w} reveal phrases={compact ? 3 : 6} examples={compact ? 1 : 4} />
+    </article>
+  );
+}
+
+// ---------------------------------------------------------------- forms
+
+function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; children: ComponentChildren }) {
+  return (
+    <button type="button" class={"chip" + (on ? " on" : "")} aria-pressed={on} onClick={onClick}>
+      {children}
+    </button>
   );
 }
 
@@ -169,45 +204,29 @@ export function FilterEditor({ value, onChange }: { value: WordFilter; onChange:
   const toggle = <T,>(arr: T[], v: T) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
   return (
     <div class="filter">
-      <div>
-        <b>CEFR</b>{" "}
+      <div class="frow">
+        <span class="flabel">CEFR</span>
         {CEFR_LEVELS.map((c) => (
-          <label key={c}>
-            <input type="checkbox" checked={value.cefr.includes(c)} onChange={() => onChange({ ...value, cefr: toggle(value.cefr, c) })} />
-            {c}
-          </label>
+          <Chip key={c} on={value.cefr.includes(c)} onClick={() => onChange({ ...value, cefr: toggle(value.cefr, c) })}>{c}</Chip>
         ))}
       </div>
-      <div>
-        <b>Eiken</b>{" "}
+      <div class="frow">
+        <span class="flabel">Eiken</span>
         {EIKEN_GRADES.map((g) => (
-          <label key={g}>
-            <input type="checkbox" checked={value.eiken.includes(g)} onChange={() => onChange({ ...value, eiken: toggle(value.eiken, g) })} />
-            {EIKEN_LABEL[g]}
-          </label>
+          <Chip key={g} on={value.eiken.includes(g)} onClick={() => onChange({ ...value, eiken: toggle(value.eiken, g) })}>{EIKEN_LABEL[g].replace("Eiken ", "Grade ")}</Chip>
         ))}
       </div>
-      <div>
-        <b>Exams</b>{" "}
-        <label>
-          <input type="checkbox" checked={value.toeic} onChange={() => onChange({ ...value, toeic: !value.toeic })} />
-          TOEIC
-        </label>
-        <label>
-          <input type="checkbox" checked={value.toefl} onChange={() => onChange({ ...value, toefl: !value.toefl })} />
-          TOEFL
-        </label>
+      <div class="frow">
+        <span class="flabel">Exam</span>
+        <Chip on={value.toeic} onClick={() => onChange({ ...value, toeic: !value.toeic })}>TOEIC</Chip>
+        <Chip on={value.toefl} onClick={() => onChange({ ...value, toefl: !value.toefl })}>TOEFL</Chip>
       </div>
-      <div>
-        <b>Combine</b>{" "}
-        <label>
-          <input type="radio" checked={value.mode === "any"} onChange={() => onChange({ ...value, mode: "any" })} />
-          any (OR)
-        </label>
-        <label>
-          <input type="radio" checked={value.mode === "all"} onChange={() => onChange({ ...value, mode: "all" })} />
-          all (AND)
-        </label>
+      <div class="frow">
+        <span class="flabel">Match</span>
+        <div class="seg">
+          <button type="button" class={value.mode === "any" ? "on" : ""} onClick={() => onChange({ ...value, mode: "any" })}>Any</button>
+          <button type="button" class={value.mode === "all" ? "on" : ""} onClick={() => onChange({ ...value, mode: "all" })}>All</button>
+        </div>
       </div>
     </div>
   );
@@ -215,31 +234,45 @@ export function FilterEditor({ value, onChange }: { value: WordFilter; onChange:
 
 export function CountPicker({ value, onChange, max }: { value: number; onChange: (n: number) => void; max?: number }) {
   return (
-    <span class="count-picker">
-      {[10, 20, 50, 100].map((n) => (
-        <button key={n} class={value === n ? "on" : ""} onClick={() => onChange(n)}>
-          {n}
-        </button>
-      ))}
+    <div class="count-picker">
+      <div class="seg">
+        {[10, 20, 50, 100].map((n) => (
+          <button type="button" key={n} class={value === n ? "on" : ""} onClick={() => onChange(n)}>{n}</button>
+        ))}
+      </div>
       <input
         type="number"
         min={1}
         max={max}
         value={value}
+        aria-label="Custom count"
         onInput={(e) => onChange(Math.max(1, Number((e.target as HTMLInputElement).value) || 1))}
       />
-    </span>
+    </div>
   );
 }
 
-export function Page({ title, children, actions }: { title: string; children: ComponentChildren; actions?: ComponentChildren }) {
+export function Page({ title, eyebrow, children, actions, narrow }: { title: string; eyebrow?: string; children: ComponentChildren; actions?: ComponentChildren; narrow?: boolean }) {
   return (
-    <section class="page">
-      <div class="page-head">
-        <h1>{title}</h1>
+    <section class={"page" + (narrow ? " narrow" : "")}>
+      <header class="page-head">
+        <div>
+          {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+          <h1>{title}</h1>
+        </div>
         {actions && <div class="actions no-print">{actions}</div>}
-      </div>
+      </header>
       {children}
     </section>
+  );
+}
+
+export function Stat({ label, value, sub }: { label: string; value: ComponentChildren; sub?: ComponentChildren }) {
+  return (
+    <div class="stat">
+      <div class="stat-l">{label}</div>
+      <div class="stat-v">{value}</div>
+      {sub && <div class="stat-s">{sub}</div>}
+    </div>
   );
 }

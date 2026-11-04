@@ -16,7 +16,7 @@ class Synset:
     offset: str
     pos: str          # n v a r s
     lemmas: list[str]  # surface forms as stored (may contain capitals / underscores)
-    pointers: list[tuple[str, str, str]]  # (symbol, offset, pos)
+    pointers: list[tuple[str, str, str, str]]  # (symbol, offset, pos, source/target hex)
     gloss: str
     definition: str = ""
     examples: list[str] = field(default_factory=list)
@@ -58,7 +58,7 @@ class WordNet:
                     pcnt = int(t[i]); i += 1
                     ptrs = []
                     for _ in range(pcnt):
-                        ptrs.append((t[i], t[i + 1], t[i + 2]))
+                        ptrs.append((t[i], t[i + 1], t[i + 2], t[i + 3]))
                         i += 4
                     d, ex = _split_gloss(gloss.strip())
                     self.synsets[(off, p)] = Synset(off, ss_type, lemmas, ptrs, gloss.strip(), d, ex)
@@ -100,9 +100,25 @@ class WordNet:
     def similar(self, ss: Synset) -> list[Synset]:
         """Adjective 'similar to' (&) neighbours."""
         out = []
-        for sym, off, p in ss.pointers:
+        for sym, off, p, _st in ss.pointers:
             if sym == "&":
                 out.append(self.synset(off, p))
+        return out
+
+    def derivations(self, lemma: str) -> set[str]:
+        """Lemmas derivationally related to `lemma` (WordNet '+' and pertainym pointers)."""
+        key = lemma.lower()
+        out: set[str] = set()
+        for _p, _r, ss in self.senses(key):
+            idx = next((i + 1 for i, l in enumerate(ss.lemmas) if l.lower() == key), None)
+            for sym, off, p, st in ss.pointers:
+                if sym not in ("+", "\\", "=") or int(st[:2], 16) != idx:
+                    continue
+                tgt = self.synset(off, p)
+                j = int(st[2:], 16)
+                if 0 < j <= len(tgt.lemmas):
+                    out.add(tgt.lemmas[j - 1].lower())
+        out.discard(key)
         return out
 
     def morphy_base(self, word: str) -> str | None:
