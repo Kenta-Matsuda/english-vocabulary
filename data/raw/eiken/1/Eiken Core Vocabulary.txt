@@ -1,0 +1,1087 @@
+#separator:tab
+#html:true
+ambivalent	Having mixed or opposing feelings at the same time.
+anomaly	Deviation from the norm or what is expected.
+anomalous	Not normal. Full of anomalies.
+atypical	Unusual; Not typical or normal.
+sarcastic	Saying things that are the opposite of what you mean, in order to make an unkind joke or show you're annoyed.
+sardonic	Showing that you do not have a good opinion of someone or something, and you feel you are better than them.
+snide	To say something unkind in a clever or indirect way.
+dearth	A scarcity or shortage of something.
+paucity	A scarcity or shortage of something.
+prattle	To speak in a foolish manner. To chatter; babble.
+wry	Dry and especially mocking humor.
+droll	Having an unusual or odd sense of humor.
+unconventional	Not ordinary or typical. Not customary or traditional.
+unorthodox	Not ordinary or typical. Not customary or traditional.
+meticulous	Extremely careful, exacting,  precise; accurate, scrupulous
+fastidious	Extremely careful. Very exacting and precise.
+audacious	Fearless; reckless; daring; bold.
+indifferent	Lacks interest or concern.
+apathetic	Lacks interest or concern.
+diffident	Hesitant due to a lack of confidence; unassertive.
+self-effacing	Hesitant due to a lack of confidence; unassertive.
+pragmatic	Practical; sensible; Not idealistic or romantic.
+evocation	Bringing something into mind or memory (especially from the past). Summoning a spirit.
+presumptuous	Overstepping one's place. Being too bold.
+recalcitrant	Stubbornly resistant and defiant; disobedient.
+boon	A timely benefit; blessing
+bane	A source of harm and ruin. 
+clandestine	Secret; covert; not open
+surreptitious	secret, stealthy, hidden
+affable	agreeable; has a pleasing personality; warm and friendly.
+amiable	agreeable; has a pleasing personality; warm and friendly.
+genial	agreeable; has a pleasing personality; warm and friendly.
+gregarious	agreeable; has a pleasing personality; warm and friendly.
+austere	bare; having no adornments; no decorations and is plain.
+austerity	Great self-denial, discipline, economy; lack of adornment.
+altruism	Unselfish concern for the welfare of others.
+Ami- (Latin Prefix)	friend
+amity	friendship, harmony
+amicable	peaceful, harmonious, friendly, easygoing, cordial
+Voc- (Latin Prefix)	call
+vocal	related to the voice, speaking
+vocation	your calling, your profession
+avocation	a second calling, a hobby
+evoke	to call forth, especially from the past
+revoke	to call back, rescind, repeal
+invoke	to call upon
+provoke	to call forth
+convocation	a calling together, a gathering
+vociferous	outspoken, noisy, loud; demanding
+equivocate	to mislead, be vague, be ambiguous
+Ambi- (Latin Prefix)	both
+ambidextrous	able to use both hands equally, skillful, versatile
+ambiguous	having two or more possible meanings, doubtful, dubious
+outlandish	crazy, bizarre, outrageous
+homage	tribute, respect, honor
+enthralled	 fascinated, interested
+hobbled	hampered, to limp, to walk with difficulty
+soporific	sleep inducing, sleeping pill
+succumb	to give in, to surrender, to die from
+refractory	disobedient, stubborn
+obstinate	stubborn, refuse to change one's opinion or actions
+obdurate	stubborn, refuse to change one's opinion or actions
+aboveboard	honest, fair, open
+bolstered	reinforced, strengthened
+astute	clever, intelligent, smart
+prevaricate	to lie
+painstaking	Extremely careful. Very exacting and precise.
+ambiguity	having more than one possible meaning
+elated	very happy
+upbraid	to express disapproval; criticize; scold; censure
+reproach	to express disapproval; criticize; scold; censure
+castigate	to express disapproval; criticize; scold; censure
+nostalgia	wishing for the past; rememberable; regret
+conjecture	an opinion or conclusion formed from incomplete information
+supposition	an opinion or conclusion formed from incomplete information
+obsolete	old; no longer in use; outdated design or style
+archaic	old; no longer in use; outdated design or style
+antiquated	old; no longer in use; outdated design or style
+iconic	an idol with a lot of attention or devotion
+myopic	shortsighted, lacking foresight, not well planned
+auspicious	very favorable, good, hopeful, encouraging
+propitious	very favorable, good, hopeful, encouraging
+morose	very sad, depressed, or mournful
+despondent	very sad, depressed, or mournful
+impasse	a deadlock; stalemate; can't reach an agreement
+verdant	lush, green
+unscrupulous	dishonest, unprincipled
+anachronism	The false assignment of an event, person, scene, or language to a time period they didn't exist.
+belie	to contradict; to misrepresent; to prove to be false
+facade	outward appearance
+mitigate	to relieve; to lessen; to ease
+mollify	to relieve; to lessen; to ease
+assuage	to relieve; to lessen; to ease
+alleviate	to relieve; to lessen; to ease
+covet	to strongly desire; to crave
+covetous	greedy, eager to obtain something
+antithesis	the exact opposite of something
+antipode	the exact opposite
+antithetical	exactly opposite
+antipodal	exactly opposite
+fathom	understand
+prototype	an original model; an initial design
+aloof	detached; distant physically or emotionally; standing near but apart
+trite	Unoriginal; commonplace; overused
+hackneyed	Unoriginal; commonplace; overused
+banal	Unoriginal; commonplace; overused
+platitudinous	Unoriginal; commonplace; overused
+insipid	Unoriginal; commonplace; overused
+clichéd	Unoriginal; commonplace; overused
+antecedent	an event that happens before another
+forerunner	a person or thing that comes before another; a sign or warning of something to come
+precursor	a person or thing that comes before another of the same kind; a forerunner.
+Ante- (Greek Prefix)	before
+antebellum	before the Civil War
+antediluvian	before the Biblical flood, a hyperbolic word describing something extremely old
+antedate	come before something in date
+anteroom	a waiting room outside a larger room
+plausible	believable; credible
+implausible	unbelievable; incredible
+prudent	careful; cautious; sensible
+aesthetic	relating to beauty, art, and taste; a sense of what is attractive or pleasing
+paradox	seems contradictory, but is true; anomaly, puzzle
+enigmatic	mysterious; puzzling; unfathomable; baffling
+inscrutable	mysterious; puzzling; unfathomable; baffling
+acquiesce	to comply; agree; give in
+naive	showing a lack of experience, wisdom, or judgment.
+gullible	easily persuaded to believe something
+autonomy	independent; not controlled by others; self-governing
+autonomous	acting independently, or having the freedom to do so
+futile	completely useless; doomed to failure; in vain
+prodigious	huge, massive
+indigenous	native to an area
+endemic	native to an area
+ubiquitous	characterized by being everywhere; omnipresent; widespread
+prevalent	characterized by being everywhere; omnipresent; widespread
+pervasive	an unwanted thing spreading widely throughout an area or a group of people
+pandemic	an epidemic that is geographically widespread and affects large parts of the population
+decimate	to destroy a great portion of
+fortitude	strength of mind that allows one to endure pain or adversity with courage
+persevered	to refuse to give up no matter the situation
+diminutive	very small
+trivial	unimportant; insignificant; trifling
+minutiae	minor everyday details
+exhort	to encourage; urge; give a pep talk
+implore	encourage, ask, exhort, beg
+antipathy	Strong dislike; hatred
+detest	hate, abhor, loathe, despise
+enmity	hostility, opposition
+rancor	bitterness or resentfulness, especially when long standing.
+digress	to depart from a subject; wander; ramble
+notorious	widely but unfavorably known
+-gress (Latin Prefix)	to step
+progress	to step forward
+regress	to step back
+transgress	to step across the line that divides right from wrong
+egress	to step out, to exit (or as a noun, an exit)
+aggressive	tending to attack, encroach, or step on others
+tenacious	Showing great determination in holding on to something that is valued
+indulgent	excessive generosity; overly tolerant and forgiving
+polarize	to break up into opposing factions or groups
+divisive	tending to cause disagreement or hostility between people
+nebulous	Vague; cloudy; misty; lacking a fully developed form
+analogy	A similarity or likeness between things (such as events, ideas, actions, and trends) that are otherwise unrelated
+analogous	Comparable or similar in certain respects
+ephemeral	very brief; lasting for a short time
+fleeting	very brief; lasting for a short time
+perennial	Returning year after year; enduring
+penchant<br>	a strong liking for something or tendency to do something
+predilection	a preference or special liking for something; a bias
+capricious	very changeable; fickle; constantly shifting moods
+mercurial	very changeable; fickle; constantly shifting moods
+fickle	changing frequently, especially interests or affection
+boorish	rough and bad-mannered; coarse
+uncouth	rough and bad-mannered; coarse
+crass	lacking sensitivity or intelligence; stupid; thoughtless
+indignant	feeling or showing anger at what is perceived as unfair
+innuendo	a veiled reference; insinuation; an allusive remark or hint
+thwart	to stop; to prevent someone from accomplishing something
+stymie	to stop, hinder; prevent someone from accomplishing something
+adroit	clever or skillful in using the hands or mind
+deft	clever or skillful in using the hands or mind
+adept	very skilled or proficient at something; an expert; talented
+dexterous	very skillful especially with the hands; deft; adept; adroit
+maladroit	clumsy; unskillful; inept
+admonish	to strongly caution; to warn someone to avoid a course of action; to reprimand
+vigilant	watchful, alert
+incontrovertible	indisputable; undeniable; unquestionable
+voracious	greedy, insatiable, uncontrollable
+ravenous	Having a huge appetite that cannot be satisfied.
+insatiable	Having a huge appetite that cannot be satisfied.
+intrepid	Courageous, resolute, and fearless
+undaunted	Courageous, resolute, and fearless
+nonchalant	Feeling or appearing casually calm and relaxed; not displaying anxiety, interest, or enthusiasm.
+convoluted	Winding, twisting, and difficult to understand; intricate
+itinerant	Migrating from place to place; not sedentary.
+sedentary	Sitting, seated, not moving, inactive
+omnipotence	infinite power
+poignant	Emotionally moving; touching; heart-rending; sad, tearful
+Impetus	A stimulus or encouragement that results in increased activity
+bucolic	Characteristic of charming, unspoiled countryside and the simple, rural life
+rustic	Characteristic of charming, unspoiled countryside and the simple, rural life
+pastoral	Characteristic of charming, unspoiled countryside and the simple, rural life
+equanimity	Calmness; composure; even-temperedness; poise
+panache	confidence, style, flair, self-assurance, energy
+verve	enthusiasm, energy, passion, charisma
+flamboyant	confident, lovely, tends to draw attention
+provocative	causing annoyance, or anger; arousing sexual desire or interest.
+demure	reserved, modest, shy, bashful
+placid	calm, tranquil, even-tempered; peaceful, quiet, restful.
+serene	calm, peaceful, untroubled
+implacable	unappeasable, unforgiving, unsparing, unstoppable, uncompromising
+placate	to appease or calm someone's anger
+complacent	self-satisfied, smug, conceited
+fortuitous	happening by accident or chance; unexpected, lucky, fortunate, advantageous
+dispel	make a doubt, feeling, or belief disappear.
+amalgam	a mixture or blend; a combination of different elements
+viable	capable of working successfully; attainable, possible, realistic.
+feasible	capable of working successfully; attainable, possible, realistic.
+anguish	severe mental or physical pain or suffering
+intemperate	lacking self-control; unrestrained.
+temperate	showing moderation or restraint; mild, gentle.
+superficial	shallow; existing on the surface; appearing to be true or real until examined closer
+complaisant	willing to please others or to accept what they do or say without protest.
+inimical	harmful, detrimental, unfriendly, hostile
+abstinence	the practice of restraining oneself from indulging in something, typically alcohol or sex.
+laud	to praise; applaud
+extol	to praise; applaud
+tout	to praise; applaud
+acclaim	to praise; applaud
+beguile	charm, entice, captivate, attract
+conviction	firm belief, opinion, view, thought, idea
+voluptuous	very sensual, physically attractive
+dismissive	showing indifference; feeling something is unworthy of consideration
+emit	to send out
+submit	to send under, yield, resign, surrender, turn in (an assignment)
+transmit	to send across, communicate, convey
+remit	to send back, pay money, diminish in intensity
+omit	to send by, pass by, neglect, leave out
+admit	to send to, let in, confess, concede
+commit	to send together, to entrust, pledge, memorize
+permit	to send through, allow
+dismiss	to send away, discharge, put out of mind
+remiss	negligent, lax, careless, irresponsible
+remittance	a payment sent to pay a bill
+mission	a duty one is sent to perform
+missile	something sent through the air
+missive	a note sent by messenger
+emissary	a messenger sent on a mission
+disparage	to belittle; to speak of in a disrespectful way
+gall	to make someone feel annoyed, angry, or irritated
+integral	essential, necessary to make whole
+pompous	filled with excessive self-importance; vain; arrogant
+pretentious	tries to impress others by acting greater and more important
+ostentatious	tries to impress others or get attention by doing bad things
+denigrate	to criticize unfairly
+foil	to prevent, block, defeat, counter
+cryptic	having a meaning that is hidden or mysterious
+subtle	difficult to detect; faint; mysterious
+dismay	great displeasure; shock; surprise; concern
+disparity	An inequality; a gap; an imbalance
+curtail	to cut short or reduce
+irate	angry, incensed, furious, mad, livid
+innocuous	not harmful or offensive
+diatribe	a forceful and bitter verbal attack
+tirade	a long, angry speech of criticism and accusation
+indiscriminate	non-selective, random
+eminent	important, great, prestigious
+steep	soak, marinade, drench, pickle
+replete	full, well stocked
+abound	thrive, flourish; abundant, plentiful
+technology	machinery and devices made from scientific knowledge
+prognosticate	predict, forecast, prophesy, foretell
+automaton	a moving mechanical device
+matron	an older woman; a woman in charge of homes or hospitals
+realm	area, zone, territory; kingdom
+annals	historical record
+compound	amalgam, combination, mixture; increase, add to
+tinge	tint, color, dye, stain; a bit, a hint
+badger	pester, harass, bother, torment, nag, annoy
+drudgery	hard, menial, or dull work
+interminable	endless, non-stop, incessant
+perceive	become aware, learn, discover, sense
+laconic	brief, concise, short, terse
+throng	crowd, group, horde, cluster
+accost	approach, halt, grab, stop
+reticent	modest, shy, quiet, silent
+furtive	secretive, sneaky, hidden, clandestine
+felon	a person who committed a crime
+plethora	a large or excessive amount of something
+hapless	unlucky, unfortunate, unhappy
+pretext	a reason given for doing something, but it's not true
+fabricate	make, create; fake, counterfeit
+gesticulate	gesture, wave, signal, motion
+avid	dedicated, enthusiastic, passionate
+cajole	persuade, woo, beguile, seduce
+rudimentary	basic, early, first, introductory
+enhance	increase, strengthen, upgrade, augment
+nuance	a light difference in meaning, expression, or sound
+loathe	hate, detest, abhor, despise, abominate
+reprimand	scold, admonish, express disapproval
+lackluster	dull, colorless, boring, insipid
+caustic	acid, burning, harsh; sarcastic, critical
+wrest	pull, grab, force, take away
+infamous	notorious, legendary; shocking, shameful
+jostle	push, shove, elbow, bump against someone roughly
+dupe	deceive, trick, cheat, hoax
+incipient	beginning to happen or develop
+inadvertent	unintentional, accident, unplanned
+ominous	giving the feeling that something bad is going to happen
+tremulous	shaky, unsteady, nervous, weak; timid, shy, diffident
+repudiate	reject, renounce, deny, refuse to accept
+cessation	ending, stopping, halting, termination
+bristle	hair sticks up as a sign of fear or anger
+euphemism	a gentler or softer way of expressing something harsh
+mundane	dull, boring, tedious, everyday, ordinary
+incongruous	inappropriate, wrong, strange, odd
+condolence	to express sympathy, especially when someone dies
+stipulate	specify, demand, require, provide
+alacrity	eagerness, enthusiasm, speed, haste
+disdain	feeling that someone is unworthy of respect
+belligerent	hostile, aggressive, threatening, pugnacious
+intimidate	frighten, scare, terrify, discourage
+feint	a false or pretend attack to distract one's opponent
+pugnacious	quick to argue, quarrel, or fight; aggressive, irascible, fiery
+promulgate	promote, publicize, spread, announce
+brash	overly confident, bold, arrogant
+scoff	ridicule, make fun of, belittle, tease
+belittle	dismiss as unimportant; discredit, underestimate
+tangible	physical, real, touchable, substantial, noticeable
+laceration	a deep cut or tear in skin or flesh
+sordid	corrupt, dishonest, shameful, immoral; dirty, filthy
+octogenarian	a person between 80 and 89 years old
+solace	comfort, support, relief, cheer, soothe
+aspirant	a person who has a goal or ambition to achieve
+dregs	the most worthless part of something
+frenzy	uncontrolled excitement, or wild behavior
+scurrilous	abusive, derogatory, disparaging, insulting, offensive
+rampant	uncontrolled, unrestrained; pandemic, epidemic
+inane	silly, foolish, stupid, vacuous
+ethics	morality, rights and wrongs
+concur	to agree; to happen at the same time
+flagrant	obvious, blatant; shocking, disgraceful
+duress	coercion, force, pressure
+culprit	criminal, offender, wrongdoer
+inexorable	unstoppable, unavoidable
+egregious	outstandingly bad; shocking
+distraught	worried, upset
+duplicity	deceit, dishonesty, fraud
+acrimonious	bitter, sarcastic, harsh
+elicit	obtain, evoke, extract
+pernicious	harmful, damaging, dangerous
+tolerate	allow, permit, endure, accept
+construe	interpret, understand, explain
+impunity	immunity, can't be punished
+affluent	wealthy, rich, prosperous
+feasible	doable, realistic, achievable
+discern	determine, see, recognize, perceive
+sally	charge, dive, attack, assault
+consternation	dismay, fear, surprise, shock
+precocious	clever, intelligent, smart
+perfunctory	uninterested, unthinking, indifferent
+chagrin	annoyance, irritation, anger
+perverse	awkward, unhelpful, rebellious
+deride	insult, mock, taunt, ridicule
+disparage	belittle, underestimate, undervalue
+laudable	admirable, praiseworthy
+fiasco	failure, disaster, catastrophe
+masticate	chew, munch, chomp, crunch
+eschew	shun, abstain, forgo, reject
+quell	end, subdue, quench, overcome
+voluble	talkative, verbose, loquacious, chatty
+confidant(e)	a person you share a secret with
+obsolescence	no longer used
+dubious	doubtful, uncertain, unsure
+paroxysm	spasm, convulsion, seizure
+reprehensible	wrong, bad, disgraceful
+jurisdiction	control, power, rule, leadership
+skirmish	fight, battle, conflict
+harass	pester, badger, annoy, bother
+monolithic	inflexible, unchanging, immovable
+arbitrary	random, unpredictable, capricious
+indigent	poor, broke, penniless
+fray	unravel, ragged, ripped, tattered
+effigy	statue, sculpture, figurine
+flout	disobey, violate, break (rules)
+cognizant	aware, conscious
+turbulent	unstable, stormy; angry
+terminate	end, finish, close, discontinue
+forthwith	immediately, instantly, now
+exacerbate	worsen, compound, aggravate
+revert	return, go back, change back, regress
+oust	expel, remove, unseat, overthrow
+emaciated	thin, bony, skeletal; weak from illness or lack of food
+surge	a sudden powerful forward or upward movement
+tranquil	peaceful, calm, quiet, serene, placid
+sanctuary	a safe place, shelter, refuge
+ascend	go up or climb
+malnutrition	poor or inadequate diet, hunger, starvation
+afflict	trouble, burden, distress, worry
+besiege	to surround a place with armed forces
+privation	lacking basic human needs; austerity
+sinister	frightening, dark, disturbing, ominous
+ubiquitous	everywhere, worldwide, global, omnipresent
+remote	faraway, distant; unlikely, improbable
+harbinger	a sign, signal, messenger, omen, indication
+malignant	uncontrollable, invasive, deadly, fatal
+excruciating	agonizing, severe, intense, violent
+respite	rest, break, recess, lull
+reverberating	echo, resound, ring, boom
+fretful	distressed, upset, miserable, uneasy
+succumb	surrender, submit, yield
+impresario	a person who organizes or finances concerts, plays, operas, etc.
+extortion	blackmail; using force or threats to get something
+adverse	unfavorable, unlucky, unfortunate, unpropitious
+asset	benefit, advantage, resource, boon
+bigot	racist, sexist, homophobe; intolerant of other opinions
+blatant	bad behavior done openly and without shame
+entourage	a group of people helping or surrounding an important person
+virulent	poisonous, toxic, venomous, noxious, pernicious
+venom	poison secreted by animals
+spew	emit, eject, expel, discharge, gush, spurt
+loath	reluctant, unwilling, opposed, resistant
+solicit	request, seek, beg, ask
+advocate	supporter, promoter, proponent, crusader
+ineffectual	not producing any or the desired effect
+scrutinize	examine, inspect, survey, study
+nefarious	wicked, evil, criminal, iniquitous, unfair and morally wrong
+malady	illness, sickness, disease, infection
+inclement	unpleasantly cold or wet (weather)
+peruse	to read or examine something carefully
+premonition	a strong feeling that something (usually  bad) is about to happen
+desist	to stop doing something
+recoil	suddenly spring back in fear, horror, or disgust
+pertinent	relevant, suitable, appropriate, apposite
+mastiff	a large dog with drooping ears
+obsess	to constantly think or worry about something
+doleful	sad, mournful, depressed, woeful
+wan	pale, weak, dim, faint
+histrionics	dramatic, theatrical, artificiality
+elusive	difficult to find, catch, or achieve
+frustrate	to thwart, stop; anger, annoy, irk
+symptomatic	indicative, warning, symbolic, suggestive
+interject	to interrupt by saying something abruptly
+inert	unmoving, motionless, immobile, static
+salient	important, main, essential, focal
+imminent	close, near, coming, approaching, threatening
+squeamish	easily nauseated; fastidious, scrupulous, honorable
+engrossed	fascinated, beguiled, hypnotized
+inundate	overwhelm, overpower, overburden
+fruitless	useless, pointless, ineffective, unproductive
+garbled	blur, confuse, misreport, mistranslate
+sanguine	optimistic, cheery, bright, positive
+phlegmatic	having a calm, sluggish temperament; unemotional
+corroborate	confirm, verify, authenticate; bolster, reinforce
+comprehensive	including all elements of something
+zealous	fiery, passionate, devout
+coerce	persuade to do something by force or threats
+elapse	(of time) pass or go by
+domicile	the country treated as a permanent home
+lax	slack, careless; casual, easy-going
+sporadic	occasional, infrequent, irregular, periodical
+rash	reckless, impulsive, thoughtless, foolish
+conjecture	guess, belief, presumption, speculation
+obviate	prevent, eliminate, avoid, remove
+lurid	bright, glaring, dazzling, gaudy
+quip	a joke, pun, witty remark; funny
+inhibition	shyness, embarrassment, unease; hindrance
+incoherent	unclear, incomprehensible, confused
+ilk	type, sort, group, set, category, genre
+prestigious	respected and admired; having high status
+placard	notice, poster, sign, sticker, advertisement
+integral	essential, fundamental, basic
+remuneration	money paid for work or service
+nominal	(a price) very small; far below the real value
+expunge	erase, remove, delete, efface
+anathema	something or someone that one absolutely dislikes
+schism	a split caused by differences in opinion or belief
+utopia	an imagined place or condition where everything is perfect
+timorous	fearful, trembling; shy, diffident, reticent, nervous
+truncated	shorten, cut, trim, curtail; reduce, diminish
+jaunty	cheerful, happy, merry, joyful
+fractious	irritable, grumpy, grouchy, irascible
+ostentatious	showy, flamboyant, gaudy, ornate, overdone
+importune	to harass someone repeatedly
+haven	a place of safety or refuge; shelter, sanctuary
+subjugate	defeat, crush, conquer, overpower
+ultimate	last, final, end; best, ideal, supreme, quintessential
+eventuate	happen, occur, result, develop
+emit	release; leak, excrete, secrete; make a sound
+subterranean	under the earth's surface 
+viable	workable, feasible, usable, achievable
+premise	an assumption that something is true
+jeopardize	threaten, endanger, risk; damage, harm
+incredulous	unwilling or unable to believe something
+permeate	to spread throughout something
+propitious	favorable, auspicious, advantageous
+surmise	guess, conjecture, conclude, speculate
+curtail	reduce, cut, decrease, lessen
+repress	suppress, stop, end, quash
+cryptic	mysterious, puzzling, confusing
+inchoate	just begun and not fully formed or developed
+aspire	to aim for, hope for, or dream of
+inveigh	to protest, rage; to denounce, criticize
+nettle	irritate, annoy, vex, anger, irk
+overt	noticeable, clear, apparent, undisguised, not hidden
+relegate	downgrade, lower, demote, banish
+supine	to lie flat on one's back
+mammoth	huge, enormous, gigantic, colossal
+repulse	to repeal; disgust, sicken, nauseate, offend, horrify
+havoc	devastation, destruction, damage, desolation
+raze	destroy, demolish, ruin, wreck
+lethal	fatal, deadly, murderous, killing
+scurry	to move hurriedly with short steps
+incisive	intelligent, acute, sharp, smart, clever
+precipitate	to trigger, cause, quicken, accelerate
+stereotype	a widely held but unchanging idea of a type of person or thing
+stentorian	loud, booming, thundering, roaring
+singular	remarkable, extraordinary, exceptional, eminent
+valor	bravery, courage, fearlessness, gallantry
+bias	favoritism, prejudice, unfairness, discrimination
+sinecure	easy job; a position that requires little or no work
+complicity	being involved in an illegal or immoral activity
+liquidation	killing someone by violent means; to end a business
+accomplice	a person who helps about commit a crime
+recant	to say that one no longer holds and opinion or belief
+culpable	guilty, blameworthy; liable, accountable
+abrogate	to revoke, repeal, overturn, overrule, annul
+alleged	said without proof; to have an Ikea or undesirable quality
+access	entrance; to obtain or retrieve; to approach or enter
+invalidate	disprove, contradict, debunk; void, nullify
+preclude	prevent, stop, prohibit, impede, inhibit
+persevere	persist, continue, not give up
+landmark	turning point, milestone, critical point
+extrinsic	external, outside, foreign, alien
+declaim	speak, lecture, preach, recite
+fetter	restrain, shackle, handcuff
+paragon	ideal, epitome, model, archetype
+nomadic	wandering, not living in one place
+asperity	harshness, sharpness, roughness, bitterness
+epithet	title, name, label, tag, nickname
+controversial	arguable, debatable; sensitive, awkward, problematic
+indigenous	native, original, aboriginal
+gregarious	amiable, genial, warm, friendly
+habitat	home, domain
+cursory	half-done, incomplete, hurried
+interloper	outsider, stranger, invader
+prolific	creative, inventive; plentiful, bountiful
+bulwark	a defensive wall
+sedentary	sitting, inactive, lazy
+frugal	spending very little money; austere
+antithesis	the direct opposite
+altruistic	unselfish, charitable, philanthropic
+embellish	to make something better by adding more decorations, details, etc
+cache	a collection of items stored and hidden
+coterie	clique, inner circle, band, community, gang
+cupidity	greed, avarice, materialism, rapacity
+virtuosity	skill, proficiency, aptitude
+temerity	audacity, nerve, daring, gall
+amorous	romantic, passionate
+progeny	children, family, offspring
+saturate	soak, drench, steep
+perpetuate	preserve, conserve, sustain, continue
+consummate	supreme, superb, superior
+subterfuge	trickery, deceit, dishonesty
+concoct	prepare, make, assemble; create, fabricate
+fallacious	false, untrue, wrong
+manifold	many, numerous, multiple
+assiduous	diligent, careful, meticulous
+impeccable	flawless, perfect
+fraught	anxious, worry, upset
+resourceful	inventive, creative; clever, talented
+murky	dark, gloomy, dull, dim
+component	part, piece, bit, ingredient
+hoax	joke, prank, scam, spoof
+labyrinth	maze, network, web
+evaluate	judge, gauge, examine
+exult	celebrate, cheer, rejoice
+attest	confirm, verify, prove, corroborate
+gullible	innocent, inexperienced, impressionable, easy to persuade
+deploy	to move troops; to position, place, post
+enigma	mystery, puzzle, conundrum, quandary
+abortive	failed, useless, worthless
+modify	alter, change, adjust
+accommodate	help assist; provide shelter
+spontaneous	unplanned, impromptu; open, genuine, easy
+innate	inborn, natural, intuitive
+veneer	a thin layer of wood
+myriad	countless, infinite, numerous
+urbane	worldly, suave, sophisticated
+crave	to want, desire, covet
+irrelevant	unconnected, unrelated, unimportant
+deem	consider, judge; think
+inherent	essential, fundamental, native
+buff	polish, shine, clean; muscular; yellowish color
+romp	play, frolic, frisk
+latent	dormant, hidden, unseen, invisible
+tortuous	twisty, winding, zigzag
+itinerant	traveling from place to place
+peregrination	a long journey
+conjugal	relating to marriage or the relationship of a married couple
+barometer	an instrument measuring atmospheric pressure
+megalomania	obsession with exercising power
+profligate	wasteful, extravagant
+strife	conflict, hostility, controversy
+legion	a huge group of people or things
+coup	a sudden, violent, and illegal takeover of power
+amnesty	pardon, reprieve; release
+expatriate	a person who lives outside their native country
+exonerate	release, free, liberate, excuse
+fiat	order, command, mandate
+mendacious	lying, untruthful, dishonest
+parsimonious	cheap; unwilling to spend money or resources
+pecuniary	relating to money
+dismantle	to take apart
+sumptous	splendid and expensive looking
+underwrite	sign and accept liability
+restrictive	improving restrictions or limitations
+balk	hesitate or willing to accept an idea
+blunt	not sharp; to speak harshly, directly
+nostalgia	remembering and wishing for something in the past
+rife	widespread, common, universal
+revile	criticize, attack, condemn
+derogatory	disrespectful, insulting; mean
+indict	accuse of a crime
+pesky	causing trouble; annoying
+redolent	reminiscent, remindful, suggestive
+repose	sleep, rest, relaxation
+omnivorous	eating all kinds of food
+disparate	different, unalike, unrelated
+abstemious	austere, strict, restrained, abstinent
+extant	remaining, enduring; living, alive
+vicissitudes	change, alteration, transformation
+edifice	a large building; a complex system of beliefs
+sultry	hot, humid; passionate, attractive
+trenchant	cutting, piercing, incisive
+puissant	having great power or influence
+unabated	without any reduction of strength
+maudlin	sentimental, emotional
+levity	treating a serious matter with humor
+lugubrious	sad, unhappy, gloomy, miserable
+scion	child, offspring, heir
+indoctrinate	brainwash, persuade, convince
+opulence	wealth, riches, money
+obsequious	too obedient, submissive, or attentive
+fulsome	excessive, overdone, extravagant
+lush	abundant, rich; juicy, soft, tender
+destitution	extreme poverty
+ponder	to think about something carefully
+supplication	asking for something humbly
+decadence	moral or cultural decline from too much luxury
+penance	self-punishment for doing something wrong
+ascetic	austere, severe self-discipline
+desultory	random, aimless, casual
+disciple	a follower of a teacher, leader, or philosopher
+metamorphosis	a change into something completely different
+bona fide	genuine, real
+salvation	help, saving, savior
+materialism	to value physical things more than spiritual
+nurture	raise, support, foster
+nirvana	paradise, heaven; peace, joy, ecstacy, bliss
+juxtapose	place side by side; set close to one another
+plight	a dangerous, difficult, or unfortunate situation
+covert	secret, furtive, clandestine, surreptitious
+cope	manage, survive; deal with something difficult
+incompatibility	two things or people being too different to work together
+incapacitated	disabled; paralyzed; unable to function normally
+connubial	relating to marriage
+demur	hesitate, refuse; protest, complaint
+appellation	name, title, epithet, label
+escalation	rise, growth, leap, climb, jump; increase, intensify
+indifference	lack of interest, concern, or sympathy
+potential	possible, likely, probable; capability, talent, ability
+cumulative	increasing in quantity
+recondite	little known; abstract, obscure, complex
+palliate	soothe, alleviate, lessen, mitigate
+delude	mislead, trick, deceive, beguile
+prelude	opening, beginning, introduction, start
+chimerical	imaginary, fabulous, fantastic
+acknowledge	admit, accept, allow, recognize
+heterogeneous	diverse, varied, different
+gamut	range, scope, spectrum
+perspicacious	having insight and understanding things
+analogous	comparable, similar, related, matching
+maladjusted	disturbed, unstable, confused, unbalanced
+phenomenon	occurrence, event, appearance, thing
+mortality	death, dying
+decade	ten years
+susceptible	likely to be influenced or harmed by something
+neurotic	psychopathic; unstable, unbalanced
+pedagogue	a teacher, especially a pedantic (over scrupulous) one
+enunciate	say or pronounce clearly; express, proclaim, publish
+inordinate	excessive, unreasonable, unjustifiable
+irascible	irritable, snappish, short-tempered
+introspective	inward-looking, self-examining
+mandate	instruction, order; authority, approval
+compensatory	a payment to recompense someone for a loss, injury, suffering, etc
+neutralize	make something ineffective by applying an opposite force or effect
+catastrophic	awful, disastrous, calamitous, fatal, woeful
+anthropologist	an expert of anthropology (human societies and cultures)
+bizarre	very strange or unusual
+inanimate	showing no sign of life
+fetish	inanimate object worshipped for magical powers
+artifact	something made by a human
+taboo	restricted by social or religious customs
+imprudent	showing no care for the consequences
+prohibition	forbidding something
+imperative	all-important, crucial, essential
+taint	a bad or undesirable quality
+universal	global, worldwide, ubiquitous
+contemptuous	scornful, disdain, disrespectful
+absurd	unreasonable, illogical, or inappropriate
+abhor	hate, be disgusted
+vulnerable	unsafe, unprotected, powerless
+entreaty	an earnest or humble request
+tradition	customs or beliefs from generation to generation
+originate	begin, start, develop
+inviolable	unbreakable, untouchable, unchallengeable
+awesome	extremely impressive or daunting
+eruption	explosion, emission, discharge
+puny	small and weak
+debris	scattered pieces of rubbish or remains
+disperse	distribute or spread over a wide area
+obliterate	destroy completely; wipe out
+deplorable	disgraceful, shameful, dishonorable
+initiate	begin, commence, launch
+conflagration	fire, blaze, inferno
+rue	regret, remorse
+congenial	compatible, like-minded, friendly, pleasant
+hoard	cache, stockpile, collection
+sage	a wise man, philosopher, scholar
+aegis	sponsorship, protection, support, guidance
+detriment	harm, damage, injury, hurt
+longevity	long life, long existence
+imbibe	drink, consume, swallow
+virile	manly, masculine, male
+senile	having weaknesses or diseases from old age
+doddering	to hobble, shake, tremble, sway
+lethargic	sluggish, slow, tired
+prevalent	widespread, usual, popular
+paramount	more important than anything else
+remiss	careless, irresponsible
+hostile	aggressive, unfriendly
+rebuke	scold, admonish, criticize
+aversion	dislike of, hatred of
+evince	reveal, show, display, indicate
+vogue	fashion, trend, fad
+superficial	surface, exterior
+jettison	drop, dump, discard, ditch
+inevitable	unavoidable, inescapable
+lucrative	profitable, moneymaking
+tussle	scuffle, fight, brawl, skirmish
+intrinsic	natural, innate, inborn, ingrain
+acute	severe, drastic, terrible
+gist	essence, meaning, central theme
+transient	temporary, short-term, ephemeral
+terse	brief, short, concise
+cogent	clear, logical, impactful, effective
+pinnacle	the most successful point, peak, climax
+array	an impressive display or range of something
+obscure	not discovered or known about; uncertain
+ardent	very enthusiastic or passionate
+culminate	reach a climax or point of highest development
+constrict	make narrower, especially by encircling pressure
+prodigy	a young person with exceptional qualities or abilities
+bereft	deprived or lacking something
+falter	lose strength or momentum
+exultation	a feeling of triumph, happiness, delight
+vitriolic	filled with bitter criticism or malice
+invective	insulting, abusive, or highly critical language
+besmirch	damage (someone's reputation)
+voluminous	full, big, large, spacious
+retrospect	a survey or review of past events
+egotist	a person who is excessively conceited or self-absorbed
+humility	having a modest or low view of one's importance
+pungent	having a sharply strong taste or smell
+inveterate	having a habit or interest that is unlikely to change
+adamant	refusing to be persuaded or to change one's mind
+bedlam	uproar, confusion, riot
+cacophony	a harsh mixture of sounds
+exploit	to make use of and get a benefit from something
+propinquity	closeness, nearness, proximity
+disgruntled	angry, dissatisfied, unhappy
+infallible	true, perfect, error-free
+panacea	cure-all, heal-all, elixir
+eradicate	eliminate, remove, kill
+impede	hinder, obstruct, hamper
+sedate	calm, tranquil, placid, unhurried
+equanimity	calmness and composure in a difficult situation
+compatible	suited, well matched, like-minded
+serenity	calmness, peacefulness, quietness
+revere	respect, admire, esteem
+irrational	unreasonable, illogical, unjustifiable
+avarice	greed, money-grubbing
+insatiable	impossible to satisfy, unquenchable
+nadir	the lowest or most unsuccessful point in a situation
+moribund	at the point of death, dying
+lithe	thin, graceful, agile
+obese	fat or overweight
+adherent	follower, supporter, advocate
+bliss	perfect happiness
+pathetic	pitiful, sad, heartbreaking
+exhort	urge, encourage
+apathy	lack of interest, indifference
+fracas	noisy disturbance, quarrel, uproar
+inebriated	make (someone) drunk; intoxicate
+adversary	opponent, rival, enemy, foe
+indolent	lazy, apathetic, slothful
+gusto	enjoyment, enthusiasm, gratification
+garrulous	talkative, gossipy, chatty, loquacious
+platitude	commonplace, cliche
+pique	irritation, annoyance, resentment
+dilettante	amateur, non-professional
+nondescript	featureless, unmemorable, dull
+wane	disappear, decrease, diminish
+extinct	having no living members
+idyllic	extremely happy, peaceful, or picturesque
+galvanize	shock or excite (someone) into taking action
+encumbrance	hindrance, burden, disadvantage
+gaudy	flashy, showy, glittering, unattractive
+condescend	show that one feels superior
+candor	frankness, openness, honesty
+mortify	embarrass, humiliate, shame
+jocose	playful or humorous
+malign	harmful, bad, evil, inimical
+omnipotent	having unlimited power
+zenith	when something is most powerful or successful
+fledgling	a young bird that can begin to fly; beginning, promising, potential
+peremptory	insisting on immediate attention or obedience
+precedent	model, example, lead, guide
+wheedle	use flattery to persuade someone
+rustic	countryside, rural, pastoral
+jubilant	overjoyed, triumphant, ecstatic
+decorum	politeness, good manners
+charlatan	fraud, fake, sham
+heresy	belief or opinion contrary to orthodox religion
+prudent	wise, well judged; careful, cautious
+ostensible	stated or appearing to be true, but not necessarily so
+fervid	very enthusiastic or passionate
+spurious	false, fake, counterfeit
+propagate	breed, grow, cultivate
+anomaly	abnormality, irregularity, deviation
+innocuous	harmless, safe, innocent
+surfeit	excess, surplus, abundance
+milieu	a person's social environment
+strident	loud, harsh, grating
+concomitant	naturally accompanying or associated
+lassitude	lethargy, tiredness, exhaustion
+deleterious	harmful, damaging, inimical
+efficacy	the ability to produce a desired or intended result
+dissent	disagreement, dispute, disapproval
+ferment	undergo fermentation; cause, generate, incite
+attenuated	reduce, diminish, impair
+arbiter	judge, director, governor, authority
+incumbent	required, necessary, mandatory
+profound	intense, great, extreme
+alleviate	reduce, ease, relieve, lessen
+prodigious	enormous, huge, large
+expedite	accelerate, hurry, hasten
+celerity	swiftness of movement
+usurp	take a position of power by force
+paltry	small, insignificant, insufficient
+condone	accept, allow, forgive, pardon
+trivial	unimportant, small, meaningless
+bizarre	strange, peculiar, odd
+menial	unskilled, boring, dull
+venerable	respected, honored, legendary
+extraneous	irrelevant, unrelated, unconnected
+ambiguous	puzzling, more than one meaning
+succinct	concise, short, brief
+archaic	old, out-of-date
+emulate	copy, imitate, mimic
+facetious	treating serious issues with inappropriate humor
+rabid	extreme, violent, fanatical
+salubrious	healthy, beneficial
+complacent 	smug, proud, self-congratulatory
+somber	sad, serious, gloomy, joyless
+debilitate	weaken, enfeeble, incapacitate
+impetuous	impulsive, unplanned, hasty
+occult	magical, supernatural, mysterious
+discreet	careful, cautious, guarded
+foment	instigate, incite, provoke
+glean	obtain, gather, get
+quarry	prey, victim, target, goal
+slovenly	untidy, messy, unkempt
+abjure	reject, renounce, abandon
+penitent	sorry, regretful, ashamed
+evanescent	quickly fading or disappearing
+tantamount	equal to, the same as
+propensity	tendency, inclination, penchant
+wary	cautious, careful, distrustful
+allay	reduce, diminish, decrease
+deter	discourage, dissuade, warn, intimidate
+connoisseur	an expert judge in matters of taste
+site	location, place
+vigil	keeping awake to watch or play
+cumbersome	clumsy, awkward; complicated
+interrogate	question, examine
+divulge	reveal, tell, publish
+fluctuate	differ, vary, shift
+unmitigated	undiminished, unmodified
+commodius	spacious, large, big
+antiquated	outdated, obsolete
+disheveled	untidy (hair or clothes)
+facade	fake, act, mask
+asnine	stupid, brainless
+grimace	frown, pout
+calumny	slander, smear, vilification
+pittance	small amount of money
+au courant	up to date, familiar with what's going on
+fastidious	perfectionist, precise
+noisome	bad smell, unpleasant
+unkempt	untidy, messy
+parable	a simple story used to illustrate a moral lesson
+whimsical	playful, mischievous, weird, odd
+countenance	facial expression
+sanctimonious	making a show of being morally superior
+effrontery	gall, nerve, audacity, disrespect
+nonentity	an unimportant person
+flabbergasted	astonished, surprised
+debacle	fiasco, failure, disaster
+vivacious	lively, bubbly, cheery
+gaunt	skeletal, skinny, bony
+mien	appearance, look, expression
+hirsute	hairy, shaggy, unshaven
+refute	disprove, discredit
+pensive	thoughtful, reflective, introspective
+whet	sharpen; stimulate, trigger
+stupor	daze, coma, blackout
+wince	grimace, cringe, squirm
+cliche	overused and unoriginal
+lampoon	ridicule, make fun of
+genre	category, group, type
+candid	truthful, outspoken, open, honest
+unsavory	unpleasant, uneatable, unattractive
+degrade	disgrace, dishonor, disrespect
+venial	forgivable, excusable, allowable
+epitome	a perfect example of something
+dexterity	skillful, especially with the hands
+grotesque	ugly, monstrous, abnormal
+compassion	sympathy, feeling, pity, love
+repugnant	repulsive, nasty, sickening
+acme	the point something is at its best
+copious	plentiful, many, multiple
+vehemently	forceful, passionate, intense manner
+depict	represent, portray, characterize
+naive	innocent, childlike, trusting
+perfidious	disloyal, dishonest, traitorous
+covet	desire, crave, want
+ingratiate	flattering or pleasing someone to make them like you
+penury	extreme poverty
+ignominious	shameful, humiliating, sorry
+confront	challenge, oppose, attack
+antipathy	dislike, hatred
+servile	excessive willingness to serve others
+volition	using one's will
+sojourn	stay, stop, break, rest
+austere	severe; simple, plain
+felicitous	suitable, fitting, well chosen
+halcyon	serene, calm, quiet
+tenable	reasonable, rational, imaginable
+superfluous	surplus, extra, unneeded
+motivate	stimulate, cause, inspire
+rationalize	defend, excuse
+therapy	treatment, cure
+nascent	just starting and showing signs of potential
+iconoclast	critic, sceptic
+erudite	well educated, unintelligent
+phobia	fear, horror, dislike
+germane	relevant, applicable
+vertigo	a feeling of dizziness and whirling
+conducive	favorable, beneficial, valuable
+glib	smooth-talking, insincere, shallow
+homogenous	similar, comparable
+malleable	impressionable, susceptible
+legerdemain	magic, wizardry, trickery
+trend	tendency; fashion
+stagnant	motionless, lifeless
+fatal	deadly, lethal, killing
+passe	out of date, old-fashioned
+procrastinate	delay, hesitate
+facet	aspect, feature, characteristic
+foist	impose, force
+stigmatize	brand, label, vilify
+capitulate	surrender, succumb
+audacity	boldness, fearlessness
+tantalize	excite, fascinate, intrigue
+retort	answer, reply, respond
+tacit	implied, understood, unspoken
+chicanery	trickery, dishonesty
+docile	passive, submissive, willing
+saga	epic, legend, adventure
+belated	late, overdue
+decrepit	worn out, broken-down
+imperturbable	cool, calm, relaxed
+vacillate	uncertain, ambivalent, unsure
+staunch	loyal, faithful, trusty
+opprobrium	abuse, slander, criticism
+Machiavellian	devious, cunning sly
+unconscionable	unethical, unfair, dishonest
+pandemonium	wild, noisy, disorder
+flay	strip the skin off
+demeanor	manner, attitude, appearance
+delineation	portrayal, description, presentation
+vindicate	clear, free, liberate
+heinous	evil, horrible, awful
+turpitude	wickedness, immorality, corruption
+infraction	violation, breach, infringement
+callous	cold, heartless, unfeeling
+redress	amend, remedy, correct, fix
+vituperation	bitter, abusive, slander
+rhetoric	effective or persuasive speaking or writing
+clique	a small or close-knit group of people
+extol	to praise
+mentor	guide, adviser
+facile	simplistic, oversimple
+cant	hypocrisy, insincerity
+umbrage	offence or annoyance
+magnanimous	generous or forgiving
+vilify	belittle, abuse, attack
+elucidate	explain, clarify, interpret
+vapid	insipid, uninteresting, boring
+unwieldy	awkward, difficult, clumsy
+proximity	closeness, nearness
+vitiate	to spoil or impair the quality of something
+augment	increase, enlarge, expand
+fatuous	silly, foolish, stupid, idiotic
+contort	twist or bend out of the normal shape
+repertoire	collection, stock
+imperceptible	unnoticeable, undetectable, invisible
+curry	a dish of meat, vegetables, etc., cooked in an Indian-style sauce
+pall	a cloth spread over a coffin, hearse, or tomb
+succulent	tender, juicy, and tasty
+potpourri	a mixture of dried petals and spices put in a bowl to perfume a room
+sanction	penalty, punishment, prohibition, ban
+denote	signal, indicate, symbolize
+allude	suggest, mention, imply
+insidious	stealthy, subtle, surreptitious
+propriety	politeness, good manners
+advent	emergence, arrival; approach, coming
+impious	godless, blasphemous, atheistic
+proffer	offer, present, give
+spate	a large number of similar things coming in quick succession
+shibboleth	a custom or belief distinguishing a class or group of people
+bogus	fake, false, misleading
+substantiate	prove, support, validate
+nutritive	relating to nutrition
+raucous	noisy, loud, harsh
+quandary	uncertainty over what to do in a difficult situation
+expedient	convenient, useful, beneficial, effective
+negligible	so small or unimportant as to be not worth considering
+blase	unimpressed or indifferent after seeing it so many times
+ennui	boredom, lethargy, unhappiness
+comely	attractive, good-looking, pretty, handsome
+frenetic	frantic, wild, fast, energetic
+artifice	trickery, dishonesty, deceit
+diversity	variety, assortment, mix
+qualm	an uneasy feeling of doubt, worry, or fear
+expurgate	censor, cut, edit, remove
+begrudge	envy, grudge, resent, be jealous of
+artless	natural, naive, simple, innocent, childlike
+gratuity	a tip given to a waiter, taxi driver, etc
+manifest	clear or obvious to the eye or mind
+delve	reach inside and search for something
+requisite	made necessary, required, essential
+replenish	refill, reload, recharge
+roster	a list of names
+stunted	prevented from growing or developing properly
+atrophy	to waste away, shrink, decay, decline
+maim	wound or injure so part of the body is permanently damaged
+ameliorate	make something bad or unsatisfactory better
+cynic	a sceptic, doubter; believes people only act out of self-interest
+unctuous	excessively flattering, smooth-talking, slick, slippery
+benevolent	kind, caring, compassionate
+subservient	prepared to obey others unquestionably
+iniquity	immoral or grossly unfair behavior
+largess	generosity, charity, philanthropy
+criterion	basis, standard, norm, benchmark
+repent	to feel or express regret for a wrongdoing
+mollify	to calm, soothe, quieten
+mercenary	primarily concerned with making money at the expenses of ethics
+pariah	an outcast, reject, undesirable
+aloof	distant, detached, antisocial
+pragmatic	dealing with things sensibly and realistically
+vestige	a trace of something that is disappearing or no longer exists
+guise	likeness, appearance, semblance; front, show, facade

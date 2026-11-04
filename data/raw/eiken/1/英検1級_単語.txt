@@ -1,0 +1,382 @@
+#separator:tab
+#html:true
+Proponent&nbsp;[sound:rec1663334822.mp3]	支持　<div><br><div>This theory has many proponents&nbsp;</div></div>
+Morale	士気　<div><br></div><div>The morale of employees affects their productivity.</div>
+Cessation&nbsp;	"<div><span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">中止</span><br></div><div><br></div><div>a cessation of nuclear tests&nbsp;</div>"
+Prerequisite[sound:rec1663334851.mp3]	(~の)必要条件<div><br></div><div>a prerequisite for the success of the project</div>
+Propensity&nbsp;	傾向　<div><br><div>a propensity to exaggerate&nbsp;</div></div>
+Havoc&nbsp;[sound:rec1663334838.mp3]	大混乱　<div><br></div><div>Cause havoc&nbsp;</div>
+demise&nbsp;[sound:rec1663334810.mp3]	消滅　&nbsp;<div>(end , death)<div>The demise of the Roman Empire&nbsp;</div></div>
+Culprit&nbsp;	犯人　<div>(Criminal , offender )</div><div>The police finally captured the culprit&nbsp;</div>
+Efficacy&nbsp;	効き目<div>(effectiveness)</div><div>The efficacy of the drug&nbsp;</div>
+Peer&nbsp;[sound:rec1663334785.mp3]	仲間<div>(Fellow , equal)</div><div>Peer pressure&nbsp;</div>
+Disparity&nbsp;[sound:rec1663334869.mp3]	"格差<div>(Difference , inequality , discrepancy , imbalance&nbsp;<span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">)</span></div><div><font face=""-apple-system-body"">a disparity in income&nbsp;</font></div>"
+grievance[sound:rec1663334883.mp3]	不平 , 不満<div>(Complaint , grumble)</div><div>If you have a grievance ,you should take action to resolve it.</div>
+Prognosis&nbsp;[sound:rec1663334912.mp3]	予後 , 予測<div>(forecast , prediction)</div><div>The prognosis of the operation&nbsp;</div>
+Clout&nbsp;[sound:rec1663334928.mp3]	影響力<div>(Influence , power , weight)</div><div>He is a politician with enormous clout&nbsp;</div>
+asylum&nbsp;[sound:rec1663334939.mp3]	亡命<div>(refuge , sanctuary , shelter , protection)</div><div>&nbsp;Seek political asylum&nbsp;</div><div>&nbsp;an asylum seeker&nbsp;</div>
+perk[sound:rec1663334955.mp3]	特権<div>(Perquisite)</div><div>a job with many perks&nbsp;</div>
+Strain&nbsp;[sound:rec1663334971.mp3]	品種、体を痛める<div>(Variety , pressure , injure , pull)</div><div>&nbsp;a new strain of flu.</div><div>&nbsp;Put a strain on sth.</div>
+trait[sound:rec1663334983.mp3]	特性、特徴<div>(Characteristic , attribute , feature)<br><div>a personality trait.</div></div><div>a physical trait.</div>
+Credibility[sound:rec1663335000.mp3]	信用　<div>(reliability )</div><div>gain credibility</div>
+Counterpart[sound:rec1663335014.mp3]	(~に)相当する人<div>(equivalent , opposite number)</div><div>The Japanese foreign minister is the counterpart of the American Secretary of State.</div>
+affront&nbsp;[sound:rec1663335027.mp3]	(~に対する)侮辱<div>(insult , offense , indignity)</div><div>an affront to his dignity&nbsp;</div>
+footage&nbsp;[sound:rec1663335038.mp3]	映像<div>Film footage&nbsp;</div>
+Candor&nbsp;[sound:rec1663335054.mp3]	率直さ<div>(frankness , honesty )</div><div>Say with condor&nbsp;</div>
+advent&nbsp;[sound:rec1663335066.mp3]	出現<div>(arrival , appearance ) (disappearance )</div><div>The advent of the internet has created enormous business opportunities.</div>
+animosity[sound:rec1663335077.mp3]	"憎しみ<div>(hostility , hatred&nbsp;<span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">)</span></div><div><font face=""-apple-system-body"">Feel animosity towards him&nbsp;</font></div>"
+Solace[sound:rec1663335091.mp3]	慰め<div>(comfort , consolation)</div><div>Some people find solace in their faith&nbsp;</div>
+brevity[sound:rec1663335102.mp3]	簡潔さ、短さ<div>(Conciseness , shortness)</div><div>The brevity of life</div>
+impediment[sound:rec1663335116.mp3]	障害<div>(obstacle , barrier)</div><div>an impediment to economic growth</div>
+exodus[sound:rec1663335140.mp3]	大移動<div>(Migration , emigration)</div><div>mass exodus&nbsp;</div>
+speculation&nbsp;[sound:rec1663335161.mp3]	憶測、推理<div>(guess)</div><div>there is growing speculation that the general election will be held.</div>
+gist[sound:rec1663335172.mp3]	要点<div>(essence , substance)</div><div>the gist of the report&nbsp;</div>
+dearth[sound:rec1663335213.mp3]	不足<div>(lack , shortage )</div><div>a dearth of information&nbsp;</div>
+atrocity[sound:rec1663335229.mp3]	残虐行為<div>(cruelty , abomination)</div><div>wartime atrocity&nbsp;</div>
+quota[sound:rec1663335240.mp3]	"ノルマ<div>(allocation , allotment)<br><div><span style=""color: var(--field-fg); background: var(--field-bg);"">He met his sales quota and got a bonus.</span><span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">&nbsp;</span><br></div></div>"
+reliance[sound:rec1663335251.mp3]	依存<div>(dependence)</div><div>reliance on parents</div>
+rationale[sound:rec1663335278.mp3]	理論的根拠<div>(reason)</div><div>The rationale of the governments economic policy is questionable.</div>
+upheaval[sound:rec1663335318.mp3]	大変動<div>(turbulence )</div><div>social upheaval&nbsp;</div>
+facade[sound:rec1663335346.mp3]	外見、見せかけ<div><div>(appearance)</div><div>a facade of indifference.</div></div><div>The cathedral’s facade.</div>
+Knack[sound:rec1663336121.mp3]	コツ、才能<div>(technique , ability )</div><div>There is a knack to fishing.<br></div>
+Verdict&nbsp;[sound:rec1663335407.mp3]	評決<div>(judgement , decision )</div><div>One’s verdict on the movie&nbsp;</div>
+demeanor&nbsp;[sound:rec1663335422.mp3]	態度<div>(manner , attitude )</div><div>Her calm demeanor&nbsp;</div>
+dissident[sound:rec1663335435.mp3]	反体制派(の人)<div>(Conformist)</div><div><div>more than 50 dissidents were jailed&nbsp;</div></div>
+antipathy&nbsp;[sound:rec1663335455.mp3]	反感<div>(hatred ) (sympathy)</div><div>Racial antipathy</div>
+caliber[sound:rec1663335473.mp3]	"能力<div>(capability , ability<span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">)</span></div><div><span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">a person of high caliber&nbsp;</span></div>"
+Novice[sound:rec1663335485.mp3]	初心者<div>(beginner)(veteran)</div><div>A complete novice&nbsp;</div>
+Juncture[sound:rec1663335497.mp3]	時期、局面<div>(point , period )</div><div>At this juncture&nbsp;</div>
+plight[sound:rec1663335510.mp3]	苦境<div>(dilemma )</div><div>The plight of the refugees&nbsp;</div>
+Homage[sound:rec1663335543.mp3]	"尊敬<div>(respect , honor&nbsp;<span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">)</span></div><div><span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">Pay homage to&nbsp;</span></div>"
+Conjecture&nbsp;[sound:rec1663335555.mp3]	"推測<div>(guess , speculation&nbsp;<span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">)</span></div><div><span style=""color: var(--field-fg); font-family: -apple-system-body; background: var(--field-bg);"">a mere conjecture&nbsp;</span></div>"
+Onset&nbsp;[sound:rec1663335577.mp3]	(よくないことの)始まり<div>(start , beginning)<br><div>The onset of winter</div></div>
+Stigma[sound:rec1663335588.mp3]	汚名、不名誉<div>(shame , disgrace )</div><div>There is no longer any stigma attached to divorce&nbsp;</div>
+repercussion[sound:rec1663335599.mp3]	(好ましくない)影響<div>(consequences , result)</div><div>The company’s bankruptcy will have serious repercussion on the town.</div>
+gimmick[sound:rec1663335612.mp3]	策略<br>（ploy , scheme）<br>The cartoon character was a gimmick to sell more products.
+rout[sound:rec1663335656.mp3]	完敗<br>（defeat）(victory)<br>an electoral rout
+contingency[sound:rec1663335678.mp3]	緊急事態<br>（accident , emergency）<br>We must prepare for all possible contingencies.
+surge[sound:rec1663335731.mp3]	急増、急上昇<br>（increase , rise , growth）<br>a surge in demand
+forgery[sound:rec1663335746.mp3]	偽造品<br>（fake , counterfeit）<br>The painting turned out to be a forgery.
+ramification[sound:rec1663335759.mp3]	影響、結果<br>（concequences , result）<br>the ramifications of one's actions
+affinity[sound:rec1663335804.mp3]	親近感<br>（empathy , sympathy）<br>an affinity between Spanish and Italian
+eclipse[sound:rec1663335850.mp3]	（太陽、月）の食<br>（overshadow）<br>an eclipse of the sun (日食)
+vent[sound:rec1663335864.mp3]	通気<br>(duct)<br>These vents are used to circulate air in the house.
+antibiotic[sound:rec1663335880.mp3]	抗生物質<br>Take antibiotics.
+demographic[sound:rec1663335913.mp3]	人口統計<br>The demographics of China have changed dramatically due to birth control policies.
+primate[sound:rec1663335961.mp3]	"霊長類<br>Endangered primates.<br><img src=""paste-381ce3cad2b223f1af6fd5e4228e22829db0ec21.jpg"">"
+flattery　[sound:rec1663336004.mp3]	お世辞<br>（adulation , compliment）<br>Excessive flattery.
+backlash[sound:rec1663336016.mp3]	反発、抵抗<br>（against）<br>a backlash against racism.
+haven[sound:rec1663336072.mp3]	安息の地、避難所<br>(refuge , shelter)<br>a safe haven
+pandemonium[sound:rec1663336172.mp3]	大混乱<br>(chaos , confusion , havoc)<br>Pandemonium broke out in the courtroom when new evidence was presented.
+feat	偉業、離れ業<br>（achievement , accomplishment）<br>achieve a feat.
+allure[sound:rec1663336243.mp3]	魅力、魅惑<br>(attraction , lure)<br>The allure of New York
+quarantine[sound:rec1663336253.mp3]	隔離　<br>（isolation）<br>He was put in quarantine after showing flu symptoms.
+adherent[sound:rec1663336281.mp3]	（政党などの）支持者<br>（supporter , advocate）<br>adherents of the Democratic party.
+impasse[sound:rec1663336322.mp3]	（交渉などの）行き詰まり<br>（deadlock , dead end）<br>Reach an impasse
+curfew[sound:rec1663336338.mp3]	夜間外出禁止令、門限<br>impose a curfew
+predicament[sound:rec1663336381.mp3]	苦境<br>（plight , dilemma）<br>Many small businesses are in a predicament.
+throng[sound:rec1663336392.mp3]	群衆　<br>（crowd , flock , herd)<br>A throng of reporters.
+offshoot[sound:rec1663336402.mp3]	（思想などの）文派<br>&nbsp;an offshoot of Christianity.
+dividend[sound:rec1663336607.mp3]	配当<br>the firm has declared its dividends.
+buffer[sound:rec1663336483.mp3]	緩衝物　（クッションみたいな）<br>These trees act as a buffer against northerly winter winds.<br>
+camaraderie[sound:rec1663336501.mp3]	友情、仲間意識<br>（friendship , fellowship）<br>cultivate camaraderie with ~
+scruple[sound:rec1663336549.mp3]	〜を平気でする<br>(not hesitate to do ~ )<br>The mayor had no scruples about accepting bribes.
+microbe[sound:rec1663336634.mp3]	微生物、細菌<br>（germ）<br>Harmful microbes
+fiasco[sound:rec1663336656.mp3]	大失敗<br>（failure）<br>&nbsp;End in a fiasco
+hub[sound:rec1663336671.mp3]	中心<br>（center , core）<br>a hub of commerce
+commerce[sound:rec1663336696.mp3]	商業
+menace[sound:rec1663336726.mp3]	脅威（きょうい）<br>&nbsp;(threat , peril)<br>a menace to world peace
+contamination[sound:rec1663336762.mp3]	汚染<br>（pollution）<br>Radioactive contamination<br><br>
+incidence[sound:rec1663336818.mp3]	発生率<br>a high incidence of crime.
+proximity[sound:rec1663336833.mp3]	〜に近いこと<br>(closeness , nearness)<br>The factory was chosen for its proximity to an expressway.
+venue[sound:rec1663336870.mp3]	開催地<br>a concert venue
+respite[sound:rec1663336892.mp3]	~の中断、中休み<br>（rest , interval）<br>without respite
+concession[sound:rec1663336911.mp3]	〜への譲歩<br>Make a concession
+acclaim[sound:rec1663336930.mp3]	称賛、絶賛<br>（praise , applause）<br>The film received international acclaim.
+quandary[sound:rec1663336955.mp3]	困惑、苦境<br>（dilemma , predicament）<br>She was in a real quandary about how to deal with the situation.
+cinch[sound:rec1663336992.mp3]	朝飯前のこと、楽勝<br>（doddle , piece of cake）<br>It was a cinch !
+eulogy[sound:rec1663337008.mp3]	（故人に対する）賛辞<br>Deliver a eulogy
+audacity	厚かましさ<br>（nerve,impudence）<br><div><div>He had the audacity to suggest that it was all my fault.</div></div><div><div><div><br></div></div></div>
+bribery	収穫<br>They were arrested on charges of bribery.
+influx	（〜の）流入<br>The city is preparing for a large influx of tourists this summer.&nbsp;
+fungus	菌類（きのこ、カビなど）<br>Fungus infections.<br>
+mortgage	住宅ローン<br>（home loan）<br>They hope to pay off the mortgage on their home soon.&nbsp;
+equity	純資産額<br>They shared the work of the house with equity.
+probe	調査<br>He didn't like the police probing him about his past.&nbsp;
+boon	利益、ありがたいもの<br>Honey is a boon to those with weak digestion.
+rendition	（〜の）演奏、公演<br>She gave a splendid rendition of the song.
+momentum	（活動などの）勢い<br>The company has had a successful year and hopes to maintain its momentum by introducing new products.
+provision	決まり。<br>(〜への)準備<br>There are a number of unusual provisions in the constitution of Nevada.
+ordeal	辛い経験、厳しい訓練<br>I'm sorry to put you through this ordeal.
+infringement	（権利などの）侵害<br>The secularist government endorses the ban, while the Islamist opposition sees it as an infringement of women's rights.
+prelude	(~の)前兆、前奏曲<br>&nbsp;The episode forms the prelude to family rivalries.
+inception	（団体などの）開始、始まり<br>The project has been shrouded in controversy from its inception.
+precept	（道徳的な）規範、教訓、教え<br>the basic precepts of a religion&nbsp;
+stalemate	行き詰まり<br>&nbsp;The new agreement could break the stalemate.
+commotion	騒動、騒ぎ<br><b>His arrival caused quite a commotion.</b>
+parasite	寄生虫<br>Once inside of the animal, the parasite turned the organism's digestive tract into its own food source.
+premium	保険料<br>高級な<br><b>We might pay a premium to support a family farm</b>.
+ailment	(軽い)病気<br>~を悩ます<br><b>She suffered from a chronic back ailment.</b>&nbsp;
+mutation	突然変異<br>The condition is caused by a genetic mutation.&nbsp;
+specimen	標本,見本（examle）<br>Can you give me a specimen of your handwriting?
+hindrance	（〜の）障害、バリア<br><b>There was, of course, no hindrance to a man having more than one job</b>.
+misgiving	(~についての)不安<br><b>I felt some misgiving about his ability to do the job.</b>
+pretex	(~の)口実、言い訳<br>&nbsp;He used his sore finger as a&nbsp;<em>pretext</em>&nbsp;for not going to school.
+correlation	（〜との）相関、関係 (connection)<br>There is a direct&nbsp;<em>correlation</em>&nbsp;between exposure to sun and skin cancer.
+debacle	大失敗、完敗<br>His first performance was a&nbsp;<em>debacle</em>&nbsp;: the audience booed him off the stage.
+deterrent	（〜を）抑止、防止する<br>Is there a credible alternative to the nuclear&nbsp;<em>deterrent</em>?
+hallmark	特徴、特質<br>Clear expression is the&nbsp;<em>hallmark</em>&nbsp;of good writing.
+whim	気まぐれ、思いつき<br>&nbsp;How can I hide away, the&nbsp;<em>whim</em>&nbsp;of fate.
+inmate	（刑務所などの）収容者<br>He was attacked by a fellow&nbsp;<em>inmate</em>.
+effigy	（ひどい）肖像、偶像<br><div>Effigy&nbsp;of the Seven-headed Cobra in a Hindu temple.</div>
+compliance	(~に)従うこと<br>Compliance&nbsp;with the law is expected.
+integrity	誠実さ、正直さ<br>He is a man of the highest&nbsp;<em>integrity</em>.
+entity	存在、物<br>The mind exists as a separate&nbsp;<em>entity</em>&nbsp;.
+ally	同盟国、味方<br>Portugal is a traditional&nbsp;<em>ally</em>&nbsp;of England.
+consignment	販売品、（商品の）配達<br>The first&nbsp;<em>consignment</em>&nbsp;of food has already left Japan.
+coalition	連立、連合<br>The several parties formed a&nbsp;<i>coalition</i>.
+elimination	除去<br><div>&nbsp;I solved the problem by a process of&nbsp;<em>elimination</em>.</div>
+mentor	助言者、良き指導者<br>he was a friend and&nbsp;<em>mentor</em>&nbsp;to many young actors.
+transfusion	輸血<br><div>A blood&nbsp;<em>transfusion</em>&nbsp;saved his life.</div><br>
+<div>entrepreneur</div>	起業家<br><div>The&nbsp;<em>entrepreneur</em>&nbsp;takes business risks in the hope of making a profit.<br></div>
+reprimand	叱責、怒る<br><div>His boss gave him a&nbsp;<em>reprimand</em>&nbsp;for being late.</div><br>
+conflagration	大火災、大火事<br>A tiny spark for a vast&nbsp;<em>conflagration</em>.
+niche	最適の仕事<br>&nbsp;He had found his own little&nbsp;<em>niche</em>&nbsp;in life.
+immunity	（〜の）免除<br>The vaccine provides longer&nbsp;<em>immunity</em>&nbsp;against flu.
+libel	名誉棄損<br>He claimed that he had been misquoted and he threatened to sue the magazine for&nbsp;libel.
+thesis	（学位取得のための）論文<br>Cynthia's still working on her&nbsp;<em>thesis</em>.
+liability	お荷物、厄介者<br>~ に対しての責任<br>&nbsp;After a certain age, a car's just a&nbsp;<em>liability</em>.
+fertility	肥沃さ、繁殖力<br>She is taking drugs to increase her&nbsp;<em>fertility</em>.
+posture	姿勢
+discrepancy	不一致、食い違い<br>&nbsp;The&nbsp;<em>discrepancy</em>&nbsp;in their ages seemed not to matter.
+squabble	くだらない言い争い<br>Mother is devoted to Dad although they&nbsp;<em>squabble</em>&nbsp;all the time.
+subordinate	部下<br>He had an essentially&nbsp;<em>subordinate</em>&nbsp;role.
+manipulate	操る、操作する<br>She uses her charm to&nbsp;<em>manipulate</em>&nbsp;people.
+diminish	減少する<br>Don't let him&nbsp;<em>diminish</em>&nbsp;your achievements.
+languish	低迷する、惨めに暮らす<br>She continues to&nbsp;<em>languish</em>&nbsp;in a foreign prison.
+trigger	&nbsp;~を引き起こす、引き金<br>He kept his finger on the&nbsp;<em>trigger</em>.<br>A wide range of emotionally stressful events may&nbsp;<em>trigger</em>&nbsp;a relapse.
+enhance	（価値など）を高める<br>Good lighting will&nbsp;<em>enhance</em>&nbsp;any room.
+alleviate	(苦痛など)を緩和する、軽減<br><div>Nothing could&nbsp;<em>alleviate</em>&nbsp;his distress.</div><br>
+plague	〜を苦しめる、悩ます<br>Please one’s eye and&nbsp;<em>plague</em>&nbsp;one’s heart.&nbsp;
+enforce	(法律など)を守らせる、施行する<br>Governments make laws and the police&nbsp;<em>enforce</em>&nbsp;them.
+disseminate	(情報など)を広める、普及させる<br>Their job was to disseminate propaganda and information.&nbsp;
+alienate	を遠ざける<br><div>The latest tax proposals will&nbsp;<em>alienate</em>&nbsp;many voters.</div><br>
+exploit	開発、活用する<br>We must&nbsp;<em>exploit</em>&nbsp;every opportunity to learn new things.<br>Many countries&nbsp;<em>exploit</em>&nbsp;oil under the sea.
+undergo	(治療など)を受ける、経験する<br>The planes have to&nbsp;<em>undergo</em>&nbsp;rigorous safety checks.
+contaminate	〜を汚染する（pollute）<br>&nbsp;One secret military unit tried to&nbsp;<em>contaminate</em>&nbsp;the drinking water of the refugees.<br>
+wane	（力などが）衰える。<br>When did the empire begin to&nbsp;<em>wane</em>?<br>Their political power is on the&nbsp;<em>wane</em>.
+substantiate	（発言など）を立証する, prove<br>Do you have any proof to&nbsp;<em>substantiate</em>&nbsp;your alibi?
+constitute	〜を構成する、compose<br>Women&nbsp;<em>constitute</em>&nbsp;about 10% of Parliament.
+surmise	推測<br>My&nbsp;<em>surmise</em>&nbsp;turned out to be right.
+circumvent	をすり抜ける<br>We went north in order to&nbsp;<em>circumvent</em>&nbsp;the mountains.
+weather	(困難など)を切り抜ける<br>weather the economic crisis.
+placate	~を宥（なだ）める<br>&nbsp;He smiled, trying to&nbsp;<em>placate</em>&nbsp;me.
+clench	(歯を)食いしばる<br>Patsy had to&nbsp;<em>clench</em>&nbsp;her jaw to suppress her anger.
+exacerbate	〜を悪化させる<br>&nbsp;I don't want to&nbsp;<em>exacerbate</em>&nbsp;the situation.
+undermine	を揺るがす<br>The scandal threatened to&nbsp;<em>undermine</em>&nbsp;the institution of the Presidency.
+ransack	(土地など)を荒らし回る<br>&nbsp;I&nbsp;<em>ransacked</em>&nbsp;the house looking for my purse.
+sway	~に影響を与える、揺れる<br>We are easily swayed by our emotions.
+mandate	〜を義務づける、命令<br>&nbsp;The President was elected with a clear&nbsp;<em>mandate</em>&nbsp;to tackle violent crime.
+epitomize	~の典型である（表している、模範、代表）<br>&nbsp;These movies seem to&nbsp;<em>epitomize</em>&nbsp;the 1950s.
+recoup	(損失など)を取り戻す、recover<br>It took the firm five years to&nbsp;<em>recoup</em>&nbsp;its losses.
+eradicate	~を〜から根絶する、wipe out<br>We can&nbsp;<em>eradicate</em>&nbsp;this disease from the world.
+plummet	（株価などが）暴落、急落する<br>Temperatures&nbsp;<em>plummet</em>&nbsp;to minus sixty degrees
+augment	~を増やす、増加<br>While searching for a way to&nbsp;<em>augment</em>&nbsp;the family income, she began making dolls.
+meekly	大人しく、順従に<br>He&nbsp;<em>meekly</em>&nbsp;did everything he was told to.
+curtly	素っ気なく<br>&nbsp;He nodded&nbsp;<em>curtly</em>&nbsp;and walked away.
+irreparably	修復、回復できないほど<br>The ship has been&nbsp;<em>irreparably</em>&nbsp;damaged
+excruciatingly	（痛みなど）耐えられないほど<br>&nbsp;His poetry is&nbsp;<em>excruciatingly</em>&nbsp;bad.
+aesthetically	美的に、artistically<br>They also tend to be&nbsp;<em>aesthetically</em>&nbsp;unsuited to many older-style properties.
+flamboyantly	華やかに、華麗に<br>She dressed&nbsp;<em>flamboyantly</em>&nbsp;so that everyone would remember her.
+retroactively	過去に遡って<br>The ruling should be applied&nbsp;<em>retroactively</em>.
+invariably	いつも、常に<br>Power&nbsp;<em>invariably</em>&nbsp;means both responsibility and danger.
+inadvertently	不注意にも、うっかりして<br>Viruses can be spread&nbsp;<em>inadvertently</em>&nbsp;by email users.
+overly	あまりにも、過度に<br>Your views on economics are&nbsp;<em>overly</em>&nbsp;simplistic.
+marginally	わずかに、ほんの少し<br>Sales last year were&nbsp;<em>marginally</em>&nbsp;higher than in 1991.
+blatantly	露骨に<br>&nbsp;It became&nbsp;<em>blatantly</em>&nbsp;obvious to me that the band wasn't going to last.
+intermittently	断続的に<br>The talks went on&nbsp;<em>intermittently</em>&nbsp;for three years.
+benevolently	寛大に、優しく<br>She smiled&nbsp;<em>benevolently</em>&nbsp;at me.
+surreptitiously	こっそりと<br>Joe&nbsp;<em>surreptitiously</em>&nbsp;had a look in the answer book.
+advocate	〜を支持する<br>I don't&nbsp;<em>advocate</em>&nbsp;doing such things.
+procure	を入手する<br>&nbsp;She's managed somehow to&nbsp;<em>procure</em>&nbsp;his telephone number.
+vindicate	正しさを証明する<br>&nbsp;The witness completely&nbsp;<em>vindicated</em>&nbsp;him.
+muster	奮い起こす<br>&nbsp;He nourished me to&nbsp;<em>muster</em>&nbsp;my courage.
+repulse	嫌悪感を抱かせる<br>&nbsp;Why do you&nbsp;<em>repulse</em>&nbsp;me?
+replicate	再現する,reproduce<br>&nbsp;If the virus cannot&nbsp;<em>replicate</em>&nbsp;itself, it cannot cause illness.
+extol	称賛する、絶賛<br>He was&nbsp;<em>extolling</em>&nbsp;the virtues of the Internet.
+liquidate	清算する（関係を整理する）<br>It is possible to&nbsp;<em>liquidate</em>&nbsp;their doubts.
+elude	逃れる、避ける<br>&nbsp;The gold medal continues to&nbsp;<em>elude</em>&nbsp;her.
+demean	品位を傷つける<br>&nbsp;Don't&nbsp;<em>demean</em>&nbsp;yourself by telling such obvious lies.
+ostracize	のけものにする<br>&nbsp;He was&nbsp;<em>ostracized</em>&nbsp;by his colleagues for refusing to support the strike.
+frisk	ボディーチェックする<br>Everyone was&nbsp;<em>frisked</em>&nbsp;before getting on the plane.
+curtail	削減する、縮小<br>The new law will&nbsp;<em>curtail</em>&nbsp;police powers.
+replenish	補充する<br><div>&nbsp;Let me&nbsp;<em>replenish</em>&nbsp;your glass with some more wine.</div><br>
+soar	急上昇する<br>Air pollution will soon&nbsp;<em>soar</em>&nbsp;above safety levels.
+stifle	妨げる、やめさせる<br>She managed to&nbsp;<em>stifle</em>&nbsp;a yawn.
+invoke	発動する、呼び覚ます<br>Their sacred dance is performed to&nbsp;<em>invoke</em>&nbsp;ancient gods.
+fluctuate	変動する、change<br>Vegetable prices&nbsp;<em>fluctuate</em>&nbsp;according to the season.
+oppress	迫害する<br>Women are often&nbsp;<em>oppress</em>&nbsp;by men in the past.
+feign	ふりをする<br>Some animals&nbsp;<em>feign</em>&nbsp;death when in danger.
+berate	叱る<br>She&nbsp;<em>berated</em>&nbsp;him in public.
+lambaste	酷評する、非難<br>The professor&nbsp;<em>lambasted</em>&nbsp;me for my careless mistake.
+contend	主張する ,&nbsp; claim<br>The man&nbsp;<em>contend</em>&nbsp;that it was not his fault.
+congregate	集合する<br>Crowds began to&nbsp;<em>congregate</em>&nbsp;to hear the President's speech.
+quell	鎮圧する、鎮める<br>Soldiers were sent in to&nbsp;<em>quell</em>&nbsp;the riots.
+linger	いつまでも残る、残存する<br><div>It's strange how childhood impressions&nbsp;<em>linger</em>.</div><br>
+savor	存分に楽しむ、香り、味<br>You need to&nbsp;<em>savor</em>&nbsp;this wine to get its full flavor.
+hamper	を妨げる、妨害する、買い物かご<br>They tend to&nbsp;<em>hamper</em>&nbsp;every search for factual reality
+denounce	公然と非難する<br><div>the president's political enemies were quick to&nbsp;<em>denounce</em>&nbsp;him.</div><br>
+rebut	反論する<br>We&nbsp;<em>rebut</em>&nbsp;them by asserting that we can.
+wince	顔をしかめる、顔の歪み<br>It makes me&nbsp;<em>wince</em>&nbsp;even thinking about eye operations.
+aggravate	を悪化させる<br>Stress and lack of sleep can&nbsp;<em>aggravate</em>&nbsp;the situation.
+pinpoint	特定する<br>&nbsp;It's difficult to&nbsp;<em>pinpoint</em>&nbsp;the cause of the accident.
+infer	推測する<br>It is difficult to&nbsp;<em>infer</em>&nbsp;anything from such scanty evidence.
+deteriorate	悪化する<br>His health began to&nbsp;<em>deteriorate</em>&nbsp;quite seriously.
+upgrade	改良
+isolate	独立させる<br>Do not&nbsp;<em>isolate</em>&nbsp;yourself from others.
+excavate	発掘する、掘る<br>&nbsp;They plan to&nbsp;<em>excavate</em>&nbsp;a large hole.
+embellish	飾る<br>&nbsp;Just tell the truth and don't&nbsp;<em>embellish</em>&nbsp;the story by any means.
+embody	体現する<br>Words&nbsp;<em>embody</em>&nbsp;thoughts and feelings.
+abate	弱まる<br>The storm began to&nbsp;<em>abate</em>&nbsp;slightly.
+hurtle	突進する<br><div>His motorboat&nbsp;<em>hurtled</em>&nbsp;along the river.</div><br>
+slam	酷評する、パタンと扉を閉める音<br>&nbsp;It's my first Grand&nbsp;<em>Slam</em>&nbsp;and I was hoping to make a good impression.
+sprout	発芽、芽を出す<br><div>&nbsp;I wish I could&nbsp;<em>sprout</em>&nbsp;wings and fly away.</div><div><div><br></div></div>
+unravel	解明する<br><div>Detectives are still trying to&nbsp;<em>unravel</em>&nbsp;the mystery surrounding his death.</div><br>
+scrawl	を走り書きする<br>Don't&nbsp;<em>scrawl</em>&nbsp;all over the wall.
+broach	（話などを）切り出す、持ち出す<br>&nbsp;I wondered how I should&nbsp;<em>broach</em>&nbsp;the subject .
+reinforce	を補充、強化する<br>Such jokes tend to&nbsp;<em>reinforce</em>&nbsp;racial stereotypes.
+heave	持ち上げる、力を入れて引く<br><div>I managed to&nbsp;<em>heave</em>&nbsp;the trunk down the stairs.</div><br>
+tout	もてはやす、褒め上げる<br>売り込む<br><div>&nbsp;Many career experts&nbsp;<em>tout</em>&nbsp;failure as the castor oil of success.</div><br>
+expedite	早める、促進する<br>&nbsp;Something needs to be done to&nbsp;<em>expedite</em>&nbsp;the process.
+thwart	妨害する<br>Harry knew now that nothing could&nbsp;<em>thwart</em>&nbsp;his plans.
+bolster	強化する<br><div>He tried to&nbsp;<em>bolster</em>&nbsp;up their morale.</div><br>
+torment	を苦しめる、苦痛<br>She has suffered great mental&nbsp;<em>torment</em>.
+confiscate	押収する、没収する<br><div>&nbsp;Did the teacher&nbsp;<em>confiscate</em>&nbsp;your toy?</div><br>
+recuperate	回復する<br><div>&nbsp;I went away to the country to&nbsp;<em>recuperate</em>.</div><br>
+evade	逃れる<br>The released criminal always tries to&nbsp;<em>evade</em>&nbsp;the police.
+petrify	を呆然とさせる<br>ひどく怖がらせる<br>I've always been petrified of being alone.
+disperse	散り散りになる<br>Police used tear gas to&nbsp;<em>disperse</em>&nbsp;the crowd.
+garner	得る、獲得する<br>they would have to&nbsp;<em>garner</em>&nbsp;at least 3 percent of the parliamentary vote&nbsp;
+perish	死ぬ<br><div>Flowers&nbsp;<em>perish</em>&nbsp;when frost comes.</div><br>
+wreak	（損害などを）もたらす<br>The new tax could&nbsp;<em>wreak</em>&nbsp;havoc among smaller companies.
+deploy	配置する<br><div>The infantry(歩兵) began to&nbsp;<em>deploy</em>&nbsp;at dawn.</div><br>
+stabilize	安定させる<br>His blood pressure tended to&nbsp;<em>stabilize</em>.
+lament	悲しむ<br>Ken began to&nbsp;<em>lament</em>&nbsp;the death of his only son.
+assail	激しく非難する<br><div>The opposition's newspapers&nbsp;<em>assail</em>&nbsp;the government each day.</div><br>
+confound	混乱させる<br>The choice of Governor may&nbsp;<em>confound</em>&nbsp;us all.
+orchestrate	オーガナイズする、アレンジ<br>It was a supernatural experience, that only God could&nbsp;<em>orchestrate</em>.
+stump	困らせる<br>Your questions do&nbsp;<em>stump</em>&nbsp;me.
+dissipate	消える<br>&nbsp;The police managed to&nbsp;<em>dissipate</em>&nbsp;the mob in minutes.
+contemplate	考える、目論む(もくろむ)<br>&nbsp;Jack went on vacation to&nbsp;<em>contemplate</em>&nbsp;his future.
+subvert	倒す<br>The rebel army is attempting to&nbsp;<em>subvert</em>&nbsp;the government.
+galvanize	活気づける<br>We have to&nbsp;<em>galvanize</em>&nbsp;people into action.
+stipulate	規定する<br>Laws&nbsp;<em>stipulate</em>&nbsp;the maximum interest rate that banks can charge.
+fabricate	でっちあげる<br>
+demoralize	士気を下げる<br><div>&nbsp;The illness&nbsp;<em>demoralized</em>&nbsp;him and recovery took several weeks.</div><br>
+reiterate	〜を繰り返して言う<br>&nbsp;Let me&nbsp;<em>reiterate</em>&nbsp;the most important points.
+proliferate	急増する<br>Computer courses continue to&nbsp;<em>proliferate</em>.
+subsidize	補助金を与える<br>&nbsp;She's not prepared to&nbsp;<em>subsidize</em>&nbsp;his gambling any longer.
+fetter	〜を束縛する, restrics
+undertake	に取り掛かる、引き受ける<br>Students are required to&nbsp;<em>undertake</em>&nbsp;simple experiments.
+mollify	をなだめる、慰める<br>&nbsp;I tried to&nbsp;<em>mollify</em>&nbsp;her by giving her flowers.
+avert	防ぐ、避ける<br><div>He managed to&nbsp;<em>avert</em>&nbsp;the closure of the factory.</div><br>
+rectify	修正、改正<br>You should&nbsp;<em>rectify</em>&nbsp;your error before it is too late.
+appease	なだめる、鎮める<br><div>He tried to&nbsp;<em>appease</em>&nbsp;the crying child by giving him candy.</div><br>
+stem	食い止める、阻止する<br>〜から生じる<br><div>&nbsp;Her problems&nbsp;<em>stem</em>&nbsp;from her difficult childhood.</div><br>
+refute	誤りを証明する<br>We can easily&nbsp;<em>refute</em>&nbsp;his argument.
+propagate	広める、普及させる<br>Most plants&nbsp;<em>propagate</em>&nbsp;by seed.
+flaunt	見せびらかす<br>The banquet gave the chef a chance to&nbsp;<em>flaunt</em>&nbsp;his talents.<br>&nbsp;If you've got it,&nbsp;<em>flaunt</em>&nbsp;it!
+persist	続く、持続する<br>If symptoms&nbsp;<em>persist</em>, consult a doctor without delay.
+repeal	廃止する<br>&nbsp;He plans to&nbsp;<em>repeal</em>&nbsp;a number of current policies.
+adjourn	を延期する<br>Let us&nbsp;<em>adjourn</em>&nbsp;the meeting for lunch.
+elicit	引き出す、聞き出す<br>&nbsp;I could&nbsp;<em>elicit</em>&nbsp;no response from him.
+blur	曖昧にする<br>&nbsp;The houses appeared as a&nbsp;<em>blur</em>&nbsp;in the mist.
+fortify	防備を固める<br><div>Have some hot soup to&nbsp;<em>fortify</em>&nbsp;you against the cold.</div><br>
+tarnish	傷つける<br>The affair could&nbsp;<em>tarnish</em>&nbsp;the reputation of the prime minister.
+deride	あざける、嘲笑う<br>You shouldn't&nbsp;<em>deride</em>&nbsp;their efforts.
+dwindle	次第に減少する、decrease<br>As gym classes&nbsp;<em>dwindle</em>, can kids keep fit?
+suppress	鎮圧する、隠す<br>&nbsp;He couldn't&nbsp;<em>suppress</em>&nbsp;his anger.
+encompass	含む、include<br><div>The course will&nbsp;<em>encompass</em>&nbsp;physics, chemistry and biology.</div>
+waive	放棄する<br>He agreed to&nbsp;<em>waive</em>&nbsp;his usual fee.
+characterize	特徴づける、distinguish<br>&nbsp;Bright colours&nbsp;<em>characterize</em>&nbsp;his paintings.
+recur	再発、繰り返される<br>There is a danger that the disease may&nbsp;<em>recur</em>.
+enact	（法律を）制定する<br><div>The king could not&nbsp;<em>enact</em>&nbsp;laws without the sanction of Parliament.</div>
+maintain	主張する、保つ<br>I hope&nbsp;they maintain their own viewpoint.
+besiege	取り囲む、押し寄せる<br>The superstar was&nbsp;<em>besieged</em>&nbsp;by reporters.
+forge	結ぶ、築く<br>&nbsp;Difficulties help to&nbsp;<em>forge</em>&nbsp;people into able folk.
+baffle	当惑させる、戸惑わせる<br>One of the exam questions&nbsp;<em>baffled</em>&nbsp;me completely.
+belittle	軽視する、みくびる<br>Don't&nbsp;<em>belittle</em>&nbsp;his achievements .
+skyrocket	急上昇する<br>The trade deficit has&nbsp;<em>skyrocketed</em>.
+inhibit	妨げる、抑制する、prevent<br>An unhappy family life may&nbsp;<em>inhibit</em>&nbsp;children's learning.
+detonate	爆発させる<br>A remote control device was used to&nbsp;<em>detonate</em>&nbsp;the bomb.
+dispel	(不安などを)一掃する<br>The police moved quickly to&nbsp;<em>dispel</em>&nbsp;the rumours.
+incur	を負う、招く<br>All cancellations&nbsp;<em>incur</em>&nbsp;a charge.
+shackle	束縛する<br>He's too young to&nbsp;<em>shackle</em>&nbsp;himself with the responsibilities of a family.
+submerge	沈める<br>&nbsp;The submarine can&nbsp;<em>submerge</em>&nbsp;very quickly.
+embrace	受け入れる、採用する<br>抱きしめる<br>Many people are unwilling to&nbsp;<em>embrace</em>&nbsp;new technologies.
+crunch	計算処理する<br>&nbsp;If it comes to the&nbsp;<em>crunch</em>&nbsp;they'll support us.
+dub	あだ名をつける<br>（他の言語に）吹き替える<br>&nbsp;May I&nbsp;<em>dub</em>&nbsp;for the puppet in my voice?
+concede	認める、concession<br><div>I had to&nbsp;<em>concede</em>&nbsp;the logic of this.</div><br>
+revoke	無効にする、取り消す<br>The university may&nbsp;<em>revoke</em>&nbsp;my diploma.
+appall	ぞっとさせる、がくぜんとする<br>The idiocy of his behaviour&nbsp;<em>appalled</em>&nbsp;her.<br>&nbsp;I was&nbsp;<em>appalled</em>&nbsp;by what I saw.
+inaugurate	就任式を行う<br>正式に開始する<br>&nbsp;People hoped that the new government would&nbsp;<em>inaugurate</em>&nbsp;a period of change.
+rebuff	拒絶する<br>Did your girl friend give a&nbsp;<em>rebuff</em>&nbsp;to you?
+instigate	開始する<br><div>&nbsp;It would not prove worthwhile to&nbsp;<em>instigate</em>&nbsp;a nuclear attack.</div><br>
+wrench	もぎ取る<br>捻挫<br>&nbsp;He felt two men&nbsp;<em>wrench</em>&nbsp;the suitcase from his hand.
+retard	遅らせる、妨害する<br>Continuing violence will&nbsp;<em>retard</em>&nbsp;negotiations over the country's future.
+lucrative	儲かる、金になる<br>She has a&nbsp;<em>lucrative</em>&nbsp;deal with a cosmetics company.
+indigenous	原産の<br>Blueberries are&nbsp;<em>indigenous</em>&nbsp;to America.
+impeccable	申し分のない、非の打ち所がない<br>She had&nbsp;<em>impeccable</em>&nbsp;taste in clothes.
+contentious	異議のある<br><div>&nbsp;Both views are highly&nbsp;<em>contentious</em>.</div><br>
+futile	無駄な、役に立たない<br>&nbsp;It would be&nbsp;<em>futile</em>&nbsp;to protest.
+extinct	絶滅した<br><div>Dinosaurs have been&nbsp;<em>extinct</em>&nbsp;for millions of years.</div><br>
+inherent	固有の、本来の、本来携わっているもの<br><div>&nbsp;Stress is an&nbsp;<em>inherent</em>&nbsp;part of dieting.</div><br>
+aloof	よそよそしい、打ち解けない<br>She seemed rather&nbsp;<em>aloof</em>&nbsp;when in fact she was just shy.
+reclusive	世を捨てた<br>&nbsp;She is living a&nbsp;<em>reclusive</em>&nbsp;life in Los Angeles&nbsp;
+adroit	上手な、巧みな<br><div>She became&nbsp;<em>adroit</em>&nbsp;at dealing with difficult questions.</div><br>
+banal	平凡な<br>It was just another&nbsp;<em>banal</em>&nbsp;newspaper story.
+ostensible	表向きの、うわべの<br>Their&nbsp;<em>ostensible</em>&nbsp;goal was to clean up government corruption, but their real aim was to unseat the government.
+clandestine	秘密の<br>The group held weekly&nbsp;<em>clandestine</em>&nbsp;meetings in a church.
+counterfeit	フェイクの<br>&nbsp;It is a crime to&nbsp;<em>counterfeit</em>&nbsp;money.
+anonymous	名前を隠した、名前のない<br>&nbsp;You can remain&nbsp;<em>anonymous</em>&nbsp;if you wish.
+benign	良性の、優しい<br><div>They enjoyed an especially&nbsp;<em>benign</em>&nbsp;climate.</div><br>
+impending	差し迫った、今にも起こりそうな<br><div>It seemed that nothing could prevent the&nbsp;<em>impending</em>&nbsp;disaster.</div><br>
+rife	（悪いことなどが）広がる<br>Corruption was&nbsp;<em>rife</em>&nbsp;before the election.
+pristine	新品同様の、汚れのない<br>We've just moved into our&nbsp;<em>pristine</em>&nbsp;new offices.
+gregarious	社交的な、社交好きな<br>&nbsp;She is such a&nbsp;<em>gregarious</em>&nbsp;and outgoing person.
+palatable	美味しい, tasty<br>&nbsp;The meal was&nbsp;<em>palatable</em>.
+qualified	資格を有する<br><div>He&nbsp;<em>qualified</em>&nbsp;as a doctor last year.</div><br>
+archaic	古い、古代の<br>The system is&nbsp;<em>archaic</em>&nbsp;and unfair and needs changing.
+meager	わずかな<br>His&nbsp;<em>meager</em>&nbsp;wage is not enough to support their five children.
+sedentary	座りっぱなしの<br>People in&nbsp;<em>sedentary</em>&nbsp;jobs need to take exercise.
+uncouth	無礼、ガサツ<br>She may embarrass you with her&nbsp;<em>uncouth</em>&nbsp;behavior.
+exquisite	極めて美しい<br><div>The Indians brought in&nbsp;<em>exquisite</em>&nbsp;beadwork to sell.</div><br>
+rigorous	厳しい、厳格な<br>The planes have to undergo&nbsp;<em>rigorous</em>&nbsp;safety checks.
+imperative	絶対に必要な<br>&nbsp;In business, a prompt reply is&nbsp;<em>imperative</em>.
+viable	実現可能な<br>&nbsp;The factory is no longer economically&nbsp;<em>viable</em>.
+emaciated	痩せ衰えた、やつれた<br><div>The prisoners were ill and&nbsp;<em>emaciated</em>.</div><br>
+transient	短期の<br>&nbsp;Their happiness was to be sadly&nbsp;<em>transient</em>.
+spurious	デタラメな<br>He was arrested in 1979 on&nbsp;<em>spurious</em>&nbsp;corruption charges.
+frenetic	慌ただしい、熱狂的な<br>After weeks of&nbsp;<em>frenetic</em>&nbsp;activity, the job was finally finished.
+insatiable	greedy<br>Most children have an&nbsp;<em>insatiable</em>&nbsp;desire for knowledge.
+inept	下手、不器用<br>He was always rather&nbsp;<em>inept</em>&nbsp;at sport.
+pharmaceutical	製薬の<br>She's a research biologist for a&nbsp;<em>pharmaceutical</em>&nbsp;company.
+volatile	不安定な<br>Prices were&nbsp;<em>volatile.</em>
+implicit	暗黙の、それとなく<br>They had&nbsp;<em>implicit</em>&nbsp;faith in his powers.
+mock	模擬の、見せかけの、偽の<br>It is wrong to&nbsp;<em>mock</em>&nbsp;cripples（身体障害者）
+sporadic	散発的な、時折の、occasional<br><div>Her attendance at school was&nbsp;<em>sporadic</em>.</div><br>
+prolific	多作の、多産の<br><div>She is a&nbsp;<em>prolific</em>&nbsp;writer of novels and short stories.</div><br>
+tangible	明白な、触れられる<br>&nbsp;The policy has not yet brought any&nbsp;<em>tangible</em>&nbsp;benefits.
+immune	免疫の、影響を受けない<br>&nbsp;The vaccination doesn't necessarily make you completely&nbsp;<em>immune</em>.
+lurid	ショッキングな<br>The papers gave the&nbsp;<em>lurid</em>&nbsp;details of the murder.
+arbitrary	独断的な、根拠のない<br>&nbsp;My choice is always&nbsp;<em>arbitrary</em>.
+roundabout	遠回り<br><div>We drove home by a&nbsp;<em>roundabout</em>&nbsp;route.</div><br>
+drab	退屈な、（色などが）くすんだ<br>&nbsp;The walls were painted a&nbsp;<em>drab</em>&nbsp;green.
+covert	秘密の、密かな<br>This whole business of&nbsp;<em>covert</em>&nbsp;action.
+ubiquitious	どこにでもある<br>Sugar is&nbsp;<em>ubiquitous</em>&nbsp;in the diet.
+hereditary	遺伝の、genetic<br>&nbsp;Depression is often&nbsp;<em>hereditary</em>.
+valiant	勇敢な<br>&nbsp;She made a&nbsp;<em>valiant</em>&nbsp;attempt to laugh.
+disgruntled	不満を抱いた<br><div>The late dinner&nbsp;<em>disgruntled</em>&nbsp;my father.</div><br>
+shrewd	抜け目のない<br>Malcolm is a&nbsp;<em>shrewd</em>&nbsp;and realistic businessman.
+incessant	絶え間のない<br>We have had&nbsp;<em>incessant</em>&nbsp;snowfall since yesterday afternoon.
+avid	熱心<br>He took an&nbsp;<em>avid</em>&nbsp;interest in the project.

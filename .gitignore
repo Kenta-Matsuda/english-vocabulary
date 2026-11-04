@@ -1,0 +1,7 @@
+# huge raw dumps (re-downloadable, see README)
+data/raw/_big/
+node_modules/
+web/dist/
+__pycache__/
+*.pyc
+.DS_Store
