@@ -20,7 +20,7 @@ web/                   サイト本体（Vite + Preact + TypeScript）
 ## データの作り方（1回だけ実行済み。作り直すときのみ）
 
 ```sh
-python -m pip install wordfreq orjson
+python -m pip install wordfreq orjson xlrd
 python scripts/build_dataset.py candidates      # 候補語リスト -> data/interim/candidates.txt
 # Wiktionaryダンプを data/raw/_big/kaikki-English.jsonl に置く
 #   https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl
@@ -31,11 +31,22 @@ python scripts/build_dataset.py build           # -> web/public/data/words.json,
 `wiktionary_subset.jsonl.gz` はコミット済みなので、3.2GBのダンプがなくても `build` は再実行できる。
 
 ### 収録語の決め方
-- 英検・TOEIC・TOEFL・CEFRのリストに載っている**単語（1語）だけ**を収録する。熟語は見出しにせず、各単語のコロケーション・例文として示す。
-- CEFR: A1〜B2はCEFR-J、C1〜C2はOctanove。品詞ごとにレベルが違う場合は**低いほう**を採用。
-- 英検: 2級・準1級・1級。複数の級に載っている語は**低い級**に揃える。
+- **CEFRレベルが付いた語彙リスト**に載っている**単語（1語）だけ**を収録する。英検・TOEIC・TOEFLの区分は使わない。熟語は見出しにせず、各単語のコロケーション・例文として示す。
+- レベルは次の順で、**最初に載っているリストのレベル**を採用する（同じリスト内で品詞ごとにレベルが違う場合は低いほう）。
+
+  | 優先 | リスト | レベル | 性質 | 採用語数 |
+  |---|---|---|---|---|
+  | 1 | CEFR-J Wordlist 1.5 | A1〜B2 | 研究者が作成・検証した語彙表 | 6,773 |
+  | 2 | Octanove Vocabulary Profile | C1〜C2 | CEFR-Jの上位レベル拡張 | 1,721 |
+  | 3 | Oxford 5000 | A1〜C1 | OUPがコーパスと専門家の判断で作成 | 554 |
+  | 4 | EFLLex（CEFRLex） | A1〜C1 | CEFR準拠の教科書・リーダーでの出現から算出（初出レベル） | 2,060 |
+  | 5 | Kelly list | A1〜C2 | EUの研究プロジェクト。コーパス頻度帯をCEFRに対応づけたもの | 399 |
+
+  - 4・5はレベルが頻度から機械的に決まっているため、追加するのは「WordNetに載っている一般語」かつ「固有名詞・活用形・数詞・略語でない」かつ「Zipf 2.5以上」の語だけ。
+  - 参考: 共通する語でCEFR-Jとレベルが一致する割合は Oxford 44%（±1以内 87%）、EFLLex 40%（同 82%）、Kelly 29%（同 64%）。リスト間でもこの程度は揺れる。
+  - サイトでは出題範囲を「Source」で絞れる（例: CEFR-J + Octanove + Oxford だけにする）。単語ページには各リストでのレベルを表示する。
+- 語義が1つも取れなかった語（51語）は出題できないので収録しない。
 - イギリス式とアメリカ式の綴り（colour/color, analyse/analyze など）は、頻度が高いほうの見出しに統合する。
-- TOEIC頻出 = TOEIC 600 ∪ TSL。TOEFL頻出 = TOEFL 1000 ∪ NAWL ∪ AWL。
 
 ### 内容の採用元（信頼度の高い順）
 | 項目 | 採用元 |
@@ -48,15 +59,16 @@ python scripts/build_dataset.py build           # -> web/public/data/words.json,
 | 頻度 | wordfreq（Zipf値） |
 
 - 語義・例文・コロケーションに出てくる見出し語（活用形や、語義中の派生語も含む）は `[[...]]` で印を付けてあり、問題では空欄にして表示する。
-- TOEFL 1000 / TOEIC 600 のデータセットは品質が保証されていないため、**どのリストに載っているかの判定だけ**に使い、語義・例文には使っていない。
-- 英検のAnkiデッキも**見出し語だけ**を使う（訳語・例文は使わない）。`英検1級パス単 AI例文.txt` は見出し語の欄がないため使っていない。
+- Oxford 5000 のファイルにはOUPの語義・例文も入っているが、使うのは**見出し語・品詞・レベルだけ**。
+- NGSL系リスト（NGSL/NAWL/TSL/BSL）は活用形の取得（空欄にする語形の判定）にだけ使う。
+- `data/raw/` の英検・TOEIC・TOEFL・AWLのファイルは、現在はデータ作成に使っていない。
 
 ### 収録数（作成時点）
-11,612語（語義あり: 11,545 / 例文あり: 8,485 / コロケーションあり: 6,992 / 発音記号あり: 11,365）
-CEFR A1 1,066・A2 1,216・B1 2,102・B2 2,416・C1 893・C2 846 / 英検2級 1,939・準1級 2,868・1級 951 / TOEIC 1,670 / TOEFL 2,119
+11,507語。すべてにCEFRレベルと語義がある（例文あり: 8,238 / コロケーションあり: 6,923 / 発音記号あり: 11,177）
+A1 1,167・A2 1,476・B1 2,435・B2 3,162・C1 2,109・C2 1,158
 
 ## サイトの機能
-- **サイクル**: 出題範囲（CEFR / 英検 / TOEIC / TOEFL の組み合わせ）と語数を決めて、テスト範囲を固定する。サイクル内のテストはすべて同じ語を、毎回ランダムな順番で出題する。
+- **サイクル**: 出題範囲（CEFRレベル。必要ならレベルの出典リストでも絞れる）と語数を決めて、テスト範囲を固定する。サイクル内のテストはすべて同じ語を、毎回ランダムな順番で出題する。
   - 次のサイクルを作るときは、前のサイクルで間違えた語を**必ず繰り越す**（「どれかのテストで間違えた語」か「最後のテストで間違えた語」かを設定で選べる）。
   - 残りの枠は「復習（過去に出題した語）」と「新しい語」を、設定した割合でランダムに選ぶ。
 - **印刷（PDF）**: ブラウザの印刷から「PDFに保存」で保存できる（A4、ページ番号つき）。
@@ -93,19 +105,19 @@ npm run build
 | Wiktionary（kaikki.org経由） | data/interim/wiktionary_subset.jsonl.gz | CC BY-SA 4.0 |
 | CEFR-J Wordlist 1.5（Maximax67/Words-CEFR-Dataset 経由） | data/raw/cefr/word_list_cefr.csv | CEFR-J利用規約（出典の明記が必要） |
 | Octanove Vocabulary Profile C1/C2 | data/raw/cefr/octanove-*.csv | CC BY-SA 4.0 |
-| NGSL / NAWL / TSL / BSL（Browne, Culligan & Phillips） | data/raw/ngsl | CC BY-SA 4.0 |
-| Academic Word List（Coxhead 2000） | data/raw/awl | 学術用リスト（見出し語のみ） |
+| Oxford 5000（winterdl/oxford-5000-vocabulary-audio-definition 経由） | data/raw/cefr/oxford | © Oxford University Press。レベルのみ使用・個人利用 |
+| EFLLex（Dürlich & François 2018, CEFRLex / UCLouvain） | data/raw/cefr/efllex | CC BY-NC-SA 4.0 |
+| Kelly list English（Kilgarriff et al. 2014、antdurrant/word.lists 経由） | data/raw/cefr/kelly | CC BY-NC-SA 2.0 |
+| NGSL / NAWL / TSL / BSL（Browne, Culligan & Phillips） | data/raw/ngsl | CC BY-SA 4.0（活用形のみ使用） |
 | ipa-dict en_US | data/raw/ipa | MIT |
 | wordfreq | （ビルド時に利用） | Apache-2.0 / データは CC BY-SA 4.0 |
-| TOEFL Essential Vocabulary | data/raw/toefl | リスト判定のみに使用 |
-| TOEIC 600 Words | data/raw/toeic | リスト判定のみに使用 |
-| 英検（個人のAnkiデッキ） | data/raw/eiken | 見出し語のみ使用・個人利用 |
+| 英検・TOEIC・TOEFL・AWL | data/raw/eiken, toeic, toefl, awl | 現在は未使用 |
 
 ---
 
 ## 当初のメモ
 
-- 作りたいデータの形: | 英単語 | CEFR | 英検区分 | TOEIC頻出 | TOEFL頻出 | 語義１（英文） | 類語１ | 語義２（英文） | 類語２ | ... | 用例 | → `data/dist/vocabulary.csv` として出力済み
+- 作りたいデータの形: | 英単語 | CEFR | 英検区分 | TOEIC頻出 | TOEFL頻出 | 語義１（英文）（のちにCEFRだけに変更） | 類語１ | 語義２（英文） | 類語２ | ... | 用例 | → `data/dist/vocabulary.csv` として出力済み
 - テスト: 特定のCEFRや英検級などに該当する単語をランダムにN個選び、英文の語義と類語の情報から英単語を当てる
 - 問題と解答（用例があれば載せる）をPDFで印刷できるようにする。学習履歴はブラウザに保存する
 - 音声: GeminiのAPIキーで発音を聞けるようにする（BYOK）

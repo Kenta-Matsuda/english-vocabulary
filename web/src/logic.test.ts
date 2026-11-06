@@ -4,7 +4,7 @@ import type { AppState, Cycle, Word } from "./types";
 import { DEFAULT_FILTER, DEFAULT_SETTINGS } from "./types";
 
 const word = (id: string, extra: Partial<Word> = {}): Word => ({
-  id, w: id, pos: ["n"], cefr: "B1", eiken: null, toeic: false, toefl: false, lists: [], zipf: 4,
+  id, w: id, pos: ["n"], cefr: "B1", src: "cefrj", levels: { cefrj: "B1" }, zipf: 4,
   ipa: {}, senses: [{ p: "n", d: "def", s: [] }], ex: [], col: [], ...extra,
 });
 
@@ -40,11 +40,17 @@ describe("grading", () => {
 });
 
 describe("filter", () => {
-  it("any vs all", () => {
-    const w = word("x", { cefr: "C1", toefl: true });
-    expect(matchesFilter(w, { ...DEFAULT_FILTER, cefr: ["C1"], toeic: true, mode: "any" })).toBe(true);
-    expect(matchesFilter(w, { ...DEFAULT_FILTER, cefr: ["C1"], toeic: true, mode: "all" })).toBe(false);
-    expect(matchesFilter(w, { ...DEFAULT_FILTER, cefr: ["C1"], toefl: true, mode: "all" })).toBe(true);
+  it("cefr levels and level sources", () => {
+    const w = word("x", { cefr: "C1", src: "oxford" });
+    expect(matchesFilter(w, DEFAULT_FILTER)).toBe(true);
+    expect(matchesFilter(w, { ...DEFAULT_FILTER, cefr: ["B2", "C1"] })).toBe(true);
+    expect(matchesFilter(w, { ...DEFAULT_FILTER, cefr: ["B2"] })).toBe(false);
+    expect(matchesFilter(w, { ...DEFAULT_FILTER, sources: ["cefrj", "oxford"] })).toBe(true);
+    expect(matchesFilter(w, { ...DEFAULT_FILTER, sources: ["cefrj"] })).toBe(false);
+  });
+  it("ignores fields from filters saved by older versions", () => {
+    const old = { cefr: ["C1"], eiken: ["pre1"], toeic: true, mode: "all" } as unknown as typeof DEFAULT_FILTER;
+    expect(matchesFilter(word("x", { cefr: "C1" }), old)).toBe(true);
   });
 });
 

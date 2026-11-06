@@ -1,6 +1,7 @@
 """Readers for the raw word-list sources in data/raw/.
 
-Each reader returns an iterable of headwords (plus metadata where relevant).
+CEFR readers yield (headword, pos, level). NGSL-family lists are used only for
+inflected forms (masking), not as word sources.
 Only English headwords are extracted; translations (Japanese, Vietnamese...)
 are deliberately ignored.
 """
@@ -16,7 +17,6 @@ RAW = Path(__file__).resolve().parent.parent / "data" / "raw"
 csv.field_size_limit(10**9)
 
 CEFR_ORDER = ["A1", "A2", "B1", "B2", "C1", "C2"]
-EIKEN_ORDER = ["2", "pre1", "1"]  # lower grade first
 
 _TAG = re.compile(r"<[^>]+>")
 _SOUND = re.compile(r"\[sound:[^\]]*\]")
@@ -53,18 +53,53 @@ def read_cefr():
             yield row["headword"], row["pos"], row["CEFR"].strip()
 
 
-# ---------------------------------------------------------------- TOEFL / TOEIC
-
-def read_toefl1000():
-    with open(RAW / "toefl" / "toefl_essential_vocabulary.csv", encoding="utf-8-sig") as f:
+def read_oxford5000():
+    """Yield (word, pos, level) from the Oxford 5000 (A1-C1). Only the word, pos and level are used;
+    the OUP definitions/examples in the same file are ignored."""
+    with open(RAW / "cefr" / "oxford" / "oxford_5000.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            yield row["word"]
+            lvl = row["cefr"].strip().upper()
+            if lvl in CEFR_ORDER:
+                yield row["word"], row["type"], lvl
 
 
-def read_toeic600():
-    with open(RAW / "toeic" / "toeic_600_words.csv", encoding="utf-8-sig") as f:
-        for row in csv.DictReader(f):
-            yield row["english"]
+EFLLEX_LEVELS = ["A1", "A2", "B1", "B2", "C1"]
+EFLLEX_MIN_DOCS = 1
+_PTB = {"NN": "noun", "VB": "verb", "JJ": "adjective", "RB": "adverb", "IN": "preposition",
+        "CC": "conjunction", "DT": "determiner", "PRP": "pronoun", "UH": "interjection", "CD": "number"}
+
+
+def read_efllex():
+    """Yield (word, pos, level) from EFLLex (Duerlich & Francois 2018).
+
+    EFLLex gives, for every lemma, the number of CEFR-graded textbooks/readers at each level
+    (A1..C1) it occurs in. Level = the first level at which it has occurred in at least
+    EFLLEX_MIN_DOCS documents (cumulatively). With 1 (first occurrence, the usual CEFRLex
+    baseline) agreement with CEFR-J on shared words is the same as with 2 (40% exact,
+    82% within one level; Oxford 5000 vs CEFR-J: 44% / 87%), so the larger coverage is kept."""
+    with open(RAW / "cefr" / "efllex" / "EFLLex.tsv", encoding="utf-8") as f:
+        rows = csv.reader(f, delimiter="	")
+        head = next(rows)
+        doc_cols = [head.index(f"nb_doc@{l.lower()}") for l in EFLLEX_LEVELS]
+        for r in rows:
+            seen = 0.0
+            for lvl, c in zip(EFLLEX_LEVELS, doc_cols):
+                seen += float(r[c])
+                if seen >= EFLLEX_MIN_DOCS:
+                    yield r[0], _PTB.get(r[1], ""), lvl
+                    break
+
+
+def read_kelly():
+    """Yield (word, pos, level) from the English Kelly list (Kilgarriff et al. 2014), A1-C2."""
+    import xlrd  # only needed here
+
+    sh = xlrd.open_workbook(str(RAW / "cefr" / "kelly" / "en_m3.xls")).sheet_by_index(0)
+    for i in range(1, sh.nrows):
+        _id, word, pos, lvl = sh.row_values(i)[:4]
+        lvl = str(lvl).strip("“”\" ")
+        if lvl in CEFR_ORDER:
+            yield str(word), str(pos).lower(), lvl
 
 
 def _read_lines(path: Path) -> list[str]:
@@ -74,15 +109,6 @@ def _read_lines(path: Path) -> list[str]:
     except UnicodeDecodeError:
         text = raw.decode("cp1252")
     return text.splitlines()
-
-
-def _ngsl_teaching(name: str):
-    if True:
-        for line in _read_lines(RAW / "ngsl" / name):
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            yield line.split(",")[0]
 
 
 def read_ngsl_forms():
@@ -96,71 +122,3 @@ def read_ngsl_forms():
                     continue
                 parts = [p.strip() for p in line.split(",") if p.strip()]
                 yield parts[0], parts[1:]
-
-
-def read_tsl():
-    return _ngsl_teaching("TSL_12_lemmatized_for_teaching.csv")
-
-
-def read_bsl():
-    return _ngsl_teaching("BSL_120_lemmatized_for_teaching.csv")
-
-
-def read_nawl():
-    return _ngsl_teaching("NAWL_12_lemmatized_for_teaching.csv")
-
-
-def read_ngsl():
-    return _ngsl_teaching("NGSL_12_lemmatized_for_teaching.csv")
-
-
-def read_awl():
-    with open(RAW / "awl" / "awl_headwords.tsv", encoding="utf-8") as f:
-        next(f)
-        for line in f:
-            yield line.split("\t")[0]
-
-
-# ---------------------------------------------------------------- Eiken (Anki exports)
-
-def _anki_rows(path: Path):
-    lines = [l for l in open(path, encoding="utf-8") if not l.startswith("#")]
-    return list(csv.reader(lines, delimiter="\t"))
-
-
-def _first_field(path: Path):
-    for r in _anki_rows(path):
-        if r:
-            yield r[0]
-
-
-def _regex_field(path: Path, pattern: str, col: int = 0):
-    rx = re.compile(pattern, re.S | re.I)
-    for r in _anki_rows(path):
-        if len(r) > col:
-            m = rx.search(r[col])
-            if m:
-                yield m.group(1)
-
-
-def read_eiken():
-    """Yield (headword, grade). grade in {"1","pre1","2"}.
-
-    Note: "英検1級パス単 AI例文.txt" contains only sentences (no headword field),
-    so it cannot be used as a word source and is skipped.
-    """
-    e = RAW / "eiken"
-    sources = [
-        ("1", e / "1" / "Eiken Core Vocabulary.txt", None),
-        ("1", e / "1" / "英検1級_単語.txt", None),
-        ("pre1", e / "semi-1" / "英検準1級.txt", None),
-        ("pre1", e / "semi-1" / "でる順パス単.txt", r'<P class="word">(.*?)</P>'),
-        ("pre1", e / "semi-1" / "英検準1級出る度A.txt", r"<h3>(.*?)<br"),
-        ("2", e / "2" / "Eiken 2.txt", None),
-        ("2", e / "2" / "4000 Essential English Words.txt",
-         r"font-size: 70px;color:#FF80DD;'>(.*?)</div>"),
-    ]
-    for grade, path, rx in sources:
-        it = _first_field(path) if rx is None else _regex_field(path, rx)
-        for w in it:
-            yield w, grade, path.name

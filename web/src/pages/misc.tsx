@@ -3,7 +3,7 @@ import { alertless, Entry, FilterEditor, Page, Stat, Tags } from "../components"
 import { completedAttempts, cycleSummary, describeFilter, filterWords, fmtDate, wordStats } from "../logic";
 import { exportJson, importJson, loadDataset, update, useAppState, wordById, words } from "../store";
 import type { Settings, WordFilter } from "../types";
-import { DEFAULT_FILTER } from "../types";
+import { DEFAULT_FILTER, LEVEL_SOURCES, SOURCE_LABEL } from "../types";
 
 export function HomePage() {
   const state = useAppState();
@@ -37,7 +37,7 @@ export function HomePage() {
           ) : (
             <>
               <h3>Start your first cycle</h3>
-              <p class="small muted grow">Pick a range (CEFR, Eiken, TOEIC, TOEFL) and a number of words.</p>
+              <p class="small muted grow">Pick CEFR levels and a number of words.</p>
               <div><a class="btn primary" href="#/cycles/new">Create a cycle</a></div>
             </>
           )}
@@ -107,7 +107,8 @@ export function WordPage({ id }: { id: string }) {
     <Page eyebrow="Word" title={w.w} narrow>
       <Entry w={w} />
       <p class="small muted">
-        Lists: {w.lists.join(", ")} · frequency (Zipf) {w.zipf}
+        CEFR {w.cefr} from {SOURCE_LABEL[w.src]} · listed in{" "}
+        {LEVEL_SOURCES.filter((s) => w.levels[s]).map((s) => `${SOURCE_LABEL[s]} ${w.levels[s]}`).join(", ")} · frequency (Zipf) {w.zipf}
         {st && ` · tested ${st.tested}×, correct ${st.correct}×`}
       </p>
     </Page>
@@ -270,7 +271,6 @@ export function SettingsPage() {
           <ul>{Object.entries(meta.sources).map(([k, v]) => <li key={k}><b>{k}</b>: {v}</li>)}</ul>
         </div>
       )}
-      <p class="small muted">Current filter syntax example: {describeFilter({ ...DEFAULT_FILTER, cefr: ["B2", "C1"], eiken: ["pre1"] })}</p>
     </Page>
   );
 }

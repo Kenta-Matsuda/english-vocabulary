@@ -4,7 +4,6 @@ import { Masked, posLabel } from "../components";
 import { describeFilter } from "../logic";
 import { useAppState, wordById } from "../store";
 import type { Settings, Word } from "../types";
-import { EIKEN_LABEL } from "../types";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -32,7 +31,7 @@ function SheetHead({ kind, title, meta, right }: { kind: string; title: string; 
 }
 
 function LevelLine({ w }: { w: Word }) {
-  const t = [w.cefr, w.eiken && EIKEN_LABEL[w.eiken], w.toeic && "TOEIC", w.toefl && "TOEFL"].filter(Boolean);
+  const t = [w.cefr];
   return <div class="p-levels">{t.join(" · ")}</div>;
 }
 

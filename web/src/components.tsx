@@ -3,7 +3,7 @@ import { useState } from "preact/hooks";
 import { segments } from "./logic";
 import { speak } from "./tts";
 import type { Sense, Settings, Word, WordFilter } from "./types";
-import { CEFR_LEVELS, EIKEN_GRADES, EIKEN_LABEL } from "./types";
+import { CEFR_LEVELS, LEVEL_SOURCES, SOURCE_LABEL } from "./types";
 
 // ---------------------------------------------------------------- text helpers
 
@@ -71,10 +71,7 @@ export const alertless = toast;
 export function Tags({ w }: { w: Word }) {
   return (
     <span class="tags">
-      {w.cefr && <span class="tag">{w.cefr}</span>}
-      {w.eiken && <span class="tag">{EIKEN_LABEL[w.eiken]}</span>}
-      {w.toeic && <span class="tag">TOEIC</span>}
-      {w.toefl && <span class="tag">TOEFL</span>}
+      <span class="tag" title={`CEFR level from ${SOURCE_LABEL[w.src]}`}>{w.cefr}</span>
     </span>
   );
 }
@@ -222,31 +219,22 @@ function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; chi
 
 export function FilterEditor({ value, onChange }: { value: WordFilter; onChange: (f: WordFilter) => void }) {
   const toggle = <T,>(arr: T[], v: T) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
+  const sources = value.sources ?? [];
+  const cefr = value.cefr ?? [];
   return (
     <div class="filter">
       <div class="frow">
         <span class="flabel">CEFR</span>
         {CEFR_LEVELS.map((c) => (
-          <Chip key={c} on={value.cefr.includes(c)} onClick={() => onChange({ ...value, cefr: toggle(value.cefr, c) })}>{c}</Chip>
+          <Chip key={c} on={cefr.includes(c)} onClick={() => onChange({ ...value, cefr: toggle(cefr, c) })}>{c}</Chip>
         ))}
       </div>
       <div class="frow">
-        <span class="flabel">Eiken</span>
-        {EIKEN_GRADES.map((g) => (
-          <Chip key={g} on={value.eiken.includes(g)} onClick={() => onChange({ ...value, eiken: toggle(value.eiken, g) })}>{EIKEN_LABEL[g].replace("Eiken ", "Grade ")}</Chip>
+        <span class="flabel" title="Which word list the CEFR level comes from">Source</span>
+        {LEVEL_SOURCES.map((s) => (
+          <Chip key={s} on={sources.includes(s)} onClick={() => onChange({ ...value, sources: toggle(sources, s) })}>{SOURCE_LABEL[s]}</Chip>
         ))}
-      </div>
-      <div class="frow">
-        <span class="flabel">Exam</span>
-        <Chip on={value.toeic} onClick={() => onChange({ ...value, toeic: !value.toeic })}>TOEIC</Chip>
-        <Chip on={value.toefl} onClick={() => onChange({ ...value, toefl: !value.toefl })}>TOEFL</Chip>
-      </div>
-      <div class="frow">
-        <span class="flabel">Match</span>
-        <div class="seg">
-          <button type="button" class={value.mode === "any" ? "on" : ""} onClick={() => onChange({ ...value, mode: "any" })}>Any</button>
-          <button type="button" class={value.mode === "all" ? "on" : ""} onClick={() => onChange({ ...value, mode: "all" })}>All</button>
-        </div>
+        {!sources.length && <span class="small muted">(all lists)</span>}
       </div>
     </div>
   );

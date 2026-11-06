@@ -1,4 +1,5 @@
 import type { AppState, Attempt, Cycle, Settings, Word, WordFilter } from "./types";
+import { SOURCE_LABEL } from "./types";
 
 // ---------------------------------------------------------------- random
 
@@ -28,13 +29,10 @@ export function isTestable(w: Word): boolean {
 export function matchesFilter(w: Word, f: WordFilter): boolean {
   if (f.zipfMin != null && w.zipf < f.zipfMin) return false;
   if (f.zipfMax != null && w.zipf > f.zipfMax) return false;
-  const checks: boolean[] = [];
-  if (f.cefr.length) checks.push(w.cefr != null && f.cefr.includes(w.cefr));
-  if (f.eiken.length) checks.push(w.eiken != null && f.eiken.includes(w.eiken));
-  if (f.toeic) checks.push(w.toeic);
-  if (f.toefl) checks.push(w.toefl);
-  if (!checks.length) return true;
-  return f.mode === "all" ? checks.every(Boolean) : checks.some(Boolean);
+  // (filters saved by older versions may still carry eiken/toeic/toefl fields; they are ignored)
+  if (f.cefr?.length && !f.cefr.includes(w.cefr)) return false;
+  if (f.sources?.length && !f.sources.includes(w.src)) return false;
+  return true;
 }
 
 export function filterWords(words: Word[], f: WordFilter): Word[] {
@@ -43,13 +41,10 @@ export function filterWords(words: Word[], f: WordFilter): Word[] {
 
 export function describeFilter(f: WordFilter): string {
   const parts: string[] = [];
-  if (f.cefr.length) parts.push("CEFR " + f.cefr.join("/"));
-  if (f.eiken.length) parts.push("Eiken " + f.eiken.map((e) => (e === "pre1" ? "Pre-1" : e)).join("/"));
-  if (f.toeic) parts.push("TOEIC");
-  if (f.toefl) parts.push("TOEFL");
+  parts.push(f.cefr?.length ? "CEFR " + f.cefr.join("/") : "CEFR A1–C2");
+  if (f.sources?.length) parts.push("from " + f.sources.map((s) => SOURCE_LABEL[s]).join(", "));
   if (f.zipfMin != null || f.zipfMax != null) parts.push(`freq ${f.zipfMin ?? "-"}–${f.zipfMax ?? "-"}`);
-  if (!parts.length) return "All words";
-  return parts.join(f.mode === "all" ? " AND " : " OR ");
+  return parts.join(" · ");
 }
 
 // ---------------------------------------------------------------- history / stats
@@ -130,7 +125,11 @@ export function planCycle(
   reviewRatio: number,
   previous: Cycle | undefined,
 ): CyclePlan {
-  const carried = previous ? wrongInCycle(state, previous, state.settings.carryOverRule).slice(0, size) : [];
+  // words dropped from the dataset since the previous cycle was made cannot be carried over
+  const known = new Set(words.map((w) => w.id));
+  const carried = previous
+    ? wrongInCycle(state, previous, state.settings.carryOverRule).filter((id) => known.has(id)).slice(0, size)
+    : [];
   const carriedSet = new Set(carried);
   const studied = new Set(state.cycles.flatMap((c) => c.wordIds));
   for (const a of state.attempts) for (const id of a.order) studied.add(id);

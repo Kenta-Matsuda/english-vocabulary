@@ -11,7 +11,8 @@ Source priority (most trusted first):
   synonyms    : WordNet synset members (+ adjective "similar to")  >  Wiktionary
   examples    : WordNet gloss examples  >  Wiktionary usage examples
   IPA         : Wiktionary (GA / RP)  >  ipa-dict en_US (CMUdict based)
-  The TOEFL-1000 / TOEIC-600 datasets are used ONLY as membership lists, not for content.
+  CEFR level  : CEFR-J > Octanove > Oxford 5000 > EFLLex > Kelly (first source that lists the word;
+                within one source the lowest level across parts of speech)
 """
 from __future__ import annotations
 
@@ -168,9 +169,9 @@ def merge_spelling_variants(words: dict[str, dict]) -> int:
         keep = words[ks[0]]
         for k in ks[1:]:
             other = words.pop(k)
-            keep["cefr"] += other["cefr"]
-            keep["eiken"] += other["eiken"]
-            keep["lists"] |= other["lists"]
+            for src, lvl in other["levels"].items():
+                old = keep["levels"].get(src)
+                keep["levels"][src] = lvl if old is None else lowest([old, lvl], S.CEFR_ORDER)
             keep["pos"] += [p for p in other["pos"] if p not in keep["pos"]]
             merged += 1
     return merged
@@ -183,59 +184,63 @@ def lowest(values, order):
     return min(vals, key=order.index) if vals else None
 
 
+# CEFR sources, most trusted first. A word takes its level from the first source that lists it.
+LEVEL_SOURCES = [
+    ("cefrj", "CEFR-J Wordlist 1.5 (A1-B2)"),
+    ("octanove", "Octanove Vocabulary Profile C1/C2"),
+    ("oxford", "Oxford 5000 (A1-C1)"),
+    ("efllex", "EFLLex, CEFR-graded textbooks (A1-C1)"),
+    ("kelly", "Kelly list (A1-C2)"),
+]
+# sources whose labels are derived from corpus frequency rather than curated by hand:
+# their extra words must be real dictionary lemmas (not names, inflections, numerals, abbreviations)
+DERIVED_SOURCES = {"efllex", "kelly"}
+_NUMERAL = re.compile(r"^(twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)-|^(fif|six|seven|eigh|nine|ten)ties$")
+
+
+def _source_iter(name):
+    if name in ("cefrj", "octanove"):
+        for w, pos, lvl in S.read_cefr():
+            if (lvl in ("C1", "C2")) == (name == "octanove"):
+                yield w, pos, lvl
+    else:
+        yield from {"oxford": S.read_oxford5000, "efllex": S.read_efllex, "kelly": S.read_kelly}[name]()
+
+
 def collect(wn: WordNet) -> dict[str, dict]:
-    words: dict[str, dict] = defaultdict(lambda: {"cefr": [], "eiken": [], "lists": set(), "pos": [], "display": None})
+    words: dict[str, dict] = defaultdict(lambda: {"levels": {}, "pos": [], "display": None})
 
-    def add(raw, **kw):
-        k = S.normalize_headword(raw)
-        if not k:
-            return None
-        e = words[k]
-        disp = S.clean_html(raw).strip()
-        # keep capitalisation only for words that are always capitalised (English, Monday...)
-        if disp[:1].isupper() and disp[1:].islower() and k.capitalize() in {l for l in [disp]}:
-            if e["display"] is None and (k not in wn.index or _wn_is_proper(wn, k)):
-                e["display"] = disp
-        return e
+    def acceptable_derived(k: str) -> bool:
+        if len(k) < 3 or _NUMERAL.search(k) or k not in wn.index or _wn_is_proper(wn, k):
+            return False
+        if zipf(k) < 2.5:  # very rare words (photomontage, sandblast) are not worth drilling
+            return False
+        base = wn.morphy_base(k)
+        if base and base != k and base in words:  # e.g. "required", "talking" when the base is listed
+            return False
+        return True
 
-    for w, pos, lvl in S.read_cefr():
-        e = add(w)
-        if e is not None:
-            e["cefr"].append(lvl)
-            e["lists"].add("cefrj" if lvl in ("A1", "A2", "B1", "B2") else "octanove")
-            p = POS_MAP.get(pos.strip().lower())
-            if p and p not in e["pos"]:
-                e["pos"].append(p)
-
-    for w, grade, _src in S.read_eiken():
-        k = S.normalize_headword(w)
-        if not k:
-            continue
-        if k not in wn.index and k not in words:
-            base = wn.morphy_base(k)
-            if base:
-                w = base
-        e = add(w)
-        if e is not None:
-            e["eiken"].append(grade)
-            e["lists"].add("eiken")
-
-    for name, it in [("toefl1000", S.read_toefl1000()), ("nawl", S.read_nawl()), ("awl", S.read_awl()),
-                     ("toeic600", S.read_toeic600()), ("tsl", S.read_tsl()), ("bsl", S.read_bsl()),
-                     ("ngsl", S.read_ngsl())]:
-        for w in it:
-            k = S.normalize_headword(w)
+    for name, _label in LEVEL_SOURCES:
+        for raw, pos, lvl in _source_iter(name):
+            k = S.normalize_headword(raw)
             if not k:
                 continue
-            # AWL uses British spellings (analyse); prefer the US form when WordNet knows it
-            if name == "awl" and k not in wn.index:
-                us = re.sub(r"yse$", "yze", re.sub(r"ise$", "ize", k))
-                if us in wn.index:
-                    w = us
-            e = add(w)
-            if e is not None:
-                e["lists"].add(name)
+            if name in DERIVED_SOURCES and k not in words and not acceptable_derived(k):
+                continue
+            e = words[k]
+            old = e["levels"].get(name)
+            e["levels"][name] = lvl if old is None else lowest([old, lvl], S.CEFR_ORDER)
+            disp = S.clean_html(raw).strip()
+            if disp[:1].isupper() and disp[1:].islower() and e["display"] is None and _wn_is_proper(wn, k):
+                e["display"] = disp
+            if name != "efllex":
+                p = POS_MAP.get(pos.strip().lower())
+                if p and p not in e["pos"]:
+                    e["pos"].append(p)
     merge_spelling_variants(words)
+    for e in words.values():
+        src = next(n for n, _ in LEVEL_SOURCES if n in e["levels"])
+        e["cefr"], e["cefr_src"] = e["levels"][src], src
     return words
 
 
@@ -433,11 +438,9 @@ def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl
     entry = {
         "w": info["display"] or key,
         "pos": pos_seen,
-        "cefr": lowest(info["cefr"], S.CEFR_ORDER),
-        "eiken": lowest(info["eiken"], S.EIKEN_ORDER),
-        "toeic": bool(info["lists"] & {"toeic600", "tsl"}),
-        "toefl": bool(info["lists"] & {"toefl1000", "nawl", "awl"}),
-        "lists": sorted(info["lists"]),
+        "cefr": info["cefr"],
+        "src": info["cefr_src"],
+        "levels": info["levels"],
         "zipf": round(zipf(key), 2),
         "ipa": pick_ipa([d for d in wk], key, ipadict),
         "senses": senses,
@@ -466,9 +469,12 @@ def cmd_build() -> None:
     for head, forms in S.read_ngsl_forms():
         ngsl_forms[head.lower()] += [f.lower() for f in forms]
 
-    out = []
+    out, dropped = [], []
     for i, key in enumerate(sorted(words)):
         e = build_entry(key, words[key], wn, wkt.get(key, []), ipadict, ngsl_forms)
+        if not e["senses"]:
+            dropped.append(key)  # nothing to ask about
+            continue
         e["id"] = key
         out.append(e)
         if i % 2000 == 0:
@@ -483,10 +489,9 @@ def cmd_build() -> None:
         st["with_examples"] += bool(e["ex"])
         st["with_collocations"] += bool(e["col"])
         st["with_ipa"] += bool(e["ipa"])
-        st["toeic"] += e["toeic"]
-        st["toefl"] += e["toefl"]
         st[f"cefr_{e['cefr']}"] += 1
-        st[f"eiken_{e['eiken']}"] += 1
+        st[f"src_{e['src']}"] += 1
+    st["dropped_no_senses"] = len(dropped)
     meta = {
         "built": date.today().isoformat(),
         "stats": dict(sorted(st.items())),
@@ -495,13 +500,12 @@ def cmd_build() -> None:
             "wiktionary": "Wiktionary via kaikki.org (CC BY-SA 4.0)",
             "cefrj": "CEFR-J Wordlist 1.5, Tono Laboratory, TUFS",
             "octanove": "Octanove Vocabulary Profile C1/C2 1.0 (CC BY-SA 4.0)",
-            "ngsl": "NGSL / NAWL / TSL / BSL, Browne, Culligan & Phillips (CC BY-SA 4.0)",
-            "awl": "Academic Word List, Coxhead (2000)",
+            "oxford": "The Oxford 5000, Oxford University Press (levels only)",
+            "efllex": "EFLLex, Duerlich & Francois 2018, CEFRLex/UCLouvain (CC BY-NC-SA 4.0)",
+            "kelly": "Kelly list English, Kilgarriff et al. 2014 (CC BY-NC-SA 2.0)",
+            "ngsl": "NGSL / NAWL / TSL / BSL word forms, Browne, Culligan & Phillips (CC BY-SA 4.0)",
             "ipadict": "ipa-dict en_US (MIT)",
             "wordfreq": "wordfreq (Speer, CC BY-SA 4.0)",
-            "toefl1000": "gungorkaya-eng/toefl-essential-vocabulary-dataset (word list only)",
-            "toeic600": "tranngocminhhieu/toeic-600-words-dataset (word list only)",
-            "eiken": "Personal Anki decks (headwords only)",
         },
     }
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
@@ -515,7 +519,7 @@ def cmd_build() -> None:
 def write_csv(entries) -> None:
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     unmask = lambda s: s.replace("[[", "").replace("]]", "")  # noqa: E731
-    cols = ["word", "pos", "ipa_us", "ipa_uk", "cefr", "eiken", "toeic", "toefl", "zipf"]
+    cols = ["word", "pos", "ipa_us", "ipa_uk", "cefr", "cefr_source"] + [f"level_{n}" for n, _ in LEVEL_SOURCES] + ["zipf"]
     for i in range(1, MAX_SENSES + 1):
         cols += [f"definition{i}", f"pos{i}", f"synonyms{i}"]
     cols += ["examples", "collocations"]
@@ -523,8 +527,8 @@ def write_csv(entries) -> None:
         w = csv.writer(f)
         w.writerow(cols)
         for e in entries:
-            row = [e["w"], "/".join(e["pos"]), e["ipa"].get("us", ""), e["ipa"].get("uk", ""), e["cefr"] or "",
-                   e["eiken"] or "", int(e["toeic"]), int(e["toefl"]), e["zipf"]]
+            row = [e["w"], "/".join(e["pos"]), e["ipa"].get("us", ""), e["ipa"].get("uk", ""), e["cefr"], e["src"]]
+            row += [e["levels"].get(n, "") for n, _ in LEVEL_SOURCES] + [e["zipf"]]
             for i in range(MAX_SENSES):
                 if i < len(e["senses"]):
                     s = e["senses"][i]

@@ -15,11 +15,11 @@ export interface Word {
   id: string;
   w: string;
   pos: string[];
-  cefr: Cefr | null;
-  eiken: Eiken | null;
-  toeic: boolean;
-  toefl: boolean;
-  lists: string[];
+  cefr: Cefr;
+  /** the list the CEFR level was taken from (see LEVEL_SOURCES) */
+  src: LevelSource;
+  /** level given by every list that contains the word */
+  levels: Partial<Record<LevelSource, Cefr>>;
   /** Zipf frequency (wordfreq), ~1 (rare) .. 7 (very common) */
   zipf: number;
   ipa: { us?: string; uk?: string };
@@ -37,19 +37,24 @@ export interface Dataset {
 
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export type Cefr = (typeof CEFR_LEVELS)[number];
-export const EIKEN_GRADES = ["2", "pre1", "1"] as const;
-export type Eiken = (typeof EIKEN_GRADES)[number];
-export const EIKEN_LABEL: Record<Eiken, string> = { "2": "Eiken 2", pre1: "Eiken Pre-1", "1": "Eiken 1" };
+
+/** CEFR word lists, most trusted first. A word's level comes from the first list that has it. */
+export const LEVEL_SOURCES = ["cefrj", "octanove", "oxford", "efllex", "kelly"] as const;
+export type LevelSource = (typeof LEVEL_SOURCES)[number];
+export const SOURCE_LABEL: Record<LevelSource, string> = {
+  cefrj: "CEFR-J",
+  octanove: "Octanove",
+  oxford: "Oxford 5000",
+  efllex: "EFLLex",
+  kelly: "Kelly",
+};
 
 // ---------- word filter ----------
 
 export interface WordFilter {
   cefr: Cefr[];
-  eiken: Eiken[];
-  toeic: boolean;
-  toefl: boolean;
-  /** "any": word matches if it matches at least one checked criterion; "all": every checked group */
-  mode: "any" | "all";
+  /** only words whose level comes from these lists (empty = all lists) */
+  sources?: LevelSource[];
   /** optional Zipf frequency range */
   zipfMin?: number;
   zipfMax?: number;
@@ -128,4 +133,4 @@ export const DEFAULT_SETTINGS: Settings = {
   carryOverRule: "any-wrong",
 };
 
-export const DEFAULT_FILTER: WordFilter = { cefr: [], eiken: [], toeic: false, toefl: false, mode: "any" };
+export const DEFAULT_FILTER: WordFilter = { cefr: [], sources: [] };
