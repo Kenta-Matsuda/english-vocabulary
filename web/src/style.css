@@ -154,8 +154,10 @@ td.actions a { margin-right: 14px; font-size: 0.86rem; }
 tr.muted td { color: var(--muted); }
 .empty { padding: 28px; text-align: center; color: var(--muted); background: var(--surface); border: 1px dashed var(--rule-strong); border-radius: 10px; }
 
-.wordcloud { font-family: var(--serif); color: var(--ink-2); line-height: 1.9; columns: 4 140px; column-gap: 24px; font-size: 0.95rem; }
-.wordcloud span { display: block; }
+.wordcloud { font-family: var(--serif); color: var(--ink-2); line-height: 1.9; columns: 4 220px; column-gap: 24px; font-size: 0.95rem; }
+.wordcloud .wc-item { display: flex; align-items: center; gap: 8px; break-inside: avoid; padding: 2px 0; }
+.wordcloud .wc-w { color: var(--ink); }
+.wordcloud .ipa { font-size: 0.8rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* ---------------------------------------------------------------- English content (screen) */
 

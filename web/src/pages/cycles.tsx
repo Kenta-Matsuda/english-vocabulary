@@ -1,5 +1,5 @@
 import { useMemo, useState } from "preact/hooks";
-import { CountPicker, FilterEditor, Page, Stat } from "../components";
+import { CountPicker, FilterEditor, Ipa, Page, SpeakButton, Stat } from "../components";
 import { cycleSummary, describeFilter, filterWords, fmtDate, planCycle, shuffle, uid, wrongInCycle } from "../logic";
 import { update, useAppState, wordById, words } from "../store";
 import type { Attempt, AttemptMode, Cycle, WordFilter } from "../types";
@@ -230,8 +230,18 @@ export function CyclePage({ id }: { id: string }) {
       </div>
 
       <h2>Words in this cycle</h2>
+      <p class="small muted">Click the speaker icon to hear a word.</p>
       <div class="wordcloud">
-        {[...c.wordIds].map((i) => wordById(i)?.w ?? i).sort().map((w) => <span key={w}>{w}</span>)}
+        {c.wordIds
+          .map((i) => ({ id: i, word: wordById(i) }))
+          .sort((a, b) => (a.word?.w ?? a.id).localeCompare(b.word?.w ?? b.id))
+          .map(({ id, word }) => (
+            <span key={id} class="wc-item">
+              <SpeakButton text={word?.w ?? id} small />
+              <span class="wc-w">{word?.w ?? id}</span>
+              {word && <Ipa w={word} one />}
+            </span>
+          ))}
       </div>
 
       <p style={{ marginTop: "40px" }}>
