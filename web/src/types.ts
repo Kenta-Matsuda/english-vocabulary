@@ -103,6 +103,8 @@ export interface Settings {
   ttsModel: string;
   ttsVoice: string;
   ttsAccent: "us" | "uk";
+  /** browser speech-synthesis voice name used without an API key ("" = pick the best English voice) */
+  browserVoice: string;
   /** max senses shown per question */
   sensesPerQuestion: number;
   showFirstLetterHint: boolean;
@@ -125,6 +127,7 @@ export const DEFAULT_SETTINGS: Settings = {
   ttsModel: "gemini-3.8-flash-tts",
   ttsVoice: "Kore",
   ttsAccent: "us",
+  browserVoice: "",
   sensesPerQuestion: 3,
   showFirstLetterHint: true,
   showLengthHint: true,

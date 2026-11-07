@@ -1,5 +1,6 @@
-import { useMemo, useState } from "preact/hooks";
-import { alertless, Entry, FilterEditor, Page, Stat, Tags } from "../components";
+import { useEffect, useMemo, useState } from "preact/hooks";
+import { alertless, Entry, FilterEditor, Page, SpeakButton, Stat, Tags } from "../components";
+import { englishVoices } from "../tts";
 import { completedAttempts, cycleSummary, describeFilter, filterWords, fmtDate, wordStats } from "../logic";
 import { exportJson, importJson, loadDataset, update, useAppState, wordById, words } from "../store";
 import type { Settings, WordFilter } from "../types";
@@ -220,8 +221,12 @@ export function SettingsPage() {
             <option value="uk">British</option>
           </select>
         </label>
+        <label class="row">
+          <span>Browser voice</span>
+          <BrowserVoicePicker value={s.browserVoice} onChange={(v) => set("browserVoice", v)} />
+        </label>
         <p class="small muted">
-          The key is stored only in this browser (IndexedDB) and sent only to generativelanguage.googleapis.com. Audio is requested every time (no caching).
+          Browser voice is used only when no API key is set. The key is stored only in this browser (IndexedDB) and sent only to generativelanguage.googleapis.com. Audio is requested every time (no caching).
         </p>
       </div>
 
@@ -272,5 +277,21 @@ export function SettingsPage() {
         </div>
       )}
     </Page>
+  );
+}
+
+function BrowserVoicePicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  useEffect(() => void englishVoices().then(setVoices), []);
+  return (
+    <span style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+      <select value={value} onChange={(e) => onChange((e.target as HTMLSelectElement).value)}>
+        <option value="">Auto (best English voice)</option>
+        {voices.map((v) => (
+          <option key={v.name} value={v.name}>{v.name} ({v.lang})</option>
+        ))}
+      </select>
+      <SpeakButton text="Hello, this is a pronunciation test." small />
+    </span>
   );
 }

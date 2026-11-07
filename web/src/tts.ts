@@ -10,10 +10,10 @@ let current: AudioBufferSourceNode | null = null;
 let ctx: AudioContext | null = null;
 
 export async function speak(text: string): Promise<void> {
-  const { geminiApiKey, ttsModel, ttsVoice, ttsAccent } = getState().settings;
+  const { geminiApiKey, ttsModel, ttsVoice, ttsAccent, browserVoice } = getState().settings;
   stop();
   if (!geminiApiKey) {
-    speakBrowser(text, ttsAccent);
+    await speakBrowser(text, ttsAccent, browserVoice);
     return;
   }
   const accent = ttsAccent === "uk" ? "a British (Received Pronunciation)" : "an American";
@@ -32,10 +32,42 @@ export function stop(): void {
   window.speechSynthesis?.cancel();
 }
 
-function speakBrowser(text: string, accent: "us" | "uk") {
+/** English voices offered by the browser/OS. The list may load asynchronously. */
+export async function englishVoices(): Promise<SpeechSynthesisVoice[]> {
+  if (!("speechSynthesis" in window)) return [];
+  const synth = window.speechSynthesis;
+  let all = synth.getVoices();
+  if (!all.length) {
+    all = await new Promise<SpeechSynthesisVoice[]>((resolve) => {
+      const done = () => resolve(synth.getVoices());
+      synth.addEventListener("voiceschanged", done, { once: true });
+      setTimeout(done, 1500);
+    });
+  }
+  return all.filter((v) => /^en([-_]|$)/i.test(v.lang));
+}
+
+/** Rank voices: requested accent first, then natural/neural/online voices over the robotic local ones. */
+function voiceScore(v: SpeechSynthesisVoice, accent: "us" | "uk"): number {
+  const lang = v.lang.replace("_", "-").toLowerCase();
+  let s = 0;
+  if (lang === (accent === "uk" ? "en-gb" : "en-us")) s += 100;
+  if (/natural|neural/i.test(v.name)) s += 40;
+  if (/online|google/i.test(v.name)) s += 20;
+  if (!v.localService) s += 5;
+  return s;
+}
+
+async function speakBrowser(text: string, accent: "us" | "uk", preferred: string) {
   if (!("speechSynthesis" in window)) throw new Error("No Gemini API key set and speech synthesis is unavailable.");
+  const voices = await englishVoices();
+  const voice =
+    voices.find((v) => v.name === preferred) ??
+    [...voices].sort((a, b) => voiceScore(b, accent) - voiceScore(a, accent))[0];
+  if (!voice) throw new Error("No English voice is installed. Add an English speech voice in your OS settings, or set a Gemini API key.");
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = accent === "uk" ? "en-GB" : "en-US";
+  u.voice = voice;
+  u.lang = voice.lang;
   window.speechSynthesis.speak(u);
 }
 
