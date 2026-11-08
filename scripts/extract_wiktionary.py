@@ -6,8 +6,8 @@ Output: data/interim/wiktionary_subset.jsonl.gz  (committed)
 
 Only entries whose headword is in the candidate list (data/interim/candidates.txt)
 are kept, and only the fields we need: pos, IPA, inflected forms, glosses,
-usage examples (editor-written "example" type, not long quotations), synonyms
-and derived terms.
+usage examples (editor-written "example" type, not long quotations), synonyms,
+derived terms, and the number of languages each sense is translated into.
 """
 from __future__ import annotations
 
@@ -37,7 +37,14 @@ def slim(d: dict) -> dict:
                          if e.get("type") == "example" and e.get("text")],
             "synonyms": [x["word"] for x in s.get("synonyms", []) if "word" in x],
             "form_of": bool(s.get("form_of") or s.get("alt_of")),
+            # number of languages with a translation: editors translate the senses that matter,
+            # so this is our best signal of how common a sense is
+            "tr": _n_langs(s.get("translations", [])),
         })
+    # translation tables that the dump could not attach to a sense, keyed by their sense label
+    tr_tables: dict[str, list] = {}
+    for t in d.get("translations", []):
+        tr_tables.setdefault(t.get("sense") or "", []).append(t)
     return {
         "word": d["word"],
         "pos": d.get("pos"),
@@ -46,7 +53,12 @@ def slim(d: dict) -> dict:
         "senses": senses,
         "synonyms": [x["word"] for x in d.get("synonyms", []) if "word" in x],
         "derived": [x["word"] for x in d.get("derived", []) if "word" in x],
+        "tr_tables": {k: _n_langs(v) for k, v in tr_tables.items()},
     }
+
+
+def _n_langs(trs: list) -> int:
+    return len({t.get("lang_code") or t.get("lang") for t in trs if t.get("word")})
 
 
 def main() -> None:

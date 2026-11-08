@@ -36,8 +36,8 @@ python scripts/build_dataset.py build           # -> web/public/data/words.json,
 
   | 優先 | リスト | レベル | 性質 | 採用語数 |
   |---|---|---|---|---|
-  | 1 | CEFR-J Wordlist 1.5 | A1〜B2 | 研究者が作成・検証した語彙表 | 6,773 |
-  | 2 | Octanove Vocabulary Profile | C1〜C2 | CEFR-Jの上位レベル拡張 | 1,721 |
+  | 1 | CEFR-J Wordlist 1.5 | A1〜B2 | 研究者が作成・検証した語彙表 | 6,719 |
+  | 2 | Octanove Vocabulary Profile | C1〜C2 | CEFR-Jの上位レベル拡張 | 1,552 |
   | 3 | Oxford 5000 | A1〜C1 | OUPがコーパスと専門家の判断で作成 | 554 |
   | 4 | EFLLex（CEFRLex） | A1〜C1 | CEFR準拠の教科書・リーダーでの出現から算出（初出レベル） | 2,060 |
   | 5 | Kelly list | A1〜C2 | EUの研究プロジェクト。コーパス頻度帯をCEFRに対応づけたもの | 399 |
@@ -45,18 +45,35 @@ python scripts/build_dataset.py build           # -> web/public/data/words.json,
   - 4・5はレベルが頻度から機械的に決まっているため、追加するのは「WordNetに載っている一般語」かつ「固有名詞・活用形・数詞・略語でない」かつ「Zipf 2.5以上」の語だけ。
   - 参考: 共通する語でCEFR-Jとレベルが一致する割合は Oxford 44%（±1以内 87%）、EFLLex 40%（同 82%）、Kelly 29%（同 64%）。リスト間でもこの程度は揺れる。
   - サイトでは出題範囲を「Source」で絞れる（例: CEFR-J + Octanove + Oxford だけにする）。単語ページには各リストでのレベルを表示する。
-- 語義が1つも取れなかった語（51語）は出題できないので収録しない。
+- 語義が1つも取れなかった語（54語）は出題できないので収録しない。
+- リストに載っていても、**どの活用形もZipf 2.0未満**（1億語に1回程度より少ない）の語は収録しない（220語。glocal, cyberpet, gracefulness, amorphously など、造語やまれな派生語）。bewilder のように原形はまれでも bewildered がよく使われる語は残る。
 - イギリス式とアメリカ式の綴り（colour/color, analyse/analyze など）は、頻度が高いほうの見出しに統合する。
 
 ### 内容の採用元（信頼度の高い順）
 | 項目 | 採用元 |
 |---|---|
-| 語義 | WordNet 3.1（タグ付きコーパスでの使用頻度順、最大5件）→ WordNetにない語だけWiktionary |
+| 語義 | WordNet 3.1 の語義から、学習する価値のあるものだけを選ぶ（下記「語義の選び方」、最大5件）。WordNetにない語や、WordNetにない・定義がおかしい主要な語義はWiktionary |
 | 類語 | 同じsynsetのWordNet語のみ（形容詞の「similar to」でつながる語は意味が離れるため含めない）。**正解の語やその派生語を含むものは除外**し、使用頻度の上位10件まで |
-| 例文 | WordNetの用例 → Wiktionaryの用例（編集者が書いた短い用例のみ。廃語・俗語の語義は除く） |
-| コロケーション | WordNetの短い用例（"able to swim" など）、WordNetにも載っているWiktionaryの派生フレーズ |
+| 例文 | 表示する語義のWordNet用例・Wiktionary用例（編集者が書いた短い用例のみ）。**完全な文（大文字で始まり句点で終わる）を優先**し、それが2つ以上あればWordNetの断片的な用例（"his taste was impeccable, his health admirable"）は使わない。落とした語義の用例は使わない |
+| コロケーション | 表示する語義のWordNetの短い用例（"able to swim" など）、WordNetにも載っているWiktionaryの派生フレーズ。冠詞だけ違う重複（the margin of victory / margin of victory）は1つにする |
 | 発音記号 | Wiktionary（米: GA / 英: RP）→ ipa-dict（米） |
 | 頻度 | wordfreq（Zipf値） |
+
+#### 語義の選び方
+WordNetは知っている語義をすべて載せていて（broadcaster の「肥料散布機」、crease の「マレー短剣」、eagle の「10ドル金貨」など）、頻度の情報はSemCorのタグ数しかない（ほとんどの語義で0）。そこでWiktionaryの2つの情報を使う。
+
+- **翻訳された言語の数**: 編集者は実際に使われる語義から翻訳するので、語義の使用頻度の目安になる（broadcaster: 「放送者」41言語 / 「肥料散布機」1言語）。
+- **用法ラベル**: historical, archaic, dated, obsolete, slang, humorous など。
+
+各WordNet語義を、同じ品詞のWiktionary語義のうち最も似たもの（定義・用例・類語・上位語の単語の重なり、IDF重み付き）に対応づけ、その翻訳数とラベルを引き継ぐ。そのうえで:
+
+1. **落とす**: 対応するWiktionary語義にラベルがある（eagle「金貨」historical、paw「手」humorous、trillion「10^18」dated）、WordNet自身のラベルがある（brag 形容詞「すごい」colloquialism）、見出し語が複合語の略になっている（acute = acute accent）、地域限定（"in Great Britain"）。
+2. **落とす**: 翻訳数がその品詞の最多語義の25%未満、かつWordNetの第1語義でない、かつSemCorでほぼ未出現（2回未満）。3つすべてがそろったときだけ落とす（翻訳表が別の語義に付いていることがあり、翻訳数0だけでは珍しいとは言えないため）。
+3. **重複をまとめる**: 複数のWordNet語義が同じWiktionary語義に対応する場合（crease「しわを作る」「しわにする」）は1つにする。
+4. **Wiktionaryで補う**: WordNetが持っていない、またはWordNetの定義が対応しない主要な語義（翻訳数が最多の50%以上）はWiktionaryの定義を加える（up-and-coming: "Emerging; aspiring; beginning to attract attention"）。答えが見える循環定義（"One who broadcasts", "Not honest"）は使わない。
+5. **並べ順**: 翻訳数の割合（品詞ごと）と、WordNetの順・SemCorタグ数の大きいほう。
+
+例: broadcaster は「放送する人」だけ、brag は「v. show off / n. an instance of boastful talk」、trillion は「10^12」だけになる。
 
 - 語義・例文・コロケーションに出てくる見出し語（活用形や、語義中の派生語も含む）は `[[...]]` で印を付けてあり、問題では空欄にして表示する。
 - Oxford 5000 のファイルにはOUPの語義・例文も入っているが、使うのは**見出し語・品詞・レベルだけ**。
@@ -64,8 +81,8 @@ python scripts/build_dataset.py build           # -> web/public/data/words.json,
 - `data/raw/` の英検・TOEIC・TOEFL・AWLのファイルは、現在はデータ作成に使っていない。
 
 ### 収録数（作成時点）
-11,507語。すべてにCEFRレベルと語義がある（例文あり: 8,238 / コロケーションあり: 6,923 / 発音記号あり: 11,177）
-A1 1,167・A2 1,476・B1 2,435・B2 3,162・C1 2,109・C2 1,158
+11,284語。すべてにCEFRレベルと語義がある（例文あり: 7,471 / コロケーションあり: 6,442 / 発音記号あり: 11,091）
+A1 1,165・A2 1,473・B1 2,432・B2 3,116・C1 2,052・C2 1,046
 
 ## サイトの機能
 - **サイクル**: 出題範囲（CEFRレベル。必要ならレベルの出典リストでも絞れる）と語数を決めて、テスト範囲を固定する。サイクル内のテストはすべて同じ語を、毎回ランダムな順番で出題する。
