@@ -52,7 +52,7 @@ python scripts/build_dataset.py build           # -> web/public/data/words.json,
 | 項目 | 採用元 |
 |---|---|
 | 語義 | WordNet 3.1（タグ付きコーパスでの使用頻度順、最大5件）→ WordNetにない語だけWiktionary |
-| 類語 | 同じsynsetのWordNet語（形容詞は「similar to」も含む）。**正解の語やその派生語を含むものは除外**し、使用頻度の上位10件まで |
+| 類語 | 同じsynsetのWordNet語のみ（形容詞の「similar to」でつながる語は意味が離れるため含めない）。**正解の語やその派生語を含むものは除外**し、使用頻度の上位10件まで |
 | 例文 | WordNetの用例 → Wiktionaryの用例（編集者が書いた短い用例のみ。廃語・俗語の語義は除く） |
 | コロケーション | WordNetの短い用例（"able to swim" など）、WordNetにも載っているWiktionaryの派生フレーズ |
 | 発音記号 | Wiktionary（米: GA / 英: RP）→ ipa-dict（米） |

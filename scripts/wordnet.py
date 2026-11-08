@@ -29,7 +29,8 @@ def _clean_lemma(s: str) -> str:
 
 def _split_gloss(gloss: str) -> tuple[str, list[str]]:
     examples = re.findall(r'"([^"]+)"', gloss)
-    definition = re.sub(r'"[^"]*"', "", gloss)
+    # drop quoted examples together with a trailing attribution ("..."- Liam O'Flaherty)
+    definition = re.sub(r'"[^"]*"(\s*-+\s*[^;"]*)?', "", gloss)
     definition = re.sub(r"\s*;\s*(;\s*)*", "; ", definition).strip(" ;")
     return definition, [e.strip() for e in examples if e.strip()]
 
@@ -96,14 +97,6 @@ class WordNet:
         for p, offs in self.index.get(lemma.lower(), {}).items():
             for r, off in enumerate(offs):
                 yield p, r, self.synsets[(off, p)]
-
-    def similar(self, ss: Synset) -> list[Synset]:
-        """Adjective 'similar to' (&) neighbours."""
-        out = []
-        for sym, off, p, _st in ss.pointers:
-            if sym == "&":
-                out.append(self.synset(off, p))
-        return out
 
     def derivations(self, lemma: str) -> set[str]:
         """Lemmas derivationally related to `lemma` (WordNet '+' and pertainym pointers)."""

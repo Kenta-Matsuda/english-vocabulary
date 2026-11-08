@@ -8,7 +8,8 @@ Usage:
 
 Source priority (most trusted first):
   definitions : WordNet 3.1  >  Wiktionary (only when WordNet has no entry)
-  synonyms    : WordNet synset members (+ adjective "similar to")  >  Wiktionary
+  synonyms    : WordNet synset members only  >  Wiktionary
+                (adjective "similar to" neighbours are not synonyms: admirable -> pleasing)
   examples    : WordNet gloss examples  >  Wiktionary usage examples
   IPA         : Wiktionary (GA / RP)  >  ipa-dict en_US (CMUdict based)
   CEFR level  : CEFR-J > Octanove > Oxford 5000 > EFLLex > Kelly (first source that lists the word;
@@ -326,6 +327,26 @@ def n_tokens(s: str) -> int:
     return len(re.findall(r"[A-Za-z']+", s))
 
 
+_ATTRIBUTION = re.compile(r"(?<=[.!?\"”])\s*[—–-]+\s*[A-Z][A-Za-z.' ]*[A-Za-z]$")  # "... aim. —George Santayana"
+
+
+def clean_text(t: str) -> str:
+    """Normalise WordNet/Wiktionary text for display."""
+    t = re.sub(r"`([^`']*)'", r"‘\1’", t)  # WordNet `quote' -> ‘quote’
+    t = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", t)  # leftover wiki links [[a|b]] -> b
+    t = _ATTRIBUTION.sub("", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def clean_definition(t: str) -> str:
+    return clean_text(t).rstrip(" :;,")
+
+
+def good_synonym(x: str) -> bool:
+    # numerals and codes ("8" for eight, "atomic number 6", "a/c") give the answer away or are not words
+    return not re.search(r"[0-9/]", x)
+
+
 def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl_forms) -> dict:
     # ---- forms for masking
     forms = regular_forms(key) | wn.exc.get(key, set()) | set(ngsl_forms.get(key, []))
@@ -347,7 +368,15 @@ def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl
     pos_seen = list(info["pos"])
 
     def add_example(text: str):
-        text = text.strip()
+        if re.search(r"#\d+;", text):
+            return  # LaTeX math escaped by the Wiktionary dump (#92;frac#123;...)
+        # several examples run together with wide gaps ("abject failure   abject terror")
+        parts = [p for p in re.split(r";?\s{2,}|;\s+(?=\S)", text) if p.strip()] if re.search(r"\s{2,}", text) else [text]
+        if len(parts) > 1:
+            for p in parts:
+                add_example(p)
+            return
+        text = clean_text(text)
         if not masker.contains(text):
             return
         nt = n_tokens(text)
@@ -377,18 +406,16 @@ def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl
     cands.sort(key=lambda t: t[:3])
     for _neg, _q, _rank, p, ss in cands[:MAX_SENSES]:
         syn_pool: dict[str, tuple[int, float]] = {}
-        groups = [ss] + (wn.similar(ss) if p == "a" else [])
-        for g in groups:
-            for l in g.lemmas:
-                ll = l.lower()
-                if ll == key or masker.leaks(l):
-                    continue
-                score = (wn.tagcount.get((ll, g.offset), 0) + (0 if g is ss else -1000), zipf(l))
-                if ll not in syn_pool or syn_pool[ll] < score:
-                    syn_pool[ll] = score
+        for l in ss.lemmas:
+            ll = l.lower()
+            if ll == key or masker.leaks(l) or not good_synonym(l):
+                continue
+            score = (wn.tagcount.get((ll, ss.offset), 0), zipf(l))
+            if ll not in syn_pool or syn_pool[ll] < score:
+                syn_pool[ll] = score
         syns = dedupe_variants(key, sorted(syn_pool, key=lambda l: syn_pool[l], reverse=True))[:MAX_SYNONYMS]
         tag = POS_MAP[ss.pos]
-        senses.append({"p": tag, "d": masker.mark_loose(ss.definition), "s": syns})
+        senses.append({"p": tag, "d": masker.mark_loose(clean_definition(ss.definition)), "s": syns})
         if tag not in pos_seen:
             pos_seen.append(tag)
     # examples from *all* the word's synsets (sense order), not just the top ones shown
@@ -416,10 +443,10 @@ def build_entry(key: str, info: dict, wn: WordNet, wk: list[dict], ipadict, ngsl
             if gloss.startswith("..."):
                 continue
             syns = [x for x in dict.fromkeys(s["synonyms"] + d["synonyms"])
-                    if not masker.leaks(x) and zipf(x) >= 2.5]
+                    if not masker.leaks(x) and good_synonym(x) and zipf(x) >= 2.5]
             syns = dedupe_variants(key, sorted(syns, key=zipf, reverse=True))[:MAX_SYNONYMS]
             tag = POS_MAP.get(d["pos"], d["pos"])
-            senses.append({"p": tag, "d": masker.mark_loose(gloss), "s": syns, "src": "wkt"})
+            senses.append({"p": tag, "d": masker.mark_loose(clean_definition(gloss)), "s": syns, "src": "wkt"})
             if tag not in pos_seen:
                 pos_seen.append(tag)
 
