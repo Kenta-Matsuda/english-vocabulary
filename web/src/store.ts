@@ -15,10 +15,15 @@ export async function initStore(): Promise<void> {
   if (saved) state = migrate(saved);
 }
 
+/** Settings removed in later versions (Gemini TTS); dropped when loading old data. */
+const REMOVED_SETTINGS = ["geminiApiKey", "ttsModel", "ttsVoice"];
+
 function migrate(s: Partial<AppState>): AppState {
+  const settings = { ...DEFAULT_SETTINGS, ...(s.settings ?? {}) } as Record<string, unknown>;
+  for (const k of REMOVED_SETTINGS) delete settings[k];
   return {
     version: 1,
-    settings: { ...DEFAULT_SETTINGS, ...(s.settings ?? {}) },
+    settings: settings as unknown as AppState["settings"],
     cycles: s.cycles ?? [],
     attempts: s.attempts ?? [],
   };
@@ -47,22 +52,15 @@ export function useAppState(): AppState {
 
 // ---------------------------------------------------------------- import / export
 
-export function exportJson(includeApiKey: boolean): string {
-  const s = structuredClone(state);
-  if (!includeApiKey) s.settings.geminiApiKey = "";
-  return JSON.stringify({ app: "vocab-trainer", exportedAt: new Date().toISOString(), state: s }, null, 1);
+export function exportJson(): string {
+  return JSON.stringify({ app: "vocab-trainer", exportedAt: new Date().toISOString(), state }, null, 1);
 }
 
 export function importJson(text: string, mode: "replace" | "merge"): { cycles: number; attempts: number } {
   const parsed = JSON.parse(text);
   const incoming = migrate(parsed.state ?? parsed);
   update((s) => {
-    if (mode === "replace") {
-      const key = s.settings.geminiApiKey;
-      const next = incoming;
-      if (!next.settings.geminiApiKey) next.settings.geminiApiKey = key;
-      return next;
-    }
+    if (mode === "replace") return incoming;
     const cyc = new Map(s.cycles.map((c) => [c.id, c]));
     for (const c of incoming.cycles) cyc.set(c.id, c);
     const att = new Map(s.attempts.map((a) => [a.id, a]));

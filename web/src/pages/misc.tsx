@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 import { alertless, Entry, FilterEditor, Page, SpeakButton, Stat, Tags } from "../components";
-import { englishVoices } from "../tts";
+import { englishVoices, isEdge } from "../tts";
 import { completedAttempts, cycleSummary, describeFilter, filterWords, fmtDate, wordStats } from "../logic";
 import { exportJson, importJson, loadDataset, update, useAppState, wordById, words } from "../store";
 import type { Settings, WordFilter } from "../types";
@@ -177,12 +177,11 @@ export function SettingsPage() {
   const state = useAppState();
   const s = state.settings;
   const [meta, setMeta] = useState<Awaited<ReturnType<typeof loadDataset>>["meta"] | null>(null);
-  const [withKey, setWithKey] = useState(false);
   const set = <K extends keyof Settings>(k: K, v: Settings[K]) => update((st) => void (st.settings[k] = v));
   if (!meta) void loadDataset().then((d) => setMeta(d.meta));
 
   const download = () => {
-    const blob = new Blob([exportJson(withKey)], { type: "application/json" });
+    const blob = new Blob([exportJson()], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = `vocab-history-${new Date().toISOString().slice(0, 10)}.json`;
@@ -200,20 +199,14 @@ export function SettingsPage() {
 
   return (
     <Page eyebrow="Preferences" title="Settings">
-      <h2>Pronunciation (Gemini TTS, bring your own key)</h2>
+      <h2>Pronunciation</h2>
+      {!isEdge() && (
+        <p class="notice">
+          For natural-sounding pronunciation, open this app in <b>Microsoft Edge</b>. Edge includes neural English voices
+          (e.g. “Microsoft Aria Online (Natural)”); other browsers may only have robotic or no English voices.
+        </p>
+      )}
       <div class="form">
-        <label class="row">
-          <span>Gemini API key</span>
-          <input type="password" value={s.geminiApiKey} placeholder="Leave empty to use the browser's built-in voice" onInput={(e) => set("geminiApiKey", (e.target as HTMLInputElement).value.trim())} />
-        </label>
-        <label class="row">
-          <span>Model</span>
-          <input value={s.ttsModel} onInput={(e) => set("ttsModel", (e.target as HTMLInputElement).value.trim())} />
-        </label>
-        <label class="row">
-          <span>Voice</span>
-          <input value={s.ttsVoice} onInput={(e) => set("ttsVoice", (e.target as HTMLInputElement).value.trim())} />
-        </label>
         <label class="row">
           <span>Accent</span>
           <select value={s.ttsAccent} onChange={(e) => set("ttsAccent", (e.target as HTMLSelectElement).value as "us" | "uk")}>
@@ -222,11 +215,11 @@ export function SettingsPage() {
           </select>
         </label>
         <label class="row">
-          <span>Browser voice</span>
+          <span>Voice</span>
           <BrowserVoicePicker value={s.browserVoice} onChange={(v) => set("browserVoice", v)} />
         </label>
         <p class="small muted">
-          Browser voice is used only when no API key is set. The key is stored only in this browser (IndexedDB) and sent only to generativelanguage.googleapis.com. Audio is requested every time (no caching).
+          Uses the browser's built-in speech synthesis. “Auto” picks the most natural English voice for the selected accent.
         </p>
       </div>
 
@@ -254,8 +247,7 @@ export function SettingsPage() {
         <div class="row">
           <span>Export</span>
           <span>
-            <button onClick={download}>Download history (.json)</button>{" "}
-            <label class="small"><input type="checkbox" checked={withKey} onChange={() => setWithKey(!withKey)} /> include API key</label>
+            <button onClick={download}>Download history (.json)</button>
           </span>
         </div>
         <div class="row">

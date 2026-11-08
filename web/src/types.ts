@@ -99,11 +99,9 @@ export interface Attempt {
 }
 
 export interface Settings {
-  geminiApiKey: string;
-  ttsModel: string;
-  ttsVoice: string;
+  /** preferred accent when choosing a voice automatically */
   ttsAccent: "us" | "uk";
-  /** browser speech-synthesis voice name used without an API key ("" = pick the best English voice) */
+  /** speech-synthesis voice name ("" = pick the best English voice) */
   browserVoice: string;
   /** max senses shown per question */
   sensesPerQuestion: number;
@@ -123,9 +121,6 @@ export interface AppState {
 }
 
 export const DEFAULT_SETTINGS: Settings = {
-  geminiApiKey: "",
-  ttsModel: "gemini-3.8-flash-tts",
-  ttsVoice: "Kore",
   ttsAccent: "us",
   browserVoice: "",
   sensesPerQuestion: 3,
